@@ -1,86 +1,167 @@
 "use client"
 
+import Link from "next/link"
 import { motion } from "framer-motion"
+import { Compass, MapPin, Phone, Mail, Instagram, Twitter, Facebook, Youtube, Leaf, Globe, Users } from "lucide-react"
+
 import { Button } from "@/components/ui/button"
-import { 
-  Leaf, 
-  Heart, 
-  Mail, 
-  Phone, 
-  MapPin, 
-  Instagram, 
-  Twitter, 
-  Facebook,
-  Youtube,
-  ArrowUp
-} from "lucide-react"
+
+const footerLinks = {
+  destinations: [
+    { name: "Norwegian Fjords", href: "/destinations/norwegian-fjords" },
+    { name: "Patagonian Wilderness", href: "/destinations/patagonia" },
+    { name: "Swiss Alpine Trails", href: "/destinations/swiss-alps" },
+    { name: "Icelandic Highlands", href: "/destinations/iceland" },
+    { name: "New Zealand Trails", href: "/destinations/new-zealand" },
+  ],
+  adventures: [
+    { name: "Mountain Expeditions", href: "/adventures/mountain-expeditions" },
+    { name: "Wilderness Trekking", href: "/adventures/wilderness-trekking" },
+    { name: "Cultural Immersion", href: "/adventures/cultural-immersion" },
+    { name: "Wildlife Safaris", href: "/adventures/wildlife-safaris" },
+    { name: "Water Adventures", href: "/adventures/water-adventures" },
+  ],
+  company: [
+    { name: "About Wanderlust", href: "/about" },
+    { name: "Our Mission", href: "/mission" },
+    { name: "Sustainability", href: "/sustainability" },
+    { name: "Careers", href: "/careers" },
+    { name: "Press Kit", href: "/press" },
+  ],
+  support: [
+    { name: "Help Center", href: "/help" },
+    { name: "Travel Insurance", href: "/insurance" },
+    { name: "Safety Guidelines", href: "/safety" },
+    { name: "Emergency Contact", href: "/emergency" },
+    { name: "FAQ", href: "/faq" },
+  ],
+}
+
+const socialLinks = [
+  { name: "Instagram", href: "#", icon: Instagram },
+  { name: "Twitter", href: "#", icon: Twitter },
+  { name: "Facebook", href: "#", icon: Facebook },
+  { name: "YouTube", href: "#", icon: Youtube },
+]
 
 export function Footer() {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" })
-  }
-
   return (
-    <footer className="bg-secondary/10 border-t border-border/50">
-      <div className="max-w-7xl mx-auto px-4 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+    <footer className="bg-background border-t border-border/40">
+      {/* Main Footer Content */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
           {/* Brand Section */}
-          <div className="lg:col-span-1">
+          <div className="lg:col-span-2">
             <motion.div
+              className="flex items-center space-x-2 mb-6"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              className="mb-6"
             >
-              <div className="flex items-center space-x-2 mb-4">
-                <Leaf className="h-8 w-8 text-primary" />
-                <span className="text-2xl font-semibold">EcoThread</span>
+              <div className="h-10 w-10 rounded-full bg-gradient-to-br from-primary to-primary/60 flex items-center justify-center">
+                <Compass className="h-6 w-6 text-primary-foreground" />
               </div>
-              <p className="text-muted-foreground mb-6">
-                Sustainable fashion that honors the planet. Every piece tells a story of ethical craftsmanship and environmental stewardship.
-              </p>
-              <div className="flex space-x-4">
-                <Button variant="ghost" size="sm" className="rounded-full">
-                  <Instagram className="h-4 w-4" />
-                </Button>
-                <Button variant="ghost" size="sm" className="rounded-full">
-                  <Twitter className="h-4 w-4" />
-                </Button>
-                <Button variant="ghost" size="sm" className="rounded-full">
-                  <Facebook className="h-4 w-4" />
-                </Button>
-                <Button variant="ghost" size="sm" className="rounded-full">
-                  <Youtube className="h-4 w-4" />
-                </Button>
+              <span className="text-2xl font-bold tracking-tight text-foreground">
+                Wanderlust
+              </span>
+            </motion.div>
+
+            <motion.p
+              className="text-muted-foreground mb-6 max-w-sm"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              viewport={{ once: true }}
+            >
+              Discover transformative eco-tourism adventures that connect you with pristine landscapes and sustainable experiences around the world.
+            </motion.p>
+
+            <motion.div
+              className="flex items-center gap-4 mb-6"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                <Leaf className="h-4 w-4 text-primary" />
+                <span>Carbon Neutral</span>
               </div>
+              <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                <Globe className="h-4 w-4 text-primary" />
+                <span>Eco-Certified</span>
+              </div>
+            </motion.div>
+
+            <motion.div
+              className="flex space-x-4"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              viewport={{ once: true }}
+            >
+              {socialLinks.map((social) => (
+                <Button
+                  key={social.name}
+                  variant="ghost"
+                  size="sm"
+                  asChild
+                  className="h-10 w-10 p-0 hover:bg-primary/10"
+                >
+                  <Link href={social.href} aria-label={social.name}>
+                    <social.icon className="h-5 w-5" />
+                  </Link>
+                </Button>
+              ))}
             </motion.div>
           </div>
 
-          {/* Quick Links */}
+          {/* Destinations */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-lg font-semibold mb-6">Shop</h3>
+            <h3 className="font-semibold text-foreground mb-4 flex items-center gap-2">
+              <MapPin className="h-4 w-4 text-primary" />
+              Destinations
+            </h3>
             <ul className="space-y-3">
-              {[
-                "Women's Collection",
-                "Men's Collection",
-                "Accessories",
-                "Sustainable Living",
-                "Gift Cards",
-                "Sale Items"
-              ].map((item, index) => (
-                <li key={index}>
-                  <a 
-                    href="#" 
-                    className="text-muted-foreground hover:text-primary transition-colors duration-200"
+              {footerLinks.destinations.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    href={link.href}
+                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
                   >
-                    {item}
-                  </a>
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+
+          {/* Adventures */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            <h3 className="font-semibold text-foreground mb-4 flex items-center gap-2">
+              <Compass className="h-4 w-4 text-primary" />
+              Adventures
+            </h3>
+            <ul className="space-y-3">
+              {footerLinks.adventures.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    href={link.href}
+                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    {link.name}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -90,26 +171,22 @@ export function Footer() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-lg font-semibold mb-6">Company</h3>
+            <h3 className="font-semibold text-foreground mb-4 flex items-center gap-2">
+              <Users className="h-4 w-4 text-primary" />
+              Company
+            </h3>
             <ul className="space-y-3">
-              {[
-                "Our Story",
-                "Sustainability",
-                "Impact Report",
-                "Careers",
-                "Press",
-                "Contact Us"
-              ].map((item, index) => (
-                <li key={index}>
-                  <a 
-                    href="#" 
-                    className="text-muted-foreground hover:text-primary transition-colors duration-200"
+              {footerLinks.company.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    href={link.href}
+                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
                   >
-                    {item}
-                  </a>
+                    {link.name}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -119,111 +196,102 @@ export function Footer() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-lg font-semibold mb-6">Support</h3>
+            <h3 className="font-semibold text-foreground mb-4 flex items-center gap-2">
+              <Phone className="h-4 w-4 text-primary" />
+              Support
+            </h3>
             <ul className="space-y-3">
-              {[
-                "Help Center",
-                "Size Guide",
-                "Shipping Info",
-                "Returns & Exchanges",
-                "Care Instructions",
-                "FAQ"
-              ].map((item, index) => (
-                <li key={index}>
-                  <a 
-                    href="#" 
-                    className="text-muted-foreground hover:text-primary transition-colors duration-200"
+              {footerLinks.support.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    href={link.href}
+                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
                   >
-                    {item}
-                  </a>
+                    {link.name}
+                  </Link>
                 </li>
               ))}
             </ul>
           </motion.div>
         </div>
+      </div>
 
-        {/* Newsletter */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          viewport={{ once: true }}
-          className="border-t border-border/50 pt-8 mb-8"
-        >
-          <div className="max-w-md">
-            <h3 className="text-lg font-semibold mb-4">Stay Connected</h3>
-            <p className="text-muted-foreground mb-4">
-              Subscribe to our newsletter for sustainable fashion tips, new collections, and exclusive offers.
-            </p>
-            <div className="flex space-x-2">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 px-4 py-2 border border-border rounded-lg bg-background focus:outline-none focus:ring-2 focus:ring-primary/20"
-              />
-              <Button size="sm">
-                <Mail className="h-4 w-4 mr-2" />
+      {/* Newsletter Section */}
+      <div className="border-t border-border/40 bg-muted/20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <div className="grid lg:grid-cols-2 gap-8 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <h3 className="text-2xl font-bold text-foreground mb-3">
+                Stay Updated on New Adventures
+              </h3>
+              <p className="text-muted-foreground">
+                Get exclusive access to new destinations, special offers, and travel inspiration delivered to your inbox.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="flex flex-col sm:flex-row gap-4"
+            >
+              <div className="flex-1">
+                <input
+                  type="email"
+                  placeholder="Enter your email address"
+                  className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary"
+                />
+              </div>
+              <Button className="px-8 py-3">
                 Subscribe
               </Button>
-            </div>
+            </motion.div>
           </div>
-        </motion.div>
+        </div>
+      </div>
 
-        {/* Bottom Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          viewport={{ once: true }}
-          className="border-t border-border/50 pt-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0"
-        >
-          <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-8 text-sm text-muted-foreground">
-            <div className="flex items-center space-x-2">
-              <Heart className="h-4 w-4 text-red-500" />
-              <span>Made with love for the planet</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <Leaf className="h-4 w-4 text-primary" />
-              <span>100% Sustainable Materials</span>
-            </div>
-          </div>
-
-          <div className="flex items-center space-x-4">
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={scrollToTop}
-              className="rounded-full"
+      {/* Bottom Bar */}
+      <div className="border-t border-border/40 bg-background">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <motion.div
+              className="text-sm text-muted-foreground"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
             >
-              <ArrowUp className="h-4 w-4" />
-            </Button>
-          </div>
-        </motion.div>
+              &copy; 2024 Wanderlust. All rights reserved. A Codestam Technologies company.
+            </motion.div>
 
-        {/* Copyright */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          viewport={{ once: true }}
-          className="border-t border-border/50 pt-8 mt-8 text-center text-sm text-muted-foreground"
-        >
-          <p>
-            &copy; 2024 EcoThread. All rights reserved. | 
-            Publisher: Codestam Technologies | 
-            <a href="https://codestam.com" className="hover:text-primary transition-colors">
-              https://codestam.com
-            </a>
-          </p>
-          <div className="flex justify-center space-x-6 mt-4">
-            <a href="#" className="hover:text-primary transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-primary transition-colors">Terms of Service</a>
-            <a href="#" className="hover:text-primary transition-colors">Cookie Policy</a>
+            <motion.div
+              className="flex items-center gap-6 text-sm"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              viewport={{ once: true }}
+            >
+              <Link href="/privacy" className="text-muted-foreground hover:text-primary transition-colors">
+                Privacy Policy
+              </Link>
+              <Link href="/terms" className="text-muted-foreground hover:text-primary transition-colors">
+                Terms of Service
+              </Link>
+              <Link href="/cookies" className="text-muted-foreground hover:text-primary transition-colors">
+                Cookie Policy
+              </Link>
+            </motion.div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </footer>
   )

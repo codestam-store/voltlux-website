@@ -14,21 +14,21 @@ const josefinSans = Josefin_Sans({
 
 export const metadata: Metadata = {
   title: {
-    default: "EcoThread - Sustainable Fashion &amp; Conscious Living",
-    template: "%s | EcoThread"
+    default: "Wanderlust - Eco-Tourism &amp; Adventure Travel Experiences",
+    template: "%s | Wanderlust"
   },
-  description: "Discover sustainable fashion that honors the planet. EcoThread offers ethically crafted clothing, eco-friendly accessories, and conscious living essentials for a mindful lifestyle.",
+  description: "Discover transformative eco-tourism adventures that connect you with nature. Wanderlust offers sustainable travel experiences, wilderness expeditions, and mindful exploration across pristine landscapes.",
   keywords: [
-    "sustainable fashion",
-    "eco-friendly clothing",
-    "ethical fashion",
-    "conscious living",
-    "organic textiles",
-    "slow fashion",
-    "environmentally friendly",
-    "fair trade",
-    "zero waste",
-    "EcoThread"
+    "eco-tourism",
+    "adventure travel",
+    "sustainable tourism",
+    "wilderness expeditions",
+    "nature experiences",
+    "mindful travel",
+    "outdoor adventures",
+    "eco-friendly travel",
+    "sustainable tourism",
+    "Wanderlust"
   ],
   authors: [{ name: "Codestam Technologies" }],
   creator: "Codestam Technologies",
@@ -46,22 +46,22 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://codestam.com",
-    title: "EcoThread - Sustainable Fashion &amp; Conscious Living",
-    description: "Discover sustainable fashion that honors the planet. EcoThread offers ethically crafted clothing, eco-friendly accessories, and conscious living essentials for a mindful lifestyle.",
-    siteName: "EcoThread",
+    title: "Wanderlust - Eco-Tourism &amp; Adventure Travel Experiences",
+    description: "Discover transformative eco-tourism adventures that connect you with nature. Wanderlust offers sustainable travel experiences, wilderness expeditions, and mindful exploration across pristine landscapes.",
+    siteName: "Wanderlust",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "EcoThread - Sustainable Fashion &amp; Conscious Living",
+        alt: "Wanderlust - Eco-Tourism &amp; Adventure Travel Experiences",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "EcoThread - Sustainable Fashion &amp; Conscious Living",
-    description: "Discover sustainable fashion that honors the planet. EcoThread offers ethically crafted clothing, eco-friendly accessories, and conscious living essentials for a mindful lifestyle.",
+    title: "Wanderlust - Eco-Tourism &amp; Adventure Travel Experiences",
+    description: "Discover transformative eco-tourism adventures that connect you with nature. Wanderlust offers sustainable travel experiences, wilderness expeditions, and mindful exploration across pristine landscapes.",
     images: ["/og-image.jpg"],
     creator: "@codestam",
   },
@@ -90,10 +90,10 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-        <link rel="mask-icon" href="/mask-icon.svg" color="#6366f1" />
+        <link rel="mask-icon" href="/mask-icon.svg" color="#8B5A3C" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <meta name="theme-color" content="#6366f1" />
-        <meta name="msapplication-TileColor" content="#6366f1" />
+        <meta name="theme-color" content="#8B5A3C" />
+        <meta name="msapplication-TileColor" content="#8B5A3C" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
       <body className={`${josefinSans.className} font-sans antialiased`}>

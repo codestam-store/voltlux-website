@@ -1,36 +1,51 @@
 
-import { Metadata } from "next"
-import { HomePageClient } from "@/components/home-page-client"
+import type { Metadata } from "next"
+import HomePageClient from "@/components/home-page-client"
 
 export const metadata: Metadata = {
-  title: "EcoThread - Sustainable Fashion &amp; Conscious Living",
-  description: "Discover sustainable fashion that honors the planet. EcoThread offers ethically crafted clothing, eco-friendly accessories, and conscious living essentials for a mindful lifestyle.",
+  title: "Wanderlust - Eco-Tourism &amp; Adventure Travel Experiences",
+  description: "Discover transformative eco-tourism adventures that connect you with nature. Wanderlust offers sustainable travel experiences, wilderness expeditions, and mindful exploration across pristine landscapes.",
   keywords: [
-    "sustainable fashion",
-    "eco-friendly clothing",
-    "ethical fashion",
-    "conscious living",
-    "organic textiles",
-    "slow fashion",
-    "environmentally friendly",
-    "fair trade",
-    "zero waste",
-    "EcoThread"
+    "eco-tourism",
+    "adventure travel",
+    "sustainable tourism",
+    "wilderness expeditions",
+    "nature experiences",
+    "mindful travel",
+    "outdoor adventures",
+    "eco-friendly travel",
+    "sustainable tourism",
+    "Wanderlust"
   ],
   authors: [{ name: "Codestam Technologies" }],
   creator: "Codestam Technologies",
   publisher: "Codestam Technologies",
   metadataBase: new URL("https://codestam.com"),
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
-    title: "EcoThread - Sustainable Fashion &amp; Conscious Living",
-    description: "Discover sustainable fashion that honors the planet. EcoThread offers ethically crafted clothing, eco-friendly accessories, and conscious living essentials for a mindful lifestyle.",
+    type: "website",
+    locale: "en_US",
     url: "https://codestam.com",
-    siteName: "EcoThread",
+    title: "Wanderlust - Eco-Tourism &amp; Adventure Travel Experiences",
+    description: "Discover transformative eco-tourism adventures that connect you with nature. Wanderlust offers sustainable travel experiences, wilderness expeditions, and mindful exploration across pristine landscapes.",
+    siteName: "Wanderlust",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Wanderlust - Eco-Tourism &amp; Adventure Travel Experiences",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "EcoThread - Sustainable Fashion &amp; Conscious Living",
-    description: "Discover sustainable fashion that honors the planet. EcoThread offers ethically crafted clothing, eco-friendly accessories, and conscious living essentials for a mindful lifestyle.",
+    title: "Wanderlust - Eco-Tourism &amp; Adventure Travel Experiences",
+    description: "Discover transformative eco-tourism adventures that connect you with nature. Wanderlust offers sustainable travel experiences, wilderness expeditions, and mindful exploration across pristine landscapes.",
+    images: ["/og-image.jpg"],
+    creator: "@codestam",
   },
 }
 
