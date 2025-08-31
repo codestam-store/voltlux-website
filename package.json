@@ -9,7 +9,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "deploy": "node deploy-script-new.js"
+            "deploy": "node deploy-script-enhanced.js"
   },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.1.10",
