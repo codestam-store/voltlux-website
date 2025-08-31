@@ -1,0 +1,5 @@
+<svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>NexusFlow Mask Icon</title>
+  <path d="M8 1L3 4.5v6L8 14l5-3.5v-6L8 1zm0 1.75L12 5v4.5L8 12l-4-2.5V5l4-2.25z" fill="black"/>
+  <circle cx="8" cy="8" r="2.5" fill="black" opacity="0.8"/>
+</svg>

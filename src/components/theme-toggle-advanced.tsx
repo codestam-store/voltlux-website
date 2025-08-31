@@ -16,8 +16,15 @@ import {
 export function ThemeToggleAdvanced() {
     const { setTheme, theme } = useTheme()
     const [isOpen, setIsOpen] = React.useState(false)
+    const [mounted, setMounted] = React.useState(false)
+
+    React.useEffect(() => {
+        setMounted(true)
+    }, [])
 
     const getCurrentIcon = () => {
+        if (!mounted) return <Monitor className="h-4 w-4" />
+
         switch (theme) {
             case "light":
                 return <Sun className="h-4 w-4" />
@@ -26,6 +33,20 @@ export function ThemeToggleAdvanced() {
             default:
                 return <Monitor className="h-4 w-4" />
         }
+    }
+
+    if (!mounted) {
+        return (
+            <Button
+                variant="outline"
+                size="sm"
+                className="relative overflow-hidden group h-9 w-9 p-0 rounded-full border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/20"
+                disabled
+            >
+                <Monitor className="h-4 w-4" />
+                <span className="sr-only">Toggle theme</span>
+            </Button>
+        )
     }
 
     return (
