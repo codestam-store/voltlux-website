@@ -97,6 +97,7 @@ function parseArgs() {
         deleteToken: false,
         force: false, // Force recreation of repository
         skipVercel: false, // Skip Vercel deployment
+        skipBuildValidation: false, // Skip build validation
         verbose: false // Verbose output
     };
 
@@ -119,6 +120,9 @@ function parseArgs() {
                 break;
             case '--skip-vercel':
                 options.skipVercel = true;
+                break;
+            case '--skip-build-validation':
+                options.skipBuildValidation = true;
                 break;
             case '--verbose':
             case '-v':
@@ -158,6 +162,7 @@ Options:
   --delete-token       Delete saved GitHub token
   --force              Force recreation of repository (delete if exists)
   --skip-vercel        Skip Vercel deployment (GitHub only)
+  --skip-build-validation  Skip build validation before deployment
   -v, --verbose        Enable verbose output with detailed error messages
   -h, --help           Show this help message
 
@@ -168,6 +173,7 @@ Examples:
   npm run deploy my-project -t ghp_your_token_here
   npm run deploy my-project --force
   npm run deploy my-project --skip-vercel
+  npm run deploy my-project --skip-build-validation
   npm run deploy --delete-token
 
 Enhanced Features:
@@ -175,6 +181,7 @@ Enhanced Features:
 ✅ Handles existing repositories gracefully
 ✅ Detailed deployment status and progress tracking
 ✅ Ability to skip Vercel deployment if needed
+✅ Build validation before deployment
 ✅ Force recreation of repositories
 ✅ Verbose logging for debugging
 ✅ Automatic cleanup on failures
@@ -183,8 +190,9 @@ Enhanced Features:
 The script will:
 1. Create an EMPTY GitHub repository (handles existing repos)
 2. Push source code to GitHub on a new branch
-3. Deploy to Vercel and link with GitHub repository
-4. Setup automatic deployments via GitHub webhook
+3. Validate project build (optional)
+4. Deploy to Vercel and link with GitHub repository
+5. Setup automatic deployments via GitHub webhook
 
 Your GitHub token will be saved for future use.
 Note: The new repository will be added as a remote with the repository name.
@@ -421,6 +429,48 @@ async function createGitHubRepo(token, repoName, description, isPrivate, force =
         logError(`Error creating repository: ${error.message}`);
         logDetailed(`Full error: ${error.stack}`);
         throw error;
+    }
+}
+
+// Validate project build before deployment
+function validateProjectBuild() {
+    logDetailed('Validating project build...');
+    
+    try {
+        // Check if package.json exists
+        if (!existsSync('package.json')) {
+            logError('package.json not found');
+            logDetailed('💡 Solution: Ensure you are in the correct project directory');
+            return false;
+        }
+
+        // Check if build script exists
+        const packageJson = JSON.parse(readFileSync('package.json', 'utf8'));
+        if (!packageJson.scripts || !packageJson.scripts.build) {
+            logError('No build script found in package.json');
+            logDetailed('💡 Solution: Add a build script to your package.json');
+            return false;
+        }
+
+        logDetailed('Running build validation...');
+        logDetailed('Command: npm run build');
+        
+        // Run the build command
+        execSync('npm run build', { stdio: 'inherit' });
+        
+        logSuccess('Project build validation passed');
+        return true;
+    } catch (error) {
+        logError('Project build validation failed');
+        logDetailed(`Error: ${error.message}`);
+        logDetailed('💡 Build failed - this will cause Vercel deployment to fail');
+        logDetailed('💡 Solutions:');
+        logDetailed('  1. Fix the build errors shown above');
+        logDetailed('  2. Check for TypeScript errors: npm run lint');
+        logDetailed('  3. Check for missing dependencies: npm install');
+        logDetailed('  4. Check for import/export issues');
+        logDetailed('  5. Use --skip-build-validation to bypass this check');
+        return false;
     }
 }
 
@@ -819,9 +869,27 @@ async function main() {
             process.exit(1);
         }
 
-        // Step 4: Vercel deployment (optional)
+        // Step 4: Build validation (optional)
+        if (!options.skipVercel && !options.skipBuildValidation) {
+            logStep(4, 'Build Validation');
+            if (!validateProjectBuild()) {
+                logError('Build validation failed');
+                logDetailed('💡 Solutions:');
+                logDetailed('  1. Fix the build errors shown above');
+                logDetailed('  2. Use --skip-build-validation to bypass this check');
+                logDetailed('  3. Use --skip-vercel to only push to GitHub');
+                
+                logInfo(`Your repository is available at: ${createdRepo.html_url}`);
+                logDetailed('You can fix build issues and deploy to Vercel manually later');
+                return;
+            }
+        } else if (options.skipBuildValidation) {
+            logInfo('Skipping build validation as requested');
+        }
+
+        // Step 5: Vercel deployment (optional)
         if (!options.skipVercel) {
-            logStep(4, 'Vercel Deployment Setup');
+            logStep(5, 'Vercel Deployment Setup');
 
             if (!checkVercelCLI()) {
                 logDetailed('Installing Vercel CLI...');
@@ -838,7 +906,7 @@ async function main() {
                 }
             }
 
-            logStep(5, 'Deploy to Vercel');
+            logStep(6, 'Deploy to Vercel');
             if (!deployToVercel(createdRepo.clone_url)) {
                 logWarning('Vercel deployment failed');
                 logDetailed('💡 Solutions:');
@@ -857,9 +925,9 @@ async function main() {
             logInfo('Skipping Vercel deployment as requested');
         }
 
-        // Step 5: Setup GitHub webhook for automatic deployments
+        // Step 6: Setup GitHub webhook for automatic deployments
         if (deploymentSuccess || options.skipVercel) {
-            logStep(6, 'Setup Automatic Deployments');
+            logStep(7, 'Setup Automatic Deployments');
             const repoOwner = createdRepo.owner.login;
             await setupGitHubWebhook(token, repoOwner, options.repoName);
         }
