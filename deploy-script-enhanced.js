@@ -481,11 +481,11 @@ function deployToVercel(repoUrl, repoName) {
             } catch (error) {
                 logDetailed('Origin remote not found or already renamed');
             }
-            
+
             // Now try to connect with only the deployment remote available
             execSync(`vercel git connect --yes`, { stdio: 'inherit' });
             logSuccess('Vercel project linked with GitHub repository');
-            
+
             // Restore origin remote if it was renamed
             if (originRenamed) {
                 try {
@@ -498,7 +498,7 @@ function deployToVercel(repoUrl, repoName) {
         } catch (error) {
             logWarning('Could not automatically link with GitHub repository');
             logDetailed('You can manually link it in the Vercel dashboard');
-            
+
             // Restore origin remote if it was renamed and linking failed
             try {
                 execSync('git remote rename origin-backup origin', { stdio: 'ignore' });
