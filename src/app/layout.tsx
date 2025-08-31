@@ -14,10 +14,10 @@ const josefinSans = Josefin_Sans({
 
 export const metadata: Metadata = {
   title: {
-    default: "NexusFlow - Innovative Digital Solutions",
-    template: "%s | NexusFlow"
+    default: "Codestam Technologies - Innovative Digital Solutions",
+    template: "%s | Codestam Technologies"
   },
-  description: "Empowering businesses with innovative digital solutions. We transform ideas into powerful, scalable applications that drive growth and success.",
+  description: "Empowering businesses with cutting-edge digital solutions. Codestam Technologies transforms ideas into powerful, scalable applications that drive growth and success.",
   keywords: [
     "digital solutions",
     "web development",
@@ -26,42 +26,43 @@ export const metadata: Metadata = {
     "technology",
     "innovation",
     "software development",
-    "digital transformation"
+    "digital transformation",
+    "Codestam Technologies"
   ],
   authors: [{ name: "Codestam Technologies" }],
   creator: "Codestam Technologies",
-  publisher: "NexusFlow",
+  publisher: "Codestam Technologies",
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
-  metadataBase: new URL("https://nexusflow.com"),
+  metadataBase: new URL("https://codestam.com"),
   alternates: {
     canonical: "/",
   },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://nexusflow.com",
-    title: "NexusFlow - Innovative Digital Solutions",
-    description: "Empowering businesses with innovative digital solutions. We transform ideas into powerful, scalable applications that drive growth and success.",
-    siteName: "NexusFlow",
+    url: "https://codestam.com",
+    title: "Codestam Technologies - Innovative Digital Solutions",
+    description: "Empowering businesses with cutting-edge digital solutions. Codestam Technologies transforms ideas into powerful, scalable applications that drive growth and success.",
+    siteName: "Codestam Technologies",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "NexusFlow - Innovative Digital Solutions",
+        alt: "Codestam Technologies - Innovative Digital Solutions",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "NexusFlow - Innovative Digital Solutions",
-    description: "Empowering businesses with innovative digital solutions. We transform ideas into powerful, scalable applications that drive growth and success.",
+    title: "Codestam Technologies - Innovative Digital Solutions",
+    description: "Empowering businesses with cutting-edge digital solutions. Codestam Technologies transforms ideas into powerful, scalable applications that drive growth and success.",
     images: ["/og-image.jpg"],
-    creator: "@nexusflow",
+    creator: "@codestam",
   },
   robots: {
     index: true,
@@ -88,10 +89,10 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-        <link rel="mask-icon" href="/mask-icon.svg" color="#000000" />
+        <link rel="mask-icon" href="/mask-icon.svg" color="#6366f1" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <meta name="theme-color" content="#000000" />
-        <meta name="msapplication-TileColor" content="#000000" />
+        <meta name="theme-color" content="#6366f1" />
+        <meta name="msapplication-TileColor" content="#6366f1" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
       <body className={`${josefinSans.className} font-sans antialiased`}>
