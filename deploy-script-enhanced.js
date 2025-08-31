@@ -463,8 +463,12 @@ function deployToVercel(repoUrl, repoName) {
             writeFileSync('vercel.json', JSON.stringify(vercelConfig, null, 2));
         }
 
-        // Deploy using Vercel CLI
-        execSync('vercel --prod --yes', { stdio: 'inherit' });
+        // Force fresh project creation by using a unique name
+        const projectName = `${repoName}-${Date.now()}`;
+        logDetailed(`Creating new Vercel project: ${projectName}`);
+
+        // Deploy using Vercel CLI with unique project name
+        execSync(`vercel --prod --yes --name ${projectName}`, { stdio: 'inherit' });
 
         // Try to link with GitHub repository
         try {
@@ -544,6 +548,22 @@ function postSuccessCleanup(repoName) {
                 }
             }
         });
+
+        // Unlink from Vercel project to force fresh project creation
+        try {
+            execSync('vercel project rm --yes', { stdio: 'ignore' });
+            logDetailed('Unlinked from Vercel project');
+        } catch (error) {
+            logDetailed('Could not unlink from Vercel project (may not be linked)');
+        }
+
+        // Remove any Vercel team/project associations
+        try {
+            execSync('vercel project rm --yes', { stdio: 'ignore' });
+            logDetailed('Removed Vercel project association');
+        } catch (error) {
+            logDetailed('Could not remove Vercel project association');
+        }
 
         logSuccess('Post-success cleanup completed');
         logDetailed('Local tracking configurations removed - next deployment will create fresh repository and Vercel project');
@@ -651,24 +671,49 @@ async function main() {
             }
         }
 
-        // Step 5: Vercel Deployment
+        // Step 5: Pre-deployment Cleanup
         if (!options.skipVercel) {
-            logStep(5, 'Vercel Deployment');
+            logStep(5, 'Pre-deployment Cleanup');
+            logDetailed('Ensuring clean slate for Vercel deployment...');
+            
+            // Remove any existing Vercel configurations
+            if (existsSync('.vercel')) {
+                try {
+                    rmSync('.vercel', { recursive: true, force: true });
+                    logDetailed('Removed existing .vercel directory');
+                } catch (error) {
+                    logDetailed('Could not remove .vercel directory');
+                }
+            }
+            
+            if (existsSync('vercel.json')) {
+                try {
+                    unlinkSync('vercel.json');
+                    logDetailed('Removed existing vercel.json');
+                } catch (error) {
+                    logDetailed('Could not remove vercel.json');
+                }
+            }
+        }
+
+        // Step 6: Vercel Deployment
+        if (!options.skipVercel) {
+            logStep(6, 'Vercel Deployment');
             if (!deployToVercel(createdRepo.clone_url, options.repoName)) {
                 throw new Error('Vercel deployment failed');
             }
             deploymentSuccess = true;
         }
 
-        // Step 6: Setup GitHub Webhook
+        // Step 7: Setup GitHub Webhook
         if (deploymentSuccess || options.skipVercel) {
-            logStep(6, 'Setup Automatic Deployments');
+            logStep(7, 'Setup Automatic Deployments');
             const repoOwner = createdRepo.owner.login;
             await setupGitHubWebhook(token, repoOwner, options.repoName);
         }
 
-        // Step 7: Post-Success Cleanup
-        logStep(7, 'Post-Success Cleanup');
+        // Step 8: Post-Success Cleanup
+        logStep(8, 'Post-Success Cleanup');
         postSuccessCleanup(options.repoName);
 
         // Success summary
