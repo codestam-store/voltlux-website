@@ -1,489 +1,551 @@
-import { Metadata } from "next";
-import Link from "next/link";
+import type { Metadata } from "next";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Card, CardContent } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
 import {
-    ArrowRight,
-    BookOpen,
-    Download,
-    Search,
-    Calendar,
-    User,
-    Clock,
-    Play,
-    ExternalLink
+  ArrowRight,
+  BookOpen,
+  FileText,
+  Video,
+  Users,
+  MessageSquare,
+  Download,
+  ExternalLink,
+  Calendar,
+  Clock,
+  Star,
+  CheckCircle,
+  Rocket,
+  TrendingUp,
+  Shield,
+  Code,
+  Globe,
+  Database,
+  Server,
+  Wifi,
+  Eye,
+  Fingerprint,
+  Key,
+  Lock,
+  Target,
+  Gauge,
+  Activity,
+  BarChart,
+  PieChart,
+  LineChart,
+  TrendingDown,
+  Sparkles,
+  ArrowUpRight,
+  Play,
+  Quote,
+  Award,
+  BarChart3,
+  Trophy,
+  Lightbulb,
+  Monitor,
+  Layers,
+  Cpu,
+  Network,
+  Hexagon,
+  Atom,
+  Brain,
+  Database as DatabaseIcon,
+  Target as TargetIcon,
+  MapPin,
+  Phone,
+  Mail,
+  Bell,
+  BellOff,
+  BellRing,
+  User,
+  UserCheck,
+  UserX,
+  UserPlus,
+  UserMinus,
+  UserCog,
+  UserSearch
 } from "lucide-react";
+import Link from "next/link";
 import Navbar from "@/components/landing/navbar";
 import Footer from "@/components/landing/footer";
 
 export const metadata: Metadata = {
-    title: "Resources",
-    description: "Access our comprehensive library of digital transformation resources including whitepapers, case studies, webinars, and industry insights.",
-    openGraph: {
-        title: "Resources | NexusFlow",
-        description: "Expert insights, case studies, and educational content to help you navigate digital transformation.",
+  title: "Resources - QuantumForge",
+  description: "Access our comprehensive library of documentation, case studies, white papers, webinars, and support resources to help you succeed with QuantumForge solutions.",
+  keywords: ["documentation", "case studies", "white papers", "webinars", "support", "resources", "API reference"],
+  openGraph: {
+    title: "Resources - QuantumForge",
+    description: "Access our comprehensive library of documentation, case studies, white papers, webinars, and support resources to help you succeed with QuantumForge solutions.",
+    url: "https://quantumforge.com/resources",
+    siteName: "QuantumForge",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "QuantumForge Resources",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Resources - QuantumForge",
+    description: "Access our comprehensive library of documentation, case studies, white papers, webinars, and support resources to help you succeed with QuantumForge solutions.",
+    images: ["/og-image.jpg"],
+    creator: "@codestamtech",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
+  },
 };
 
-const blogPosts = [
-    {
-        title: "The Future of AI in Digital Transformation",
-        excerpt: "Discover how artificial intelligence is reshaping business processes and creating new opportunities for growth.",
-        author: "Sarah Johnson",
-        date: "March 15, 2024",
-        readTime: "5 min read",
-        category: "AI & Machine Learning",
-        image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=400&fit=crop",
-        featured: true
-    },
-    {
-        title: "Building Scalable Cloud Infrastructure",
-        excerpt: "Learn the best practices for designing and implementing cloud-native applications that scale with your business.",
-        author: "Michael Chen",
-        date: "March 12, 2024",
-        readTime: "7 min read",
-        category: "Cloud Solutions",
-        image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=400&fit=crop",
-        featured: false
-    },
-    {
-        title: "Cybersecurity Trends for 2024",
-        excerpt: "Stay ahead of emerging threats with our comprehensive guide to cybersecurity best practices and trends.",
-        author: "David Rodriguez",
-        date: "March 10, 2024",
-        readTime: "6 min read",
-        category: "Cybersecurity",
-        image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&h=400&fit=crop",
-        featured: false
-    },
-    {
-        title: "Digital Transformation Success Stories",
-        excerpt: "Real-world examples of companies that successfully transformed their operations and achieved remarkable results.",
-        author: "Emily Watson",
-        date: "March 8, 2024",
-        readTime: "8 min read",
-        category: "Digital Transformation",
-        image: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&h=400&fit=crop",
-        featured: false
-    },
-    {
-        title: "Performance Optimization Strategies",
-        excerpt: "Proven techniques for optimizing your applications and systems for maximum performance and user experience.",
-        author: "Alex Thompson",
-        date: "March 5, 2024",
-        readTime: "4 min read",
-        category: "Performance",
-        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=400&fit=crop",
-        featured: false
-    },
-    {
-        title: "Web Development Best Practices",
-        excerpt: "Modern web development techniques and tools that help you build better, faster, and more maintainable applications.",
-        author: "Lisa Park",
-        date: "March 3, 2024",
-        readTime: "9 min read",
-        category: "Web Development",
-        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=400&fit=crop",
-        featured: false
-    }
+const resources = [
+  {
+    icon: BookOpen,
+    title: "Documentation",
+    description: "Comprehensive guides and tutorials for all our solutions and services.",
+    color: "from-blue-500 to-cyan-500",
+    href: "/resources/documentation",
+    items: [
+      "Getting Started Guides",
+      "API Documentation",
+      "Integration Tutorials",
+      "Best Practices",
+      "Troubleshooting",
+      "Code Examples"
+    ]
+  },
+  {
+    icon: FileText,
+    title: "Case Studies",
+    description: "Real-world examples of how our solutions have transformed businesses.",
+    color: "from-green-500 to-emerald-500",
+    href: "/resources/case-studies",
+    items: [
+      "Healthcare Transformations",
+      "Financial Services Success",
+      "Manufacturing Optimization",
+      "Retail Innovation",
+      "Transportation Solutions",
+      "Energy Management"
+    ]
+  },
+  {
+    icon: FileText,
+    title: "White Papers",
+    description: "In-depth research and insights on emerging technologies and industry trends.",
+    color: "from-purple-500 to-pink-500",
+    href: "/resources/white-papers",
+    items: [
+      "Quantum Computing Impact",
+      "AI in Healthcare",
+      "Cybersecurity Trends",
+      "Cloud Architecture",
+      "Data Analytics",
+      "Digital Transformation"
+    ]
+  },
+  {
+    icon: Video,
+    title: "Webinars",
+    description: "Educational sessions and expert insights on technology and business transformation.",
+    color: "from-orange-500 to-red-500",
+    href: "/resources/webinars",
+    items: [
+      "Technology Deep Dives",
+      "Industry Insights",
+      "Product Demos",
+      "Expert Interviews",
+      "Q&A Sessions",
+      "Training Workshops"
+    ]
+  },
+  {
+    icon: Users,
+    title: "Support",
+    description: "Get help when you need it with our comprehensive support resources.",
+    color: "from-indigo-500 to-purple-500",
+    href: "/support",
+    items: [
+      "Knowledge Base",
+      "Community Forum",
+      "Technical Support",
+      "Training Resources",
+      "FAQ",
+      "Contact Support"
+    ]
+  },
+  {
+    icon: MessageSquare,
+    title: "API Reference",
+    description: "Complete API documentation and integration guides for developers.",
+    color: "from-yellow-500 to-orange-500",
+    href: "/resources/api",
+    items: [
+      "REST API Docs",
+      "SDK Downloads",
+      "Code Examples",
+      "Authentication",
+      "Rate Limits",
+      "Error Handling"
+    ]
+  }
 ];
 
-const caseStudies = [
-    {
-        title: "FinTech Solutions: 40% Efficiency Increase",
-        company: "FinTech Solutions Inc.",
-        industry: "Financial Services",
-        results: ["40% increase in operational efficiency", "60% reduction in processing time", "Improved compliance accuracy"],
-        image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=400&fit=crop"
-    },
-    {
-        title: "MedCare Systems: Digital Health Transformation",
-        company: "MedCare Systems",
-        industry: "Healthcare",
-        results: ["60% reduction in patient wait times", "Enhanced patient satisfaction", "Streamlined administrative processes"],
-        image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=800&h=400&fit=crop"
-    },
-    {
-        title: "SmartFactory: IoT Manufacturing Success",
-        company: "SmartFactory Corp.",
-        industry: "Manufacturing",
-        results: ["35% improvement in production output", "Reduced downtime by 50%", "Enhanced quality control"],
-        image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&h=400&fit=crop"
-    }
+const featuredContent = [
+  {
+    title: "Quantum AI: The Future of Machine Learning",
+    type: "White Paper",
+    description: "Explore how quantum computing is revolutionizing artificial intelligence and what it means for your business.",
+    image: "https://maxm-imggenurl.web.val.run/quantum AI machine learning technology with neural networks and quantum computing, high quality",
+    date: "2024-01-15",
+    readTime: "15 min read",
+    href: "/resources/white-papers/quantum-ai-future"
+  },
+  {
+    title: "Healthcare Digital Transformation: A Complete Guide",
+    type: "Case Study",
+    description: "Learn how leading healthcare organizations are leveraging digital solutions to improve patient care and operational efficiency.",
+    image: "https://maxm-imggenurl.web.val.run/healthcare digital transformation with medical technology and patient care systems, high quality",
+    date: "2024-01-10",
+    readTime: "12 min read",
+    href: "/resources/case-studies/healthcare-transformation"
+  },
+  {
+    title: "Building Scalable Cloud Architecture",
+    type: "Webinar",
+    description: "Join our experts as they discuss best practices for designing and implementing scalable cloud solutions.",
+    image: "https://maxm-imggenurl.web.val.run/cloud architecture design with scalable infrastructure and microservices, high quality",
+    date: "2024-01-08",
+    duration: "45 min",
+    href: "/resources/webinars/scalable-cloud-architecture"
+  }
 ];
 
-const webinars = [
-    {
-        title: "Digital Transformation Roadmap",
-        date: "March 25, 2024",
-        time: "2:00 PM EST",
-        duration: "60 minutes",
-        speaker: "Dr. Sarah Johnson",
-        description: "Learn how to create and execute a successful digital transformation strategy.",
-        image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=400&fit=crop"
-    },
-    {
-        title: "AI Implementation Best Practices",
-        date: "April 2, 2024",
-        time: "1:00 PM EST",
-        duration: "45 minutes",
-        speaker: "Michael Chen",
-        description: "Practical guide to implementing AI solutions in your organization.",
-        image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=400&fit=crop"
-    },
-    {
-        title: "Cloud Migration Strategies",
-        date: "April 10, 2024",
-        time: "3:00 PM EST",
-        duration: "75 minutes",
-        speaker: "David Rodriguez",
-        description: "Step-by-step approach to migrating your infrastructure to the cloud.",
-        image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=400&fit=crop"
-    }
+const upcomingEvents = [
+  {
+    title: "AI in Financial Services Summit",
+    date: "2024-02-15",
+    time: "10:00 AM EST",
+    type: "Virtual Event",
+    description: "Join industry leaders to discuss the future of AI in financial services and banking."
+  },
+  {
+    title: "Quantum Computing Workshop",
+    date: "2024-02-22",
+    time: "2:00 PM EST",
+    type: "Workshop",
+    description: "Hands-on workshop on quantum computing fundamentals and practical applications."
+  },
+  {
+    title: "Cybersecurity Best Practices",
+    date: "2024-03-01",
+    time: "11:00 AM EST",
+    type: "Webinar",
+    description: "Learn about the latest cybersecurity threats and how to protect your organization."
+  }
 ];
 
-const whitepapers = [
-    {
-        title: "The State of Digital Transformation 2024",
-        description: "Comprehensive analysis of digital transformation trends and best practices.",
-        downloadCount: "2,500+",
-        pages: "45",
-        image: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&h=400&fit=crop"
-    },
-    {
-        title: "AI in Enterprise: Implementation Guide",
-        description: "Practical guide for implementing AI solutions in enterprise environments.",
-        downloadCount: "1,800+",
-        pages: "32",
-        image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=400&fit=crop"
-    },
-    {
-        title: "Cybersecurity Framework for Modern Businesses",
-        description: "Comprehensive cybersecurity framework for protecting digital assets.",
-        downloadCount: "3,200+",
-        pages: "28",
-        image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&h=400&fit=crop"
-    }
+const stats = [
+  { label: "Documentation Pages", value: "500+", icon: BookOpen },
+  { label: "Case Studies", value: "50+", icon: FileText },
+  { label: "Webinars", value: "100+", icon: Video },
+  { label: "Support Tickets Resolved", value: "1000+", icon: Users }
 ];
 
 export default function ResourcesPage() {
-    return (
-        <div className="min-h-screen bg-background">
-            <Navbar />
-
-            {/* Hero Section */}
-            <section className="relative overflow-hidden bg-gradient-to-br from-background via-background to-muted/20">
-                <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:50px_50px]" />
-                <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16 sm:pt-24 sm:pb-20">
-                    <div className="text-center">
-                        <Badge variant="secondary" className="mb-6 bg-primary/10 text-primary border-primary/20">
-                            <BookOpen className="h-3 w-3 mr-1" />
-                            Knowledge Hub
-                        </Badge>
-
-                        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-foreground mb-6">
-                            Digital Transformation
-                            <span className="block bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
-                                Resources
-                            </span>
-                        </h1>
-
-                        <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto mb-8 leading-relaxed">
-                            Access our comprehensive library of insights, case studies, and educational content
-                            to help you navigate your digital transformation journey.
-                        </p>
-
-                        {/* Search Bar */}
-                        <div className="max-w-md mx-auto relative">
-                            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                            <Input
-                                type="text"
-                                placeholder="Search resources..."
-                                className="pl-10 bg-background/50 backdrop-blur-sm border-border/50"
-                            />
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* Featured Blog Post */}
-            <section className="py-20">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center mb-16">
-                        <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-                            Latest Insights
-                        </h2>
-                        <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                            Stay updated with the latest trends and insights in digital transformation.
-                        </p>
-                    </div>
-
-                    {/* Featured Post */}
-                    <div className="mb-16">
-                        {blogPosts.filter(post => post.featured).map((post, index) => (
-                            <Card key={index} className="overflow-hidden hover:shadow-xl transition-shadow duration-300">
-                                <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
-                                    <div className="relative h-64 lg:h-full">
-                                        <img
-                                            src={post.image}
-                                            alt={post.title}
-                                            className="object-cover"
-                                        />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
-                                    </div>
-                                    <div className="p-8 flex flex-col justify-center">
-                                        <Badge variant="secondary" className="w-fit mb-4 bg-primary/10 text-primary">
-                                            {post.category}
-                                        </Badge>
-                                        <h3 className="text-2xl font-bold text-foreground mb-4">{post.title}</h3>
-                                        <p className="text-muted-foreground mb-6 leading-relaxed">{post.excerpt}</p>
-                                        <div className="flex items-center gap-4 text-sm text-muted-foreground mb-6">
-                                            <div className="flex items-center gap-2">
-                                                <User className="h-4 w-4" />
-                                                <span>{post.author}</span>
-                                            </div>
-                                            <div className="flex items-center gap-2">
-                                                <Calendar className="h-4 w-4" />
-                                                <span>{post.date}</span>
-                                            </div>
-                                            <div className="flex items-center gap-2">
-                                                <Clock className="h-4 w-4" />
-                                                <span>{post.readTime}</span>
-                                            </div>
-                                        </div>
-                                        <Link href={`/blog/${post.title.toLowerCase().replace(/\s+/g, '-')}`}>
-                                            <Button className="bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70">
-                                                Read Full Article
-                                                <ArrowRight className="ml-2 h-4 w-4" />
-                                            </Button>
-                                        </Link>
-                                    </div>
-                                </div>
-                            </Card>
-                        ))}
-                    </div>
-
-                    {/* Blog Grid */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {blogPosts.filter(post => !post.featured).map((post, index) => (
-                            <Card key={index} className="group hover:shadow-lg transition-all duration-300 overflow-hidden">
-                                <div className="relative h-48 overflow-hidden">
-                                    <img
-                                        src={post.image}
-                                        alt={post.title}
-                                        className="object-cover group-hover:scale-105 transition-transform duration-300"
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
-                                    <Badge variant="secondary" className="absolute top-4 left-4 bg-primary/10 text-primary">
-                                        {post.category}
-                                    </Badge>
-                                </div>
-                                <CardContent className="p-6">
-                                    <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
-                                        {post.title}
-                                    </h3>
-                                    <p className="text-muted-foreground mb-4 line-clamp-3">{post.excerpt}</p>
-                                    <div className="flex items-center justify-between text-sm text-muted-foreground mb-4">
-                                        <span>{post.author}</span>
-                                        <span>{post.readTime}</span>
-                                    </div>
-                                    <Link href={`/blog/${post.title.toLowerCase().replace(/\s+/g, '-')}`}>
-                                        <Button variant="ghost" className="w-full group-hover:bg-primary/10">
-                                            Read More
-                                            <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                                        </Button>
-                                    </Link>
-                                </CardContent>
-                            </Card>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* Case Studies */}
-            <section className="py-20 bg-muted/30">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center mb-16">
-                        <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-                            Success Stories
-                        </h2>
-                        <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                            Real-world examples of how our solutions have transformed businesses across industries.
-                        </p>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        {caseStudies.map((study, index) => (
-                            <Card key={index} className="group hover:shadow-xl transition-all duration-300 overflow-hidden">
-                                <div className="relative h-48 overflow-hidden">
-                                    <img
-                                        src={study.image}
-                                        alt={study.title}
-                                        className="object-cover group-hover:scale-105 transition-transform duration-300"
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                                    <Badge variant="secondary" className="absolute top-4 left-4 bg-white/20 text-white backdrop-blur-sm">
-                                        {study.industry}
-                                    </Badge>
-                                </div>
-                                <CardContent className="p-6">
-                                    <h3 className="text-xl font-bold text-foreground mb-2">{study.title}</h3>
-                                    <p className="text-muted-foreground mb-4">{study.company}</p>
-                                    <ul className="space-y-2 mb-6">
-                                        {study.results.map((result, resultIndex) => (
-                                            <li key={resultIndex} className="flex items-center gap-2 text-sm text-muted-foreground">
-                                                <span className="w-1.5 h-1.5 bg-primary rounded-full"></span>
-                                                {result}
-                                            </li>
-                                        ))}
-                                    </ul>
-                                    <Link href={`/case-studies/${study.title.toLowerCase().replace(/\s+/g, '-')}`}>
-                                        <Button variant="outline" className="w-full">
-                                            Read Case Study
-                                            <ExternalLink className="ml-2 h-4 w-4" />
-                                        </Button>
-                                    </Link>
-                                </CardContent>
-                            </Card>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* Webinars */}
-            <section className="py-20">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center mb-16">
-                        <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-                            Upcoming Webinars
-                        </h2>
-                        <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                            Join our expert-led webinars to learn about the latest trends and best practices.
-                        </p>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        {webinars.map((webinar, index) => (
-                            <Card key={index} className="group hover:shadow-lg transition-all duration-300 overflow-hidden">
-                                <div className="relative h-48 overflow-hidden">
-                                    <img
-                                        src={webinar.image}
-                                        alt={webinar.title}
-
-                                        className="object-cover group-hover:scale-105 transition-transform duration-300"
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                                    <div className="absolute top-4 left-4">
-                                        <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
-                                            <Play className="h-6 w-6 text-white" />
-                                        </div>
-                                    </div>
-                                    <Badge variant="secondary" className="absolute top-4 right-4 bg-primary text-primary-foreground">
-                                        Live
-                                    </Badge>
-                                </div>
-                                <CardContent className="p-6">
-                                    <h3 className="text-xl font-bold text-foreground mb-3">{webinar.title}</h3>
-                                    <p className="text-muted-foreground mb-4">{webinar.description}</p>
-                                    <div className="space-y-2 text-sm text-muted-foreground mb-6">
-                                        <div className="flex items-center gap-2">
-                                            <Calendar className="h-4 w-4" />
-                                            <span>{webinar.date} at {webinar.time}</span>
-                                        </div>
-                                        <div className="flex items-center gap-2">
-                                            <Clock className="h-4 w-4" />
-                                            <span>{webinar.duration}</span>
-                                        </div>
-                                        <div className="flex items-center gap-2">
-                                            <User className="h-4 w-4" />
-                                            <span>{webinar.speaker}</span>
-                                        </div>
-                                    </div>
-                                    <Link href="/webinars">
-                                        <Button className="w-full bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70">
-                                            Register Now
-                                            <ArrowRight className="ml-2 h-4 w-4" />
-                                        </Button>
-                                    </Link>
-                                </CardContent>
-                            </Card>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* Whitepapers */}
-            <section className="py-20 bg-muted/30">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center mb-16">
-                        <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-                            Whitepapers & Reports
-                        </h2>
-                        <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                            In-depth research and analysis on digital transformation trends and strategies.
-                        </p>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        {whitepapers.map((paper, index) => (
-                            <Card key={index} className="group hover:shadow-lg transition-all duration-300 overflow-hidden">
-                                <div className="relative h-48 overflow-hidden">
-                                    <img
-                                        src={paper.image}
-                                        alt={paper.title}
-
-                                        className="object-cover group-hover:scale-105 transition-transform duration-300"
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                                    <Badge variant="secondary" className="absolute top-4 left-4 bg-white/20 text-white backdrop-blur-sm">
-                                        {paper.pages} pages
-                                    </Badge>
-                                    <Badge variant="secondary" className="absolute top-4 right-4 bg-primary text-primary-foreground">
-                                        {paper.downloadCount} downloads
-                                    </Badge>
-                                </div>
-                                <CardContent className="p-6">
-                                    <h3 className="text-xl font-bold text-foreground mb-3">{paper.title}</h3>
-                                    <p className="text-muted-foreground mb-6">{paper.description}</p>
-                                    <Link href="/whitepapers">
-                                        <Button variant="outline" className="w-full">
-                                            <Download className="mr-2 h-4 w-4" />
-                                            Download Whitepaper
-                                        </Button>
-                                    </Link>
-                                </CardContent>
-                            </Card>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* CTA Section */}
-            <section className="py-20 bg-gradient-to-r from-primary/10 to-primary/5">
-                <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-                        Stay Updated with Our Insights
-                    </h2>
-                    <p className="text-lg text-muted-foreground mb-8">
-                        Subscribe to our newsletter to receive the latest insights, case studies, and industry updates.
-                    </p>
-                    <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
-                        <Input
-                            type="email"
-                            placeholder="Enter your email"
-                            className="bg-background/50 backdrop-blur-sm border-border/50"
-                        />
-                        <Button className="bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70">
-                            Subscribe
-                            <ArrowRight className="ml-2 h-4 w-4" />
-                        </Button>
-                    </div>
-                </div>
-            </section>
-
-            <Footer />
+  return (
+    <div className="min-h-screen bg-background">
+      <Navbar />
+      
+      {/* Hero Section */}
+      <section className="relative overflow-hidden bg-gradient-to-br from-background via-background to-primary/5">
+        <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:50px_50px]" />
+        <div className="relative px-4 py-24 md:py-32">
+          <div className="mx-auto max-w-7xl">
+            <div className="text-center space-y-8">
+              <div className="space-y-4">
+                <Badge variant="secondary" className="bg-gradient-to-r from-primary/20 to-primary/10 text-primary border-primary/30 px-4 py-2">
+                  <Sparkles className="h-4 w-4 mr-2" />
+                  Knowledge Hub
+                </Badge>
+                <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight">
+                  Resources &{" "}
+                  <span className="bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent">
+                    Knowledge
+                  </span>
+                </h1>
+                <p className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
+                  Access our comprehensive library of documentation, case studies, white papers, webinars, and support resources to help you succeed with QuantumForge solutions.
+                </p>
+              </div>
+              
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link href="#resources">
+                  <Button size="lg" className="h-14 px-8 text-lg bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 shadow-xl hover:shadow-2xl transition-all duration-300">
+                    <Rocket className="h-5 w-5 mr-2" />
+                    Explore Resources
+                  </Button>
+                </Link>
+                <Link href="/support">
+                  <Button variant="outline" size="lg" className="h-14 px-8 text-lg border-2 hover:bg-primary/10 hover:border-primary/50 transition-all duration-300">
+                    <Users className="h-5 w-5 mr-2" />
+                    Get Support
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </div>
         </div>
-    );
+      </section>
+
+      {/* Stats Section */}
+      <section className="py-16 bg-muted/30">
+        <div className="mx-auto max-w-7xl px-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {stats.map((stat) => {
+              const IconComponent = stat.icon;
+              return (
+                <div key={stat.label} className="text-center space-y-2">
+                  <div className="flex justify-center">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center">
+                      <IconComponent className="h-6 w-6 text-primary" />
+                    </div>
+                  </div>
+                  <div className="text-3xl md:text-4xl font-bold text-foreground">{stat.value}</div>
+                  <div className="text-sm text-muted-foreground">{stat.label}</div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Resources Grid */}
+      <section id="resources" className="py-24">
+        <div className="mx-auto max-w-7xl px-4">
+          <div className="text-center space-y-4 mb-16">
+            <h2 className="text-3xl md:text-5xl font-bold">
+              Resource{" "}
+              <span className="bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
+                Library
+              </span>
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Everything you need to learn, implement, and succeed with our quantum-powered solutions.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {resources.map((resource) => {
+              const IconComponent = resource.icon;
+              return (
+                <Card key={resource.title} className="group hover:shadow-2xl transition-all duration-300 border-border/50 hover:border-primary/30 overflow-hidden">
+                  <CardHeader className="pb-4">
+                    <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${resource.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
+                      <IconComponent className="h-8 w-8 text-white" />
+                    </div>
+                  </CardHeader>
+                  <CardContent className="space-y-6">
+                    <div className="space-y-3">
+                      <CardTitle className="text-2xl group-hover:text-primary transition-colors">
+                        {resource.title}
+                      </CardTitle>
+                      <CardDescription className="text-muted-foreground leading-relaxed text-base">
+                        {resource.description}
+                      </CardDescription>
+                    </div>
+
+                    <div>
+                      <h4 className="font-semibold text-foreground mb-3">What&apos;s Included</h4>
+                      <ul className="space-y-2">
+                        {resource.items.slice(0, 4).map((item) => (
+                          <li key={item} className="flex items-center gap-2 text-sm text-muted-foreground">
+                            <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <Link href={resource.href}>
+                      <Button className="w-full bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 transition-all duration-300">
+                        Explore {resource.title}
+                        <ArrowRight className="h-4 w-4 ml-2" />
+                      </Button>
+                    </Link>
+                  </CardContent>
+                </Card>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Content */}
+      <section className="py-24 bg-muted/30">
+        <div className="mx-auto max-w-7xl px-4">
+          <div className="text-center space-y-4 mb-16">
+            <h2 className="text-3xl md:text-5xl font-bold">
+              Featured{" "}
+              <span className="bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
+                Content
+              </span>
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Discover our latest insights, research, and success stories from across the industry.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {featuredContent.map((content) => (
+              <Card key={content.title} className="group hover:shadow-2xl transition-all duration-300 border-border/50 hover:border-primary/30 overflow-hidden">
+                <div className="relative h-48 overflow-hidden">
+                  <img
+                    src={content.image}
+                    alt={content.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                  <div className="absolute top-4 left-4">
+                    <Badge variant="secondary" className="bg-primary/20 text-primary border-primary/30">
+                      {content.type}
+                    </Badge>
+                  </div>
+                </div>
+                <CardContent className="p-6 space-y-4">
+                  <div className="space-y-2">
+                    <CardTitle className="text-xl group-hover:text-primary transition-colors">
+                      {content.title}
+                    </CardTitle>
+                    <CardDescription className="text-muted-foreground leading-relaxed">
+                      {content.description}
+                    </CardDescription>
+                  </div>
+                  
+                  <div className="flex items-center justify-between text-sm text-muted-foreground">
+                    <div className="flex items-center gap-2">
+                      <Calendar className="h-4 w-4" />
+                      <span>{content.date}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Clock className="h-4 w-4" />
+                      <span>{content.readTime || content.duration}</span>
+                    </div>
+                  </div>
+
+                  <Link href={content.href}>
+                    <Button variant="outline" className="w-full hover:bg-primary/10 hover:border-primary/50 transition-all duration-300">
+                      Read More
+                      <ArrowRight className="h-4 w-4 ml-2" />
+                    </Button>
+                  </Link>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Upcoming Events */}
+      <section className="py-24">
+        <div className="mx-auto max-w-7xl px-4">
+          <div className="text-center space-y-4 mb-16">
+            <h2 className="text-3xl md:text-5xl font-bold">
+              Upcoming{" "}
+              <span className="bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
+                Events
+              </span>
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Join our upcoming webinars, workshops, and events to learn from industry experts.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {upcomingEvents.map((event) => (
+              <Card key={event.title} className="group hover:shadow-2xl transition-all duration-300 border-border/50 hover:border-primary/30">
+                <CardContent className="p-6 space-y-4">
+                  <div className="space-y-2">
+                    <Badge variant="secondary" className="bg-primary/10 text-primary border-primary/20">
+                      {event.type}
+                    </Badge>
+                    <CardTitle className="text-xl group-hover:text-primary transition-colors">
+                      {event.title}
+                    </CardTitle>
+                    <CardDescription className="text-muted-foreground">
+                      {event.description}
+                    </CardDescription>
+                  </div>
+                  
+                  <div className="space-y-2 text-sm text-muted-foreground">
+                    <div className="flex items-center gap-2">
+                      <Calendar className="h-4 w-4" />
+                      <span>{event.date}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Clock className="h-4 w-4" />
+                      <span>{event.time}</span>
+                    </div>
+                  </div>
+
+                  <Button className="w-full bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 transition-all duration-300">
+                    Register Now
+                    <ArrowRight className="h-4 w-4 ml-2" />
+                  </Button>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-24 bg-gradient-to-br from-primary/10 to-primary/5">
+        <div className="mx-auto max-w-4xl px-4 text-center">
+          <div className="space-y-8">
+            <div className="space-y-4">
+              <h2 className="text-3xl md:text-5xl font-bold">
+                Need{" "}
+                <span className="bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
+                  Help
+                </span>?
+              </h2>
+              <p className="text-xl text-muted-foreground">
+                Can&apos;t find what you&apos;re looking for? Our support team is here to help you succeed.
+              </p>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href="/support">
+                <Button size="lg" className="h-14 px-8 text-lg bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 shadow-xl hover:shadow-2xl transition-all duration-300">
+                  <Users className="h-5 w-5 mr-2" />
+                  Get Support
+                </Button>
+              </Link>
+              <Link href="/contact">
+                <Button variant="outline" size="lg" className="h-14 px-8 text-lg border-2 hover:bg-primary/10 hover:border-primary/50 transition-all duration-300">
+                  Contact Us
+                  <ArrowRight className="h-4 w-4 ml-2" />
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <Footer />
+    </div>
+  );
 }

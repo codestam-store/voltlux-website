@@ -435,7 +435,7 @@ async function createGitHubRepo(token, repoName, description, isPrivate, force =
 // Validate project build before deployment
 function validateProjectBuild() {
     logDetailed('Validating project build...');
-    
+
     try {
         // Check if package.json exists
         if (!existsSync('package.json')) {
@@ -454,10 +454,10 @@ function validateProjectBuild() {
 
         logDetailed('Running build validation...');
         logDetailed('Command: npm run build');
-        
+
         // Run the build command
         execSync('npm run build', { stdio: 'inherit' });
-        
+
         logSuccess('Project build validation passed');
         return true;
     } catch (error) {
@@ -538,6 +538,36 @@ function pushToGitHub(repoUrl, repoName) {
             logDetailed(`Removed existing remote: ${repoName}`);
         } catch (error) {
             logDetailed(`No existing remote named ${repoName} found`);
+        }
+
+        // Clean up any old deployment remotes to prevent conflicts
+        try {
+            const remotes = execSync('git remote -v', { encoding: 'utf8', stdio: 'pipe' });
+            const remoteLines = remotes.trim().split('\n');
+
+            // Find and remove old deployment remotes (those that look like deployment names)
+            for (const line of remoteLines) {
+                const parts = line.split('\t');
+                if (parts.length >= 2) {
+                    const remoteName = parts[0];
+                    const remoteUrl = parts[1];
+
+                    // Remove remotes that look like deployment names (not origin, upstream, etc.)
+                    if (remoteName !== 'origin' && remoteName !== 'upstream' &&
+                        remoteName !== 'main' && remoteName !== 'master' &&
+                        !remoteName.includes('backup') && !remoteName.includes('staging')) {
+
+                        try {
+                            execSync(`git remote remove ${remoteName}`, { stdio: 'ignore' });
+                            logDetailed(`Cleaned up old deployment remote: ${remoteName}`);
+                        } catch (error) {
+                            // Ignore errors for cleanup
+                        }
+                    }
+                }
+            }
+        } catch (error) {
+            logDetailed('Could not clean up old remotes (continuing anyway)');
         }
 
         // Add new remote with repository name
@@ -647,12 +677,34 @@ function deployToVercel(repoUrl) {
         // Link the project with the GitHub repository for automatic deployments
         logDetailed('Linking Vercel project with GitHub repository...');
         try {
-            execSync(`vercel link --repo ${repoUrl}`, { stdio: 'inherit' });
+            // Check if there are multiple remotes and handle accordingly
+            const remotes = execSync('git remote -v', { encoding: 'utf8', stdio: 'pipe' });
+            const remoteLines = remotes.trim().split('\n');
+
+            logDetailed(`Found ${remoteLines.length} remote(s):`);
+            remoteLines.forEach(line => logDetailed(`  ${line}`));
+
+            if (remoteLines.length > 2) { // More than one remote (each remote has 2 lines: fetch and push)
+                logDetailed('Multiple remotes detected - using the deployment remote');
+                // Use the specific remote we created for this deployment
+                const remoteName = repoName;
+                logDetailed(`Using remote: ${remoteName} -> ${repoUrl}`);
+
+                // Use the specific remote for linking to avoid the selection prompt
+                execSync(`vercel git connect --yes --remote ${remoteName}`, { stdio: 'inherit' });
+            } else {
+                // Single remote, proceed normally
+                logDetailed('Single remote detected - proceeding with linking');
+                execSync(`vercel git connect --yes`, { stdio: 'inherit' });
+            }
+
             logSuccess('Vercel project linked with GitHub repository');
         } catch (error) {
             logWarning('Could not automatically link with GitHub repository');
             logDetailed(`Error: ${error.message}`);
             logDetailed('💡 Solution: You can manually link it in the Vercel dashboard');
+            logDetailed('💡 Manual linking: vercel git connect');
+            logDetailed('💡 If multiple remotes, you can specify: vercel git connect --remote <remote-name>');
         }
 
         logSuccess('Deployment to Vercel completed successfully');
@@ -878,7 +930,7 @@ async function main() {
                 logDetailed('  1. Fix the build errors shown above');
                 logDetailed('  2. Use --skip-build-validation to bypass this check');
                 logDetailed('  3. Use --skip-vercel to only push to GitHub');
-                
+
                 logInfo(`Your repository is available at: ${createdRepo.html_url}`);
                 logDetailed('You can fix build issues and deploy to Vercel manually later');
                 return;

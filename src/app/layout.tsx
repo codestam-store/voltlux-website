@@ -12,11 +12,11 @@ const josefinSans = Josefin_Sans({
 
 export const metadata: Metadata = {
   title: {
-    default: "NexusFlow - Modern Digital Solutions",
-    template: "%s | NexusFlow"
+    default: "QuantumForge - Next-Generation Digital Solutions",
+    template: "%s | QuantumForge"
   },
-  description: "Transform your digital presence with NexusFlow. We specialize in cutting-edge web development, AI solutions, and digital innovation that drives business growth.",
-  keywords: ["web development", "AI solutions", "digital transformation", "business technology", "software development"],
+  description: "Revolutionize your digital presence with QuantumForge. We deliver cutting-edge AI solutions, advanced web development, and transformative digital experiences that propel businesses into the future.",
+  keywords: ["AI solutions", "web development", "digital transformation", "quantum computing", "machine learning", "cloud architecture", "cybersecurity"],
   authors: [{ name: "Codestam Technologies" }],
   creator: "Codestam Technologies",
   publisher: "Codestam Technologies",
@@ -25,30 +25,30 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL("https://nexusflow.com"),
+  metadataBase: new URL("https://quantumforge.com"),
   alternates: {
     canonical: "/",
   },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://nexusflow.com",
-    title: "NexusFlow - Modern Digital Solutions",
-    description: "Transform your digital presence with NexusFlow. We specialize in cutting-edge web development, AI solutions, and digital innovation that drives business growth.",
-    siteName: "NexusFlow",
+    url: "https://quantumforge.com",
+    title: "QuantumForge - Next-Generation Digital Solutions",
+    description: "Revolutionize your digital presence with QuantumForge. We deliver cutting-edge AI solutions, advanced web development, and transformative digital experiences that propel businesses into the future.",
+    siteName: "QuantumForge",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "NexusFlow - Modern Digital Solutions",
+        alt: "QuantumForge - Next-Generation Digital Solutions",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "NexusFlow - Modern Digital Solutions",
-    description: "Transform your digital presence with NexusFlow. We specialize in cutting-edge web development, AI solutions, and digital innovation that drives business growth.",
+    title: "QuantumForge - Next-Generation Digital Solutions",
+    description: "Revolutionize your digital presence with QuantumForge. We deliver cutting-edge AI solutions, advanced web development, and transformative digital experiences that propel businesses into the future.",
     images: ["/og-image.jpg"],
     creator: "@codestamtech",
   },
@@ -81,7 +81,7 @@ export default function RootLayout({
         <meta name="theme-color" content="#000000" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <meta name="apple-mobile-web-app-title" content="NexusFlow" />
+        <meta name="apple-mobile-web-app-title" content="QuantumForge" />
         <link rel="apple-touch-icon" href="/favicon.svg" />
         <link rel="manifest" href="/manifest.json" />
       </head>
