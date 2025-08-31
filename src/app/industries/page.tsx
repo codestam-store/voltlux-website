@@ -4,12 +4,12 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
-import { 
-  ArrowRight, 
-  Building2, 
-  Heart, 
-  BarChart3, 
-  Lightbulb, 
+import {
+  ArrowRight,
+  Building2,
+  Heart,
+  BarChart3,
+  Lightbulb,
   ShoppingBag,
   Home,
   GraduationCap,
@@ -271,7 +271,7 @@ export default function IndustriesPage() {
       <section className="relative overflow-hidden bg-gradient-to-br from-background via-background to-primary/5 py-20 lg:py-32">
         <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:50px_50px]" />
         <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-transparent to-secondary/10" />
-        
+
         <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-8 max-w-4xl mx-auto">
             <div className="space-y-4">
@@ -279,21 +279,21 @@ export default function IndustriesPage() {
                 <Building2 className="w-4 h-4" />
                 <span>Industry Solutions</span>
               </Badge>
-              
+
               <h1 className="text-4xl lg:text-6xl font-bold tracking-tight text-balance">
                 Serving Diverse
                 <span className="block bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
                   Industries
                 </span>
               </h1>
-              
+
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                We understand the unique challenges and opportunities of different industries. 
-                Our tailored technology solutions are designed to address industry-specific needs 
+                We understand the unique challenges and opportunities of different industries.
+                Our tailored technology solutions are designed to address industry-specific needs
                 and drive digital transformation across sectors.
               </p>
             </div>
-            
+
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild size="lg" className="group">
                 <Link href="/contact">
@@ -301,7 +301,7 @@ export default function IndustriesPage() {
                   <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </Button>
-              
+
               <Button variant="outline" size="lg" asChild>
                 <Link href="#industries">
                   Explore Industries
@@ -323,11 +323,11 @@ export default function IndustriesPage() {
               Industry Expertise
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              We deliver specialized solutions for industries with unique requirements, 
+              We deliver specialized solutions for industries with unique requirements,
               regulatory needs, and operational challenges.
             </p>
           </div>
-          
+
           <div className="grid lg:grid-cols-2 gap-12">
             {industries.map((industry, index) => (
               <Card key={index} className="group hover:shadow-xl transition-all duration-300 border-0 bg-card/50 backdrop-blur-sm overflow-hidden">
@@ -341,11 +341,11 @@ export default function IndustriesPage() {
                         <CardTitle className="text-2xl">{industry.title}</CardTitle>
                       </div>
                     </div>
-                    
+
                     <CardDescription className="text-base">
                       {industry.description}
                     </CardDescription>
-                    
+
                     <div className="space-y-4">
                       <div>
                         <h4 className="font-semibold text-foreground mb-2">Key Challenges:</h4>
@@ -358,7 +358,7 @@ export default function IndustriesPage() {
                           ))}
                         </ul>
                       </div>
-                      
+
                       <div>
                         <h4 className="font-semibold text-foreground mb-2">Our Solutions:</h4>
                         <ul className="space-y-1">
@@ -371,7 +371,7 @@ export default function IndustriesPage() {
                         </ul>
                       </div>
                     </div>
-                    
+
                     <Button asChild className="w-full group">
                       <Link href="/contact">
                         Learn More
@@ -379,7 +379,7 @@ export default function IndustriesPage() {
                       </Link>
                     </Button>
                   </div>
-                  
+
                   <div className="relative h-64 lg:h-full">
                     <img
                       src={industry.image}
@@ -406,11 +406,11 @@ export default function IndustriesPage() {
               Expanding Our Reach
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              We continue to expand our expertise into new industries, 
+              We continue to expand our expertise into new industries,
               delivering innovative solutions for emerging sectors.
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {additionalIndustries.map((industry, index) => (
               <Card key={index} className="group hover:shadow-xl transition-all duration-300 border-0 bg-card/50 backdrop-blur-sm">
@@ -442,11 +442,11 @@ export default function IndustriesPage() {
               Industry Impact
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              See how our industry-specific solutions have transformed businesses 
+              See how our industry-specific solutions have transformed businesses
               and delivered measurable results across different sectors.
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {caseStudies.map((study, index) => (
               <Card key={index} className="group hover:shadow-xl transition-all duration-300 border-0 bg-card/50 backdrop-blur-sm">
@@ -472,7 +472,7 @@ export default function IndustriesPage() {
                       ))}
                     </ul>
                   </div>
-                  
+
                   <div>
                     <h4 className="font-semibold text-foreground mb-3">Metrics:</h4>
                     <div className="grid grid-cols-1 gap-2">
@@ -483,7 +483,7 @@ export default function IndustriesPage() {
                       ))}
                     </div>
                   </div>
-                  
+
                   <Button asChild variant="outline" className="w-full">
                     <Link href="/contact">
                       Learn More
@@ -507,11 +507,11 @@ export default function IndustriesPage() {
               Industry-Ready Technologies
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              We leverage cutting-edge technologies that are specifically designed 
+              We leverage cutting-edge technologies that are specifically designed
               to address industry challenges and requirements.
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {technologies.map((tech, index) => (
               <Card key={index} className="group hover:shadow-xl transition-all duration-300 border-0 bg-card/50 backdrop-blur-sm">
@@ -544,11 +544,11 @@ export default function IndustriesPage() {
               Industry-Specific Advantages
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Our deep industry knowledge and specialized expertise deliver 
+              Our deep industry knowledge and specialized expertise deliver
               solutions that truly understand your business needs.
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {benefits.map((benefit, index) => (
               <div key={index} className="text-center space-y-4">
@@ -576,11 +576,11 @@ export default function IndustriesPage() {
                 Ready to Transform Your Industry?
               </h2>
               <p className="text-xl text-muted-foreground">
-                Let&apos;s discuss your industry-specific challenges and discover how our 
+                Let&apos;s discuss your industry-specific challenges and discover how our
                 tailored solutions can drive innovation and competitive advantage.
               </p>
             </div>
-            
+
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild size="lg" className="group">
                 <Link href="/contact">
@@ -588,14 +588,14 @@ export default function IndustriesPage() {
                   <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </Button>
-              
+
               <Button variant="outline" size="lg" asChild>
                 <Link href="/solutions">
                   View Our Solutions
                 </Link>
               </Button>
             </div>
-            
+
             <div className="flex items-center justify-center space-x-8 text-sm text-muted-foreground">
               <div className="flex items-center space-x-2">
                 <Eye className="w-4 h-4" />

@@ -4,14 +4,14 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
-import { 
-  ArrowRight, 
-  Users, 
-  Target, 
-  Award, 
-  Heart, 
-  Zap, 
-  Shield, 
+import {
+  ArrowRight,
+  Users,
+  Target,
+  Award,
+  Heart,
+  Zap,
+  Shield,
   Globe,
   Lightbulb,
   Code2,
@@ -150,7 +150,7 @@ export default function AboutPage() {
       <section className="relative overflow-hidden bg-gradient-to-br from-background via-background to-primary/5 py-20 lg:py-32">
         <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:50px_50px]" />
         <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-transparent to-secondary/10" />
-        
+
         <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-8 max-w-4xl mx-auto">
             <div className="space-y-4">
@@ -158,21 +158,21 @@ export default function AboutPage() {
                 <Users className="w-4 h-4" />
                 <span>About Our Company</span>
               </Badge>
-              
+
               <h1 className="text-4xl lg:text-6xl font-bold tracking-tight text-balance">
                 Building the Future of
                 <span className="block bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
                   Digital Innovation
                 </span>
               </h1>
-              
+
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                Codestam Technologies is a forward-thinking digital solutions company dedicated to transforming 
-                businesses through innovative technology. We combine technical expertise with strategic thinking 
+                Codestam Technologies is a forward-thinking digital solutions company dedicated to transforming
+                businesses through innovative technology. We combine technical expertise with strategic thinking
                 to deliver solutions that drive growth and success.
               </p>
             </div>
-            
+
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild size="lg" className="group">
                 <Link href="/contact">
@@ -180,7 +180,7 @@ export default function AboutPage() {
                   <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </Button>
-              
+
               <Button variant="outline" size="lg" asChild>
                 <Link href="#team">
                   Meet Our Team
@@ -204,11 +204,11 @@ export default function AboutPage() {
                   Empowering Businesses Through Technology
                 </h2>
                 <p className="text-lg text-muted-foreground">
-                  We believe that technology should be an enabler, not a barrier. Our mission is to democratize 
+                  We believe that technology should be an enabler, not a barrier. Our mission is to democratize
                   access to cutting-edge digital solutions, helping businesses of all sizes thrive in the digital age.
                 </p>
               </div>
-              
+
               <div className="space-y-6">
                 <div className="flex items-start space-x-4">
                   <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
@@ -217,12 +217,12 @@ export default function AboutPage() {
                   <div>
                     <h3 className="text-xl font-semibold mb-2">Strategic Focus</h3>
                     <p className="text-muted-foreground">
-                      We focus on understanding your business objectives and translating them into effective 
+                      We focus on understanding your business objectives and translating them into effective
                       digital strategies that drive measurable results.
                     </p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start space-x-4">
                   <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
                     <Lightbulb className="w-6 h-6 text-primary" />
@@ -230,12 +230,12 @@ export default function AboutPage() {
                   <div>
                     <h3 className="text-xl font-semibold mb-2">Innovation Driven</h3>
                     <p className="text-muted-foreground">
-                      We stay ahead of technology trends and continuously explore new approaches to deliver 
+                      We stay ahead of technology trends and continuously explore new approaches to deliver
                       innovative solutions that give you a competitive edge.
                     </p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start space-x-4">
                   <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
                     <Handshake className="w-6 h-6 text-primary" />
@@ -243,14 +243,14 @@ export default function AboutPage() {
                   <div>
                     <h3 className="text-xl font-semibold mb-2">Partnership Approach</h3>
                     <p className="text-muted-foreground">
-                      We view every client relationship as a long-term partnership, working collaboratively 
+                      We view every client relationship as a long-term partnership, working collaboratively
                       to achieve shared success and growth.
                     </p>
                   </div>
                 </div>
               </div>
             </div>
-            
+
             <div className="relative">
               <div className="bg-card border border-border rounded-2xl p-8 shadow-2xl">
                 <div className="space-y-6">
@@ -260,13 +260,13 @@ export default function AboutPage() {
                     </div>
                     <h3 className="text-2xl font-bold">Our Vision</h3>
                     <p className="text-muted-foreground">
-                      To be the leading force in digital transformation, creating a world where every business 
+                      To be the leading force in digital transformation, creating a world where every business
                       has access to the technology they need to succeed and thrive in the digital economy.
                     </p>
                   </div>
-                  
+
                   <Separator />
-                  
+
                   <div className="grid grid-cols-2 gap-4">
                     <div className="text-center">
                       <div className="text-2xl font-bold text-primary">2025</div>
@@ -279,7 +279,7 @@ export default function AboutPage() {
                   </div>
                 </div>
               </div>
-              
+
               <div className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-br from-primary to-secondary rounded-2xl opacity-20 blur-xl"></div>
               <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-gradient-to-br from-secondary to-primary rounded-2xl opacity-20 blur-xl"></div>
             </div>
@@ -298,11 +298,11 @@ export default function AboutPage() {
               What Drives Us Forward
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Our core values shape everything we do, from how we approach projects to how we build relationships 
+              Our core values shape everything we do, from how we approach projects to how we build relationships
               with our clients and team members.
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {values.map((value, index) => (
               <Card key={index} className="group hover:shadow-xl transition-all duration-300 border-0 bg-card/50 backdrop-blur-sm">
@@ -334,11 +334,11 @@ export default function AboutPage() {
               Meet the Experts
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Our diverse team of experienced professionals brings together expertise in technology, design, 
+              Our diverse team of experienced professionals brings together expertise in technology, design,
               strategy, and business to deliver exceptional results for our clients.
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {team.map((member, index) => (
               <Card key={index} className="group hover:shadow-xl transition-all duration-300 border-0 bg-card/50 backdrop-blur-sm">
@@ -388,11 +388,11 @@ export default function AboutPage() {
               Numbers That Speak
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Our track record of success is reflected in the numbers. Here&apos;s what we&apos;ve accomplished 
+              Our track record of success is reflected in the numbers. Here&apos;s what we&apos;ve accomplished
               together with our clients.
             </p>
           </div>
-          
+
           <div className="grid grid-cols-2 lg:grid-cols-6 gap-8">
             {achievements.map((achievement, index) => (
               <div key={index} className="text-center space-y-4">
@@ -420,11 +420,11 @@ export default function AboutPage() {
               Our Tech Stack
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              We work with the latest technologies and tools to deliver robust, scalable, and future-proof solutions 
+              We work with the latest technologies and tools to deliver robust, scalable, and future-proof solutions
               that meet the evolving needs of modern businesses.
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {technologies.map((tech, index) => (
               <Card key={index} className="group hover:shadow-xl transition-all duration-300 border-0 bg-card/50 backdrop-blur-sm">
@@ -458,11 +458,11 @@ export default function AboutPage() {
                 Ready to Work Together?
               </h2>
               <p className="text-xl text-muted-foreground">
-                Let&apos;s discuss how our team can help you achieve your digital goals and transform your business 
+                Let&apos;s discuss how our team can help you achieve your digital goals and transform your business
                 with innovative technology solutions.
               </p>
             </div>
-            
+
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild size="lg" className="group">
                 <Link href="/contact">
@@ -470,14 +470,14 @@ export default function AboutPage() {
                   <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </Button>
-              
+
               <Button variant="outline" size="lg" asChild>
                 <Link href="/services">
                   View Our Services
                 </Link>
               </Button>
             </div>
-            
+
             <div className="flex items-center justify-center space-x-8 text-sm text-muted-foreground">
               <div className="flex items-center space-x-2">
                 <Eye className="w-4 h-4" />

@@ -14,20 +14,21 @@ const josefinSans = Josefin_Sans({
 
 export const metadata: Metadata = {
   title: {
-    default: "Codestam Technologies - Innovative Digital Solutions",
-    template: "%s | Codestam Technologies"
+    default: "EcoThread - Sustainable Fashion &amp; Conscious Living",
+    template: "%s | EcoThread"
   },
-  description: "Empowering businesses with cutting-edge digital solutions. Codestam Technologies transforms ideas into powerful, scalable applications that drive growth and success.",
+  description: "Discover sustainable fashion that honors the planet. EcoThread offers ethically crafted clothing, eco-friendly accessories, and conscious living essentials for a mindful lifestyle.",
   keywords: [
-    "digital solutions",
-    "web development",
-    "mobile apps",
-    "consulting",
-    "technology",
-    "innovation",
-    "software development",
-    "digital transformation",
-    "Codestam Technologies"
+    "sustainable fashion",
+    "eco-friendly clothing",
+    "ethical fashion",
+    "conscious living",
+    "organic textiles",
+    "slow fashion",
+    "environmentally friendly",
+    "fair trade",
+    "zero waste",
+    "EcoThread"
   ],
   authors: [{ name: "Codestam Technologies" }],
   creator: "Codestam Technologies",
@@ -45,22 +46,22 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://codestam.com",
-    title: "Codestam Technologies - Innovative Digital Solutions",
-    description: "Empowering businesses with cutting-edge digital solutions. Codestam Technologies transforms ideas into powerful, scalable applications that drive growth and success.",
-    siteName: "Codestam Technologies",
+    title: "EcoThread - Sustainable Fashion &amp; Conscious Living",
+    description: "Discover sustainable fashion that honors the planet. EcoThread offers ethically crafted clothing, eco-friendly accessories, and conscious living essentials for a mindful lifestyle.",
+    siteName: "EcoThread",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Codestam Technologies - Innovative Digital Solutions",
+        alt: "EcoThread - Sustainable Fashion &amp; Conscious Living",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Codestam Technologies - Innovative Digital Solutions",
-    description: "Empowering businesses with cutting-edge digital solutions. Codestam Technologies transforms ideas into powerful, scalable applications that drive growth and success.",
+    title: "EcoThread - Sustainable Fashion &amp; Conscious Living",
+    description: "Discover sustainable fashion that honors the planet. EcoThread offers ethically crafted clothing, eco-friendly accessories, and conscious living essentials for a mindful lifestyle.",
     images: ["/og-image.jpg"],
     creator: "@codestam",
   },

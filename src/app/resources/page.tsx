@@ -4,12 +4,12 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
-import { 
-  ArrowRight, 
-  BookOpen, 
-  FileText, 
-  Video, 
-  Download, 
+import {
+  ArrowRight,
+  BookOpen,
+  FileText,
+  Video,
+  Download,
   ExternalLink,
   Calendar,
   Clock,
@@ -367,7 +367,7 @@ export default function ResourcesPage() {
       <section className="relative overflow-hidden bg-gradient-to-br from-background via-background to-primary/5 py-20 lg:py-32">
         <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:50px_50px]" />
         <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-transparent to-secondary/10" />
-        
+
         <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-8 max-w-4xl mx-auto">
             <div className="space-y-4">
@@ -375,21 +375,21 @@ export default function ResourcesPage() {
                 <BookOpen className="w-4 h-4" />
                 <span>Knowledge Hub</span>
               </Badge>
-              
+
               <h1 className="text-4xl lg:text-6xl font-bold tracking-tight text-balance">
                 Resources &
                 <span className="block bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
                   Tools
                 </span>
               </h1>
-              
+
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                Access our comprehensive library of resources, tools, and knowledge. 
-                From technical documentation to industry insights, we provide valuable 
+                Access our comprehensive library of resources, tools, and knowledge.
+                From technical documentation to industry insights, we provide valuable
                 resources to help you succeed.
               </p>
             </div>
-            
+
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild size="lg" className="group">
                 <Link href="#resources">
@@ -397,7 +397,7 @@ export default function ResourcesPage() {
                   <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </Button>
-              
+
               <Button variant="outline" size="lg" asChild>
                 <Link href="#community">
                   Join Community
@@ -419,11 +419,11 @@ export default function ResourcesPage() {
               Comprehensive Resources
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Everything you need to build, deploy, and scale your applications. 
+              Everything you need to build, deploy, and scale your applications.
               From documentation to tools, we&apos;ve got you covered.
             </p>
           </div>
-          
+
           <div className="space-y-16">
             {resources.map((category, categoryIndex) => (
               <div key={categoryIndex} className="space-y-8">
@@ -431,7 +431,7 @@ export default function ResourcesPage() {
                   <h3 className="text-2xl lg:text-3xl font-bold mb-4">{category.category}</h3>
                   <Separator className="w-24 mx-auto" />
                 </div>
-                
+
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                   {category.items.map((item, itemIndex) => (
                     <Card key={itemIndex} className="group hover:shadow-xl transition-all duration-300 border-0 bg-card/50 backdrop-blur-sm">
@@ -457,7 +457,7 @@ export default function ResourcesPage() {
                             </Badge>
                           ))}
                         </div>
-                        
+
                         <Button asChild className="w-full group">
                           <Link href={item.link}>
                             <Download className="mr-2 w-4 h-4" />
@@ -486,11 +486,11 @@ export default function ResourcesPage() {
               Industry Blog
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Stay updated with the latest trends, insights, and best practices 
+              Stay updated with the latest trends, insights, and best practices
               from our team of experts and industry leaders.
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {blogPosts.map((post, index) => (
               <Card key={index} className="group hover:shadow-xl transition-all duration-300 border-0 bg-card/50 backdrop-blur-sm overflow-hidden">
@@ -502,7 +502,7 @@ export default function ResourcesPage() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
                 </div>
-                
+
                 <CardHeader>
                   <div className="flex items-center justify-between mb-4">
                     <Badge variant="secondary">{post.category}</Badge>
@@ -516,13 +516,13 @@ export default function ResourcesPage() {
                     {post.excerpt}
                   </CardDescription>
                 </CardHeader>
-                
+
                 <CardContent className="space-y-4">
                   <div className="flex items-center justify-between text-sm text-muted-foreground">
                     <span>By {post.author}</span>
                     <span>{new Date(post.date).toLocaleDateString()}</span>
                   </div>
-                  
+
                   <div className="flex flex-wrap gap-2">
                     {post.tags.map((tag, tagIndex) => (
                       <Badge key={tagIndex} variant="outline" className="text-xs">
@@ -530,7 +530,7 @@ export default function ResourcesPage() {
                       </Badge>
                     ))}
                   </div>
-                  
+
                   <Button asChild variant="outline" className="w-full">
                     <Link href="#">
                       Read More
@@ -541,7 +541,7 @@ export default function ResourcesPage() {
               </Card>
             ))}
           </div>
-          
+
           <div className="text-center mt-12">
             <Button asChild size="lg" variant="outline">
               <Link href="#">
@@ -564,11 +564,11 @@ export default function ResourcesPage() {
               Upcoming Webinars
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Join our live webinars to learn from industry experts and 
+              Join our live webinars to learn from industry experts and
               stay ahead of the latest technology trends.
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {webinars.map((webinar, index) => (
               <Card key={index} className="group hover:shadow-xl transition-all duration-300 border-0 bg-card/50 backdrop-blur-sm overflow-hidden">
@@ -586,14 +586,14 @@ export default function ResourcesPage() {
                     </Badge>
                   </div>
                 </div>
-                
+
                 <CardHeader>
                   <CardTitle className="text-xl">{webinar.title}</CardTitle>
                   <CardDescription className="text-base">
                     {webinar.description}
                   </CardDescription>
                 </CardHeader>
-                
+
                 <CardContent className="space-y-4">
                   <div className="space-y-2">
                     <div className="flex items-center space-x-2 text-sm text-muted-foreground">
@@ -609,11 +609,11 @@ export default function ResourcesPage() {
                       <span>{webinar.attendees} registered</span>
                     </div>
                   </div>
-                  
+
                   <div className="text-sm text-muted-foreground">
                     Speaker: <span className="font-medium text-foreground">{webinar.speaker}</span>
                   </div>
-                  
+
                   <Button asChild className="w-full group">
                     <Link href="#">
                       Register Now
@@ -638,11 +638,11 @@ export default function ResourcesPage() {
               Developer Tools
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Powerful tools to streamline your development workflow and 
+              Powerful tools to streamline your development workflow and
               improve code quality and performance.
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {tools.map((tool, index) => (
               <Card key={index} className="group hover:shadow-xl transition-all duration-300 border-0 bg-card/50 backdrop-blur-sm">
@@ -665,7 +665,7 @@ export default function ResourcesPage() {
                     <span>{tool.category}</span>
                     <span>{tool.downloads} downloads</span>
                   </div>
-                  
+
                   <Button asChild variant="outline" className="w-full">
                     <Link href="#">
                       <Download className="mr-2 w-4 h-4" />
@@ -690,11 +690,11 @@ export default function ResourcesPage() {
               Community
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Connect with developers, share knowledge, and stay updated 
+              Connect with developers, share knowledge, and stay updated
               with the latest trends in our vibrant community.
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {community.map((platform, index) => (
               <Card key={index} className="group hover:shadow-xl transition-all duration-300 border-0 bg-card/50 backdrop-blur-sm">
@@ -711,7 +711,7 @@ export default function ResourcesPage() {
                   <div className="flex items-center justify-between text-sm text-muted-foreground mb-4">
                     <span>{platform.members} members</span>
                   </div>
-                  
+
                   <Button asChild className="w-full group">
                     <Link href={platform.link}>
                       Join Community
@@ -734,11 +734,11 @@ export default function ResourcesPage() {
                 Need More Resources?
               </h2>
               <p className="text-xl text-muted-foreground">
-                Can&apos;t find what you&apos;re looking for? Our team is here to help. 
+                Can&apos;t find what you&apos;re looking for? Our team is here to help.
                 Contact us for custom solutions, technical support, or to request new resources.
               </p>
             </div>
-            
+
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild size="lg" className="group">
                 <Link href="/contact">
@@ -746,14 +746,14 @@ export default function ResourcesPage() {
                   <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </Button>
-              
+
               <Button variant="outline" size="lg" asChild>
                 <Link href="/services">
                   View Services
                 </Link>
               </Button>
             </div>
-            
+
             <div className="flex items-center justify-center space-x-8 text-sm text-muted-foreground">
               <div className="flex items-center space-x-2">
                 <BookOpen className="w-4 h-4" />

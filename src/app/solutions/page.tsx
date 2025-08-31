@@ -4,12 +4,12 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
-import { 
-  ArrowRight, 
-  Sparkles, 
-  ShoppingBag, 
-  Building2, 
-  Heart, 
+import {
+  ArrowRight,
+  Sparkles,
+  ShoppingBag,
+  Building2,
+  Heart,
   BarChart3,
   Lightbulb,
   GraduationCap,
@@ -218,7 +218,7 @@ export default function SolutionsPage() {
       <section className="relative overflow-hidden bg-gradient-to-br from-background via-background to-primary/5 py-20 lg:py-32">
         <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:50px_50px]" />
         <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-transparent to-secondary/10" />
-        
+
         <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-8 max-w-4xl mx-auto">
             <div className="space-y-4">
@@ -226,21 +226,21 @@ export default function SolutionsPage() {
                 <Sparkles className="w-4 h-4" />
                 <span>Industry Solutions</span>
               </Badge>
-              
+
               <h1 className="text-4xl lg:text-6xl font-bold tracking-tight text-balance">
                 Industry-Specific
                 <span className="block bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
                   Technology Solutions
                 </span>
               </h1>
-              
+
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                We deliver tailored technology solutions designed to address the unique challenges 
-                and opportunities of your industry. From e-commerce platforms to enterprise software, 
+                We deliver tailored technology solutions designed to address the unique challenges
+                and opportunities of your industry. From e-commerce platforms to enterprise software,
                 we help businesses innovate and succeed in the digital age.
               </p>
             </div>
-            
+
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild size="lg" className="group">
                 <Link href="/contact">
@@ -248,7 +248,7 @@ export default function SolutionsPage() {
                   <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </Button>
-              
+
               <Button variant="outline" size="lg" asChild>
                 <Link href="#solutions">
                   View All Solutions
@@ -270,11 +270,11 @@ export default function SolutionsPage() {
               Tailored for Your Industry
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              We understand that each industry has unique requirements and challenges. 
+              We understand that each industry has unique requirements and challenges.
               Our solutions are designed to address these specific needs and drive real business value.
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {solutions.map((solution, index) => (
               <Card key={index} className="group hover:shadow-xl transition-all duration-300 border-0 bg-card/50 backdrop-blur-sm">
@@ -302,7 +302,7 @@ export default function SolutionsPage() {
                       ))}
                     </ul>
                   </div>
-                  
+
                   <Button asChild className="w-full mt-6 group">
                     <Link href="/contact">
                       Get Started
@@ -327,11 +327,11 @@ export default function SolutionsPage() {
               Across All Industries
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Our expertise spans across multiple industries, delivering innovative solutions 
+              Our expertise spans across multiple industries, delivering innovative solutions
               that address unique challenges and drive digital transformation.
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {industries.map((industry, index) => (
               <Card key={index} className="group hover:shadow-xl transition-all duration-300 border-0 bg-card/50 backdrop-blur-sm">
@@ -363,11 +363,11 @@ export default function SolutionsPage() {
               Real Results, Real Impact
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              See how our industry-specific solutions have transformed businesses 
+              See how our industry-specific solutions have transformed businesses
               and delivered measurable results for our clients.
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {caseStudies.map((study, index) => (
               <Card key={index} className="group hover:shadow-xl transition-all duration-300 border-0 bg-card/50 backdrop-blur-sm overflow-hidden">
@@ -400,7 +400,7 @@ export default function SolutionsPage() {
                       ))}
                     </ul>
                   </div>
-                  
+
                   <Button asChild variant="outline" className="w-full mt-6">
                     <Link href="/contact">
                       Learn More
@@ -424,11 +424,11 @@ export default function SolutionsPage() {
               Built with Modern Technologies
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              We leverage the latest technologies and frameworks to deliver robust, 
+              We leverage the latest technologies and frameworks to deliver robust,
               scalable, and future-proof solutions for your business.
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {technologies.map((tech, index) => (
               <Card key={index} className="group hover:shadow-xl transition-all duration-300 border-0 bg-card/50 backdrop-blur-sm">
@@ -461,11 +461,11 @@ export default function SolutionsPage() {
               The Codestam Advantage
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Our industry-specific solutions deliver more than just technology - 
+              Our industry-specific solutions deliver more than just technology -
               they deliver measurable business value and competitive advantage.
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {benefits.map((benefit, index) => (
               <div key={index} className="text-center space-y-4">
@@ -493,11 +493,11 @@ export default function SolutionsPage() {
                 Ready to Transform Your Business?
               </h2>
               <p className="text-xl text-muted-foreground">
-                Let&apos;s discuss your industry-specific challenges and discover how our 
+                Let&apos;s discuss your industry-specific challenges and discover how our
                 tailored solutions can drive innovation and growth for your organization.
               </p>
             </div>
-            
+
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild size="lg" className="group">
                 <Link href="/contact">
@@ -505,14 +505,14 @@ export default function SolutionsPage() {
                   <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </Button>
-              
+
               <Button variant="outline" size="lg" asChild>
                 <Link href="/services">
                   View Our Services
                 </Link>
               </Button>
             </div>
-            
+
             <div className="flex items-center justify-center space-x-8 text-sm text-muted-foreground">
               <div className="flex items-center space-x-2">
                 <Eye className="w-4 h-4" />
