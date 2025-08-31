@@ -472,10 +472,11 @@ function deployToVercel(repoUrl, repoName) {
 
         // Try to link with GitHub repository
         try {
-            execSync(`vercel git connect --yes --remote ${repoName}`, { stdio: 'inherit' });
+            execSync(`vercel git connect --yes`, { stdio: 'inherit' });
             logSuccess('Vercel project linked with GitHub repository');
         } catch (error) {
             logWarning('Could not automatically link with GitHub repository');
+            logDetailed('You can manually link it in the Vercel dashboard');
         }
 
         logSuccess('Deployment to Vercel completed successfully');
@@ -555,14 +556,6 @@ function postSuccessCleanup(repoName) {
             logDetailed('Unlinked from Vercel project');
         } catch (error) {
             logDetailed('Could not unlink from Vercel project (may not be linked)');
-        }
-
-        // Remove any Vercel team/project associations
-        try {
-            execSync('vercel project rm --yes', { stdio: 'ignore' });
-            logDetailed('Removed Vercel project association');
-        } catch (error) {
-            logDetailed('Could not remove Vercel project association');
         }
 
         logSuccess('Post-success cleanup completed');
@@ -675,7 +668,7 @@ async function main() {
         if (!options.skipVercel) {
             logStep(5, 'Pre-deployment Cleanup');
             logDetailed('Ensuring clean slate for Vercel deployment...');
-            
+
             // Remove any existing Vercel configurations
             if (existsSync('.vercel')) {
                 try {
@@ -685,7 +678,7 @@ async function main() {
                     logDetailed('Could not remove .vercel directory');
                 }
             }
-            
+
             if (existsSync('vercel.json')) {
                 try {
                     unlinkSync('vercel.json');
