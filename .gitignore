@@ -44,7 +44,7 @@ next-env.d.ts
 .github-deploy-token
 deploy-script.js
 deploy-script-new.js
-
+deploy-script.js
 .vercel
 
 .vercel

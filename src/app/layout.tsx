@@ -1,7 +1,9 @@
-import type { Metadata } from "next";
-import { Josefin_Sans } from "next/font/google";
-import "./globals.css";
-import { ThemeProvider } from "@/components/theme-provider";
+import type { Metadata } from "next"
+import { Josefin_Sans } from "next/font/google"
+import "./globals.css"
+import { ThemeProvider } from "@/components/theme-provider"
+import { Navbar } from "@/components/navbar"
+import { Footer } from "@/components/footer"
 
 const josefinSans = Josefin_Sans({
   preload: true,
@@ -12,45 +14,54 @@ const josefinSans = Josefin_Sans({
 
 export const metadata: Metadata = {
   title: {
-    default: "QuantumForge - Next-Generation Digital Solutions",
-    template: "%s | QuantumForge"
+    default: "NexusFlow - Innovative Digital Solutions",
+    template: "%s | NexusFlow"
   },
-  description: "Revolutionize your digital presence with QuantumForge. We deliver cutting-edge AI solutions, advanced web development, and transformative digital experiences that propel businesses into the future.",
-  keywords: ["AI solutions", "web development", "digital transformation", "quantum computing", "machine learning", "cloud architecture", "cybersecurity"],
+  description: "Empowering businesses with innovative digital solutions. We transform ideas into powerful, scalable applications that drive growth and success.",
+  keywords: [
+    "digital solutions",
+    "web development",
+    "mobile apps",
+    "consulting",
+    "technology",
+    "innovation",
+    "software development",
+    "digital transformation"
+  ],
   authors: [{ name: "Codestam Technologies" }],
   creator: "Codestam Technologies",
-  publisher: "Codestam Technologies",
+  publisher: "NexusFlow",
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
-  metadataBase: new URL("https://quantumforge.com"),
+  metadataBase: new URL("https://nexusflow.com"),
   alternates: {
     canonical: "/",
   },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://quantumforge.com",
-    title: "QuantumForge - Next-Generation Digital Solutions",
-    description: "Revolutionize your digital presence with QuantumForge. We deliver cutting-edge AI solutions, advanced web development, and transformative digital experiences that propel businesses into the future.",
-    siteName: "QuantumForge",
+    url: "https://nexusflow.com",
+    title: "NexusFlow - Innovative Digital Solutions",
+    description: "Empowering businesses with innovative digital solutions. We transform ideas into powerful, scalable applications that drive growth and success.",
+    siteName: "NexusFlow",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "QuantumForge - Next-Generation Digital Solutions",
+        alt: "NexusFlow - Innovative Digital Solutions",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "QuantumForge - Next-Generation Digital Solutions",
-    description: "Revolutionize your digital presence with QuantumForge. We deliver cutting-edge AI solutions, advanced web development, and transformative digital experiences that propel businesses into the future.",
+    title: "NexusFlow - Innovative Digital Solutions",
+    description: "Empowering businesses with innovative digital solutions. We transform ideas into powerful, scalable applications that drive growth and success.",
     images: ["/og-image.jpg"],
-    creator: "@codestamtech",
+    creator: "@nexusflow",
   },
   robots: {
     index: true,
@@ -66,24 +77,22 @@ export const metadata: Metadata = {
   verification: {
     google: "your-google-verification-code",
   },
-};
+}
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: {
+  children: React.ReactNode
+}) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="mask-icon" href="/mask-icon.svg" color="#000000" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <meta name="theme-color" content="#000000" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <meta name="apple-mobile-web-app-title" content="QuantumForge" />
-        <link rel="apple-touch-icon" href="/favicon.svg" />
-        <link rel="manifest" href="/manifest.json" />
+        <meta name="msapplication-TileColor" content="#000000" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
       <body className={`${josefinSans.className} font-sans antialiased`}>
         <ThemeProvider
@@ -92,9 +101,15 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <div className="relative flex min-h-screen flex-col">
+            <Navbar />
+            <main className="flex-1">
+              {children}
+            </main>
+            <Footer />
+          </div>
         </ThemeProvider>
       </body>
     </html>
-  );
+  )
 }

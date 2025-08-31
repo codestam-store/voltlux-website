@@ -1,559 +1,301 @@
-import type { Metadata } from "next";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
-import {
-  ArrowRight,
-  Heart,
-  CreditCard,
-  Factory,
-  ShoppingCart,
-  Car,
-  Zap,
-  Building,
-  Plane,
-  Ship,
-  Train,
-  Bus,
-  Truck,
-  Bike,
+import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Badge } from '@/components/ui/badge'
+import { 
+  Target, 
+  TrendingUp, 
+  Settings, 
+  Search, 
+  MessageSquare, 
   Rocket,
-  Star,
+  ArrowRight,
   CheckCircle,
-  Clock,
-  TrendingUp,
-  Shield,
-  Code,
-  Globe,
-  Database,
-  Server,
-  Wifi,
-  Eye,
-  Fingerprint,
-  Key,
-  Lock,
-  Target,
-  Gauge,
-  Activity,
-  BarChart,
-  PieChart,
-  LineChart,
-  TrendingDown,
+  Star,
   Users,
-  Sparkles,
-  ArrowUpRight,
-  Play,
-  Quote,
-  Award,
+  Globe,
+  Shield,
   BarChart3,
-  Trophy,
+  Zap,
   Lightbulb,
-  Monitor,
-  Layers,
-  Cpu,
-  Network,
-  Hexagon,
-  Atom,
-  Brain,
-  Database as DatabaseIcon,
-  Target as TargetIcon,
-  Calendar,
-  MapPin,
-  Phone,
-  Mail,
-  MessageSquare,
-  Video,
-  Camera,
-  Mic,
-  Headphones,
-  Speaker,
-  Volume2,
-  VolumeX,
-  Volume1,
-  Volume,
-  Bell,
-  BellOff,
-  BellRing,
-  User,
-  UserCheck,
-  UserX,
-  UserPlus,
-  UserMinus,
-  UserCog,
-  UserSearch
-} from "lucide-react";
-import Link from "next/link";
-import Navbar from "@/components/landing/navbar";
-import Footer from "@/components/landing/footer";
+  Database,
+  Lock,
+  Palette,
+  Cloud,
+  Smartphone
+} from 'lucide-react'
+import Link from 'next/link'
 
-export const metadata: Metadata = {
-  title: "Industries - QuantumForge",
-  description: "Discover how our quantum-powered solutions transform businesses across healthcare, finance, manufacturing, retail, transportation, and energy industries.",
-  keywords: ["healthcare", "finance", "manufacturing", "retail", "transportation", "energy", "industry solutions"],
+export const metadata = {
+  title: "Industries",
+  description: "Digital solutions tailored for specific industries. From healthcare to finance, we understand your unique challenges.",
   openGraph: {
-    title: "Industries - QuantumForge",
-    description: "Discover how our quantum-powered solutions transform businesses across healthcare, finance, manufacturing, retail, transportation, and energy industries.",
-    url: "https://quantumforge.com/industries",
-    siteName: "QuantumForge",
-    images: [
-      {
-        url: "/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "QuantumForge Industries",
-      },
-    ],
-    locale: "en_US",
-    type: "website",
+    title: "Industries - NexusFlow",
+    description: "Digital solutions tailored for specific industries. From healthcare to finance, we understand your unique challenges.",
   },
-  twitter: {
-    card: "summary_large_image",
-    title: "Industries - QuantumForge",
-    description: "Discover how our quantum-powered solutions transform businesses across healthcare, finance, manufacturing, retail, transportation, and energy industries.",
-    images: ["/og-image.jpg"],
-    creator: "@codestamtech",
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
-};
+}
 
 const industries = [
   {
-    icon: Heart,
+    icon: Target,
     title: "Healthcare",
-    description: "AI-powered diagnostics and patient care solutions that revolutionize healthcare delivery.",
-    color: "from-red-500 to-pink-500",
-    href: "/industries/healthcare",
-    features: [
-      "AI-Powered Diagnostics",
-      "Patient Data Analytics",
-      "Telemedicine Platforms",
-      "Drug Discovery",
-      "Medical Imaging",
-      "Healthcare IoT"
-    ],
-    benefits: [
-      "Improved patient outcomes",
-      "Reduced diagnostic errors",
-      "Enhanced care coordination",
-      "Cost optimization"
-    ],
-    image: "https://maxm-imggenurl.web.val.run/healthcare technology with AI diagnostics, medical imaging, and patient care systems, high quality"
-  },
-  {
-    icon: CreditCard,
-    title: "Finance",
-    description: "Secure financial technology and risk management solutions for the modern banking sector.",
-    color: "from-green-500 to-emerald-500",
-    href: "/industries/finance",
-    features: [
-      "Fraud Detection Systems",
-      "Risk Management",
-      "Trading Algorithms",
-      "Blockchain Solutions",
-      "Regulatory Compliance",
-      "Digital Banking"
-    ],
-    benefits: [
-      "Enhanced security",
-      "Real-time fraud detection",
+    description: "Digital solutions for healthcare providers, improving patient care and operational efficiency.",
+    challenges: [
+      "Patient data management",
       "Regulatory compliance",
-      "Improved customer experience"
+      "Interoperability",
+      "Security and privacy"
     ],
-    image: "https://maxm-imggenurl.web.val.run/financial technology with digital banking, trading algorithms, and security systems, high quality"
+    solutions: [
+      "Electronic Health Records (EHR)",
+      "Telemedicine platforms",
+      "HIPAA-compliant systems",
+      "Patient portals"
+    ],
+    image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2015&q=80"
   },
   {
-    icon: Factory,
+    icon: TrendingUp,
+    title: "Finance",
+    description: "Secure, compliant financial technology solutions for banks and fintech companies.",
+    challenges: [
+      "Regulatory compliance",
+      "Security threats",
+      "Legacy system integration",
+      "Customer experience"
+    ],
+    solutions: [
+      "Digital banking platforms",
+      "Payment processing systems",
+      "Risk management tools",
+      "Compliance automation"
+    ],
+    image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2015&q=80"
+  },
+  {
+    icon: Settings,
     title: "Manufacturing",
-    description: "Smart manufacturing and IoT integration for Industry 4.0 transformation.",
-    color: "from-blue-500 to-cyan-500",
-    href: "/industries/manufacturing",
-    features: [
-      "Predictive Maintenance",
-      "Quality Control AI",
-      "Supply Chain Optimization",
-      "IoT Integration",
-      "Automation Systems",
-      "Energy Management"
+    description: "Industry 4.0 solutions for smart manufacturing and supply chain optimization.",
+    challenges: [
+      "Supply chain complexity",
+      "Quality control",
+      "Operational efficiency",
+      "Predictive maintenance"
     ],
-    benefits: [
-      "Reduced downtime",
-      "Improved quality",
-      "Cost savings",
-      "Increased efficiency"
+    solutions: [
+      "IoT integration",
+      "Predictive analytics",
+      "Quality management systems",
+      "Supply chain optimization"
     ],
-    image: "https://maxm-imggenurl.web.val.run/smart manufacturing with IoT sensors, automation systems, and Industry 4.0 technology, high quality"
+    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2015&q=80"
   },
   {
-    icon: ShoppingCart,
+    icon: Search,
     title: "Retail",
-    description: "E-commerce optimization and customer analytics for the digital retail experience.",
-    color: "from-purple-500 to-pink-500",
-    href: "/industries/retail",
-    features: [
-      "Customer Analytics",
-      "Inventory Management",
-      "Personalized Marketing",
-      "Omnichannel Solutions",
-      "Supply Chain Optimization",
-      "Customer Service AI"
+    description: "E-commerce and retail technology solutions to enhance customer experience.",
+    challenges: [
+      "Omnichannel integration",
+      "Inventory management",
+      "Customer personalization",
+      "Competition from online"
     ],
-    benefits: [
-      "Increased sales",
-      "Better customer experience",
-      "Optimized inventory",
-      "Data-driven decisions"
+    solutions: [
+      "E-commerce platforms",
+      "Inventory management systems",
+      "Customer analytics",
+      "Omnichannel solutions"
     ],
-    image: "https://maxm-imggenurl.web.val.run/retail technology with e-commerce platforms, customer analytics, and digital shopping experiences, high quality"
+    image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2015&q=80"
   },
   {
-    icon: Car,
-    title: "Transportation",
-    description: "Logistics optimization and fleet management for efficient transportation networks.",
-    color: "from-orange-500 to-red-500",
-    href: "/industries/transportation",
-    features: [
-      "Route Optimization",
-      "Fleet Management",
-      "Predictive Analytics",
-      "Autonomous Systems",
-      "Real-time Tracking",
-      "Energy Efficiency"
+    icon: MessageSquare,
+    title: "Education",
+    description: "EdTech solutions for modern learning environments and educational institutions.",
+    challenges: [
+      "Remote learning adoption",
+      "Student engagement",
+      "Administrative efficiency",
+      "Technology integration"
     ],
-    benefits: [
-      "Reduced fuel costs",
-      "Improved delivery times",
-      "Enhanced safety",
-      "Better resource utilization"
+    solutions: [
+      "Learning management systems",
+      "Virtual classrooms",
+      "Student portals",
+      "Administrative tools"
     ],
-    image: "https://maxm-imggenurl.web.val.run/transportation technology with logistics optimization, fleet management, and autonomous systems, high quality"
+    image: "https://images.unsplash.com/photo-1523240794102-9eb5ccbdd663?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2015&q=80"
+  },
+  {
+    icon: Rocket,
+    title: "Technology",
+    description: "Innovative solutions for tech companies and startups to scale and grow.",
+    challenges: [
+      "Rapid scaling",
+      "Technical debt",
+      "Talent acquisition",
+      "Market competition"
+    ],
+    solutions: [
+      "Scalable architectures",
+      "DevOps automation",
+      "Product development tools",
+      "Analytics platforms"
+    ],
+    image: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2015&q=80"
+  }
+]
+
+const services = [
+  {
+    icon: Globe,
+    title: "Web Development",
+    description: "Custom web applications tailored to industry-specific requirements."
+  },
+  {
+    icon: Smartphone,
+    title: "Mobile Apps",
+    description: "Native and cross-platform mobile solutions for industry workflows."
+  },
+  {
+    icon: Cloud,
+    title: "Cloud Solutions",
+    description: "Scalable cloud infrastructure optimized for industry needs."
+  },
+  {
+    icon: Shield,
+    title: "Cybersecurity",
+    description: "Industry-specific security solutions and compliance frameworks."
+  },
+  {
+    icon: BarChart3,
+    title: "Data Analytics",
+    description: "Business intelligence and analytics for industry insights."
   },
   {
     icon: Zap,
-    title: "Energy",
-    description: "Smart grid and renewable energy solutions for sustainable power management.",
-    color: "from-yellow-500 to-orange-500",
-    href: "/industries/energy",
-    features: [
-      "Smart Grid Management",
-      "Renewable Energy Integration",
-      "Energy Storage Solutions",
-      "Predictive Maintenance",
-      "Demand Response",
-      "Carbon Footprint Tracking"
-    ],
-    benefits: [
-      "Reduced energy costs",
-      "Improved sustainability",
-      "Enhanced reliability",
-      "Better grid management"
-    ],
-    image: "https://maxm-imggenurl.web.val.run/energy technology with smart grid systems, renewable energy integration, and sustainable power management, high quality"
+    title: "Digital Transformation",
+    description: "End-to-end digital transformation for industry modernization."
   }
-];
-
-const solutions = [
-  {
-    title: "Quantum AI & ML",
-    description: "Next-generation artificial intelligence powered by quantum algorithms",
-    icon: Atom,
-    color: "from-purple-500 to-pink-500"
-  },
-  {
-    title: "Neural Networks",
-    description: "Advanced neural network architectures for complex problem solving",
-    icon: Brain,
-    color: "from-blue-500 to-cyan-500"
-  },
-  {
-    title: "Cloud Architecture",
-    description: "Scalable cloud infrastructure with microservices architecture",
-    icon: Layers,
-    color: "from-green-500 to-emerald-500"
-  },
-  {
-    title: "Cybersecurity",
-    description: "Advanced security protocols and threat detection systems",
-    icon: Lock,
-    color: "from-red-500 to-orange-500"
-  },
-  {
-    title: "Data Analytics",
-    description: "Real-time data processing and predictive analytics",
-    icon: Database,
-    color: "from-indigo-500 to-purple-500"
-  },
-  {
-    title: "Performance Optimization",
-    description: "Speed and efficiency optimization for maximum performance",
-    icon: Target,
-    color: "from-yellow-500 to-orange-500"
-  }
-];
-
-const testimonials = [
-  {
-    name: "Dr. Sarah Johnson",
-    role: "CTO, HealthTech Solutions",
-    content: "QuantumForge's AI-powered diagnostic solutions have revolutionized our patient care. We've seen a 40% improvement in diagnostic accuracy.",
-    avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face",
-    industry: "Healthcare"
-  },
-  {
-    name: "Michael Chen",
-    role: "VP Technology, FinCorp",
-    content: "Their fraud detection systems have saved us millions while improving our security posture. Exceptional technology and support.",
-    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
-    industry: "Finance"
-  },
-  {
-    name: "Lisa Rodriguez",
-    role: "Operations Director, SmartManufacturing",
-    content: "The IoT integration and predictive maintenance solutions have transformed our manufacturing efficiency. Outstanding results.",
-    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
-    industry: "Manufacturing"
-  }
-];
-
-const stats = [
-  { label: "Industries Served", value: "6+", icon: Building },
-  { label: "Projects Delivered", value: "500+", icon: Rocket },
-  { label: "Success Rate", value: "99.8%", icon: TrendingUp },
-  { label: "Years Experience", value: "8+", icon: Clock }
-];
+]
 
 export default function IndustriesPage() {
   return (
-    <div className="min-h-screen bg-background">
-      <Navbar />
-      
+    <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-background via-background to-primary/5">
-        <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:50px_50px]" />
-        <div className="relative px-4 py-24 md:py-32">
-          <div className="mx-auto max-w-7xl">
-            <div className="text-center space-y-8">
-              <div className="space-y-4">
-                <Badge variant="secondary" className="bg-gradient-to-r from-primary/20 to-primary/10 text-primary border-primary/30 px-4 py-2">
-                  <Sparkles className="h-4 w-4 mr-2" />
-                  Industry Solutions
-                </Badge>
-                <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight">
-                  Industry-Specific{" "}
-                  <span className="bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent">
-                    Solutions
-                  </span>
-                </h1>
-                <p className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-                  Discover how our quantum-powered solutions transform businesses across diverse industries, from healthcare to energy, delivering measurable results and driving innovation.
-                </p>
-              </div>
-              
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href="/contact">
-                  <Button size="lg" className="h-14 px-8 text-lg bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 shadow-xl hover:shadow-2xl transition-all duration-300">
-                    <Rocket className="h-5 w-5 mr-2" />
-                    Get Started
-                  </Button>
-                </Link>
-                <Link href="#industries">
-                  <Button variant="outline" size="lg" className="h-14 px-8 text-lg border-2 hover:bg-primary/10 hover:border-primary/50 transition-all duration-300">
-                    <Play className="h-5 w-5 mr-2" />
-                    Explore Industries
-                  </Button>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Stats Section */}
-      <section className="py-16 bg-muted/30">
-        <div className="mx-auto max-w-7xl px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {stats.map((stat) => {
-              const IconComponent = stat.icon;
-              return (
-                <div key={stat.label} className="text-center space-y-2">
-                  <div className="flex justify-center">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center">
-                      <IconComponent className="h-6 w-6 text-primary" />
-                    </div>
-                  </div>
-                  <div className="text-3xl md:text-4xl font-bold text-foreground">{stat.value}</div>
-                  <div className="text-sm text-muted-foreground">{stat.label}</div>
-                </div>
-              );
-            })}
+      <section className="relative py-20 lg:py-32 bg-gradient-to-br from-background via-background to-muted/20">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center space-y-8">
+            <Badge variant="secondary" className="w-fit mx-auto">
+              Industry Solutions
+            </Badge>
+            <h1 className="text-4xl lg:text-6xl font-bold tracking-tight">
+              Solutions for{" "}
+              <span className="text-primary">Every Industry</span>
+            </h1>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              We understand the unique challenges and opportunities each industry presents. 
+              Our tailored solutions drive innovation and growth across all sectors.
+            </p>
           </div>
         </div>
       </section>
 
       {/* Industries Grid */}
-      <section id="industries" className="py-24">
-        <div className="mx-auto max-w-7xl px-4">
-          <div className="text-center space-y-4 mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold">
-              Industry{" "}
-              <span className="bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
-                Solutions
-              </span>
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Our quantum-powered solutions are tailored to meet the unique challenges and opportunities across diverse industries.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {industries.map((industry) => {
-              const IconComponent = industry.icon;
-              return (
-                <Card key={industry.title} className="group hover:shadow-2xl transition-all duration-300 border-border/50 hover:border-primary/30 overflow-hidden">
-                  <CardHeader className="pb-4">
-                    <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${industry.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
-                      <IconComponent className="h-8 w-8 text-white" />
-                    </div>
-                  </CardHeader>
-                  <CardContent className="space-y-6">
-                    <div className="space-y-3">
-                      <CardTitle className="text-2xl group-hover:text-primary transition-colors">
-                        {industry.title}
-                      </CardTitle>
-                      <CardDescription className="text-muted-foreground leading-relaxed text-base">
-                        {industry.description}
-                      </CardDescription>
-                    </div>
-
-                    <div className="space-y-4">
-                      <div>
-                        <h4 className="font-semibold text-foreground mb-3">Key Solutions</h4>
-                        <ul className="space-y-2">
-                          {industry.features.slice(0, 4).map((feature) => (
-                            <li key={feature} className="flex items-center gap-2 text-sm text-muted-foreground">
-                              <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
-                              {feature}
-                            </li>
-                          ))}
-                        </ul>
+      <section className="py-20">
+        <div className="container mx-auto px-4">
+          <div className="space-y-20">
+            {industries.map((industry, index) => (
+              <div key={industry.title} className={`grid lg:grid-cols-2 gap-16 items-center ${index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''}`}>
+                <div className={`space-y-8 ${index % 2 === 1 ? 'lg:col-start-2' : ''}`}>
+                  <div className="space-y-4">
+                    <div className="flex items-center gap-3">
+                      <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                        <industry.icon className="h-6 w-6 text-primary" />
                       </div>
-
-                      <div>
-                        <h4 className="font-semibold text-foreground mb-3">Benefits</h4>
-                        <ul className="space-y-2">
-                          {industry.benefits.map((benefit) => (
-                            <li key={benefit} className="flex items-center gap-2 text-sm text-muted-foreground">
-                              <Star className="h-4 w-4 text-yellow-500 flex-shrink-0" />
-                              {benefit}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
+                      <Badge variant="outline">{industry.title}</Badge>
                     </div>
+                    <h2 className="text-3xl lg:text-4xl font-bold">
+                      {industry.title}
+                    </h2>
+                    <p className="text-lg text-muted-foreground">
+                      {industry.description}
+                    </p>
+                  </div>
 
-                    <Link href={industry.href}>
-                      <Button className="w-full bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 transition-all duration-300">
-                        Learn More
-                        <ArrowRight className="h-4 w-4 ml-2" />
-                      </Button>
-                    </Link>
-                  </CardContent>
-                </Card>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Solutions Section */}
-      <section className="py-24 bg-muted/30">
-        <div className="mx-auto max-w-7xl px-4">
-          <div className="text-center space-y-4 mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold">
-              Universal{" "}
-              <span className="bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
-                Solutions
-              </span>
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Our core solutions can be adapted and customized for any industry, providing flexibility and scalability.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {solutions.map((solution) => {
-              const IconComponent = solution.icon;
-              return (
-                <Card key={solution.title} className="group hover:shadow-2xl transition-all duration-300 border-border/50 hover:border-primary/30 text-center">
-                  <CardContent className="p-8 space-y-4">
-                    <div className="flex justify-center">
-                      <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${solution.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
-                        <IconComponent className="h-8 w-8 text-white" />
-                      </div>
-                    </div>
+                  <div className="grid gap-6">
                     <div>
-                      <CardTitle className="text-xl group-hover:text-primary transition-colors">
-                        {solution.title}
-                      </CardTitle>
-                      <CardDescription className="text-muted-foreground mt-2">
-                        {solution.description}
-                      </CardDescription>
+                      <h3 className="font-semibold text-lg mb-4">Key Challenges</h3>
+                      <div className="grid gap-3">
+                        {industry.challenges.map((challenge) => (
+                          <div key={challenge} className="flex items-center gap-3">
+                            <div className="w-2 h-2 bg-red-500 rounded-full flex-shrink-0" />
+                            <span className="text-muted-foreground">{challenge}</span>
+                          </div>
+                        ))}
+                      </div>
                     </div>
-                  </CardContent>
-                </Card>
-              );
-            })}
-          </div>
-        </div>
-      </section>
 
-      {/* Testimonials Section */}
-      <section className="py-24">
-        <div className="mx-auto max-w-7xl px-4">
-          <div className="text-center space-y-4 mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold">
-              Industry{" "}
-              <span className="bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
-                Success Stories
-              </span>
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              See how our solutions have transformed businesses across different industries and use cases.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial) => (
-              <Card key={testimonial.name} className="group hover:shadow-2xl transition-all duration-300 border-border/50 hover:border-primary/30">
-                <CardContent className="p-6 space-y-4">
-                  <div className="flex items-center gap-4">
-                    <img
-                      src={testimonial.avatar}
-                      alt={testimonial.name}
-                      className="w-12 h-12 rounded-full object-cover"
-                    />
                     <div>
-                      <div className="font-semibold">{testimonial.name}</div>
-                      <div className="text-sm text-muted-foreground">{testimonial.role}</div>
+                      <h3 className="font-semibold text-lg mb-4">Our Solutions</h3>
+                      <div className="grid gap-3">
+                        {industry.solutions.map((solution) => (
+                          <div key={solution} className="flex items-center gap-3">
+                            <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0" />
+                            <span className="text-muted-foreground">{solution}</span>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   </div>
-                  <Quote className="h-8 w-8 text-primary/30" />
-                  <p className="text-muted-foreground leading-relaxed">
-                    &quot;{testimonial.content}&quot;
-                  </p>
-                  <Badge variant="secondary" className="bg-primary/10 text-primary border-primary/20">
-                    {testimonial.industry}
-                  </Badge>
+
+                  <Button asChild>
+                    <Link href="/contact">
+                      Learn More
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
+                  </Button>
+                </div>
+
+                <div className={`${index % 2 === 1 ? 'lg:col-start-1' : ''}`}>
+                  <img
+                    src={industry.image}
+                    alt={industry.title}
+                    className="rounded-2xl shadow-2xl"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section className="py-20 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl lg:text-4xl font-bold mb-4">
+              Our Services Across Industries
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              We provide comprehensive digital services that can be tailored to meet 
+              the specific needs of any industry.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {services.map((service) => (
+              <Card key={service.title} className="border-0 shadow-lg hover:shadow-xl transition-shadow">
+                <CardHeader>
+                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                    <service.icon className="h-6 w-6 text-primary" />
+                  </div>
+                  <CardTitle className="text-xl">{service.title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription className="text-base">
+                    {service.description}
+                  </CardDescription>
                 </CardContent>
               </Card>
             ))}
@@ -561,42 +303,109 @@ export default function IndustriesPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-24 bg-gradient-to-br from-primary/10 to-primary/5">
-        <div className="mx-auto max-w-4xl px-4 text-center">
-          <div className="space-y-8">
-            <div className="space-y-4">
-              <h2 className="text-3xl md:text-5xl font-bold">
-                Ready to{" "}
-                <span className="bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
-                  Transform
-                </span>{" "}
-                Your Industry?
-              </h2>
-              <p className="text-xl text-muted-foreground">
-                Let&apos;s discuss how our industry-specific solutions can revolutionize your business and drive unprecedented growth.
-              </p>
+      {/* Why Choose Us */}
+      <section className="py-20">
+        <div className="container mx-auto px-4">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="space-y-8">
+              <div className="space-y-4">
+                <h2 className="text-3xl lg:text-4xl font-bold">
+                  Why Choose NexusFlow for Your Industry?
+                </h2>
+                <p className="text-lg text-muted-foreground">
+                  We bring deep industry knowledge combined with technical expertise 
+                  to deliver solutions that truly understand your business.
+                </p>
+              </div>
+
+              <div className="grid gap-6">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Users className="h-6 w-6 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-lg mb-2">Industry Expertise</h3>
+                    <p className="text-muted-foreground">
+                      Deep understanding of industry-specific challenges, regulations, and best practices.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Lightbulb className="h-6 w-6 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-lg mb-2">Innovation Focus</h3>
+                    <p className="text-muted-foreground">
+                      Cutting-edge solutions that keep you ahead of industry trends and competition.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Shield className="h-6 w-6 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-lg mb-2">Compliance Ready</h3>
+                    <p className="text-muted-foreground">
+                      Solutions built with industry regulations and compliance requirements in mind.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Database className="h-6 w-6 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-lg mb-2">Scalable Solutions</h3>
+                    <p className="text-muted-foreground">
+                      Technology that grows with your business and adapts to changing industry needs.
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/contact">
-                <Button size="lg" className="h-14 px-8 text-lg bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 shadow-xl hover:shadow-2xl transition-all duration-300">
-                  <Rocket className="h-5 w-5 mr-2" />
-                  Start Your Project
-                </Button>
-              </Link>
-              <Link href="/contact">
-                <Button variant="outline" size="lg" className="h-14 px-8 text-lg border-2 hover:bg-primary/10 hover:border-primary/50 transition-all duration-300">
-                  Schedule Consultation
-                  <ArrowRight className="h-4 w-4 ml-2" />
-                </Button>
-              </Link>
+            <div className="relative">
+              <img
+                src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2015&q=80"
+                alt="Industry collaboration and expertise"
+                className="rounded-2xl shadow-2xl"
+                loading="lazy"
+              />
             </div>
           </div>
         </div>
       </section>
 
-      <Footer />
+      {/* CTA Section */}
+      <section className="py-20 bg-primary text-primary-foreground">
+        <div className="container mx-auto px-4 text-center">
+          <div className="max-w-3xl mx-auto space-y-8">
+            <h2 className="text-3xl lg:text-4xl font-bold">
+              Ready to Transform Your Industry?
+            </h2>
+            <p className="text-xl opacity-90">
+              Let&apos;s discuss how we can help you navigate industry challenges 
+              and leverage technology for competitive advantage.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button size="lg" variant="secondary" asChild>
+                <Link href="/contact">
+                  Get Started
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+              <Button size="lg" variant="outline" asChild>
+                <Link href="/solutions">View Solutions</Link>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
-  );
+  )
 }
