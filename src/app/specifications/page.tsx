@@ -1,0 +1,50 @@
+import type { Metadata } from "next"
+import SpecificationsPageClient from "@/components/specifications-page-client"
+
+export const metadata: Metadata = {
+  title: "Vehicle Specifications - VoltLux",
+  description: "Detailed technical specifications for all VoltLux electric vehicles. Compare performance, range, charging capabilities, and features across our entire lineup.",
+  keywords: [
+    "electric vehicle specs",
+    "EV specifications",
+    "vehicle performance",
+    "battery capacity",
+    "charging speed",
+    "range comparison",
+    "VoltLux specs"
+  ],
+  authors: [{ name: "Codestam Technologies" }],
+  creator: "Codestam Technologies",
+  publisher: "Codestam Technologies",
+  metadataBase: new URL("https://codestam.com"),
+  alternates: {
+    canonical: "/specifications",
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://codestam.com/specifications",
+    title: "Vehicle Specifications - VoltLux",
+    description: "Detailed technical specifications for all VoltLux electric vehicles. Compare performance, range, charging capabilities, and features across our entire lineup.",
+    siteName: "VoltLux",
+    images: [
+      {
+        url: "/og-specifications.jpg",
+        width: 1200,
+        height: 630,
+        alt: "VoltLux Vehicle Specifications",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Vehicle Specifications - VoltLux",
+    description: "Detailed technical specifications for all VoltLux electric vehicles. Compare performance, range, charging capabilities, and features across our entire lineup.",
+    images: ["/og-specifications.jpg"],
+    creator: "@codestam",
+  },
+}
+
+export default function SpecificationsPage() {
+  return <SpecificationsPageClient />
+}

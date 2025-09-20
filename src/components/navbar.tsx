@@ -4,18 +4,18 @@ import * as React from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { motion } from "framer-motion"
-import { Menu, X, MapPin, Compass, Mountain, Users, BookOpen, Phone } from "lucide-react"
+import { Menu, X, Car, Zap, Settings, Users, BookOpen, Phone } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { ThemeToggle } from "@/components/theme-toggle"
 
 const navigation = [
-  { name: "Destinations", href: "/destinations", icon: MapPin },
-  { name: "Adventures", href: "/adventures", icon: Mountain },
-  { name: "Experiences", href: "/experiences", icon: Compass },
-  { name: "Community", href: "/community", icon: Users },
-  { name: "Stories", href: "/stories", icon: BookOpen },
+  { name: "Vehicles", href: "/vehicles", icon: Car },
+  { name: "Technology", href: "/technology", icon: Zap },
+  { name: "Specifications", href: "/specifications", icon: Settings },
+  { name: "Showroom", href: "/showroom", icon: Users },
+  { name: "Brand Story", href: "/brand-story", icon: BookOpen },
   { name: "Contact", href: "/contact", icon: Phone },
 ]
 
@@ -34,17 +34,17 @@ export function Navbar() {
         {/* Logo */}
         <div className="flex lg:flex-1">
           <Link href="/" className="-m-1.5 p-1.5">
-            <span className="sr-only">Wanderlust</span>
+            <span className="sr-only">VoltLux</span>
             <motion.div 
-              className="flex items-center space-x-2"
+              className="flex items-center space-x-3"
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.2 }}
             >
-              <div className="h-8 w-8 rounded-full bg-gradient-to-br from-primary to-primary/60 flex items-center justify-center">
-                <Compass className="h-5 w-5 text-primary-foreground" />
+              <div className="h-10 w-10 rounded-lg bg-primary flex items-center justify-center shadow-md">
+                <Zap className="h-6 w-6 text-primary-foreground" />
               </div>
-              <span className="text-xl font-semibold tracking-tight text-foreground">
-                Wanderlust
+              <span className="text-2xl font-bold tracking-tight text-foreground">
+                VoltLux
               </span>
             </motion.div>
           </Link>
@@ -67,7 +67,7 @@ export function Navbar() {
                 {item.name}
                 {isActive && (
                   <motion.div
-                    className="absolute inset-x-0 -bottom-px h-px bg-gradient-to-r from-transparent via-primary to-transparent"
+                    className="absolute inset-x-0 -bottom-px h-px bg-primary"
                     layoutId="activeTab"
                     initial={false}
                     transition={{ type: "spring", stiffness: 500, damping: 30 }}
@@ -82,8 +82,8 @@ export function Navbar() {
         <div className="flex items-center gap-4">
           <ThemeToggle />
           <Button asChild size="sm" className="hidden sm:inline-flex">
-            <Link href="/book-adventure">
-              Book Adventure
+            <Link href="/test-drive">
+              Schedule Test Drive
             </Link>
           </Button>
 
@@ -139,8 +139,8 @@ export function Navbar() {
           })}
           <div className="pt-4">
             <Button asChild className="w-full">
-              <Link href="/book-adventure" onClick={() => setMobileMenuOpen(false)}>
-                Book Adventure
+              <Link href="/test-drive" onClick={() => setMobileMenuOpen(false)}>
+                Schedule Test Drive
               </Link>
             </Button>
           </div>

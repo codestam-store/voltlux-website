@@ -14,21 +14,21 @@ const josefinSans = Josefin_Sans({
 
 export const metadata: Metadata = {
   title: {
-    default: "Wanderlust - Eco-Tourism &amp; Adventure Travel Experiences",
-    template: "%s | Wanderlust"
+    default: "VoltLux - Premium Electric Vehicles &amp; Future Mobility",
+    template: "%s | VoltLux"
   },
-  description: "Discover transformative eco-tourism adventures that connect you with nature. Wanderlust offers sustainable travel experiences, wilderness expeditions, and mindful exploration across pristine landscapes.",
+  description: "Experience the future of luxury mobility with VoltLux premium electric vehicles. Cutting-edge technology, unparalleled performance, and sustainable innovation in every drive.",
   keywords: [
-    "eco-tourism",
-    "adventure travel",
-    "sustainable tourism",
-    "wilderness expeditions",
-    "nature experiences",
-    "mindful travel",
-    "outdoor adventures",
-    "eco-friendly travel",
-    "sustainable tourism",
-    "Wanderlust"
+    "premium electric vehicles",
+    "luxury electric cars",
+    "future mobility",
+    "electric vehicle technology",
+    "sustainable luxury",
+    "high-performance EVs",
+    "electric vehicle innovation",
+    "luxury automotive",
+    "electric vehicle showroom",
+    "VoltLux"
   ],
   authors: [{ name: "Codestam Technologies" }],
   creator: "Codestam Technologies",
@@ -46,22 +46,22 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://codestam.com",
-    title: "Wanderlust - Eco-Tourism &amp; Adventure Travel Experiences",
-    description: "Discover transformative eco-tourism adventures that connect you with nature. Wanderlust offers sustainable travel experiences, wilderness expeditions, and mindful exploration across pristine landscapes.",
-    siteName: "Wanderlust",
+    title: "VoltLux - Premium Electric Vehicles &amp; Future Mobility",
+    description: "Experience the future of luxury mobility with VoltLux premium electric vehicles. Cutting-edge technology, unparalleled performance, and sustainable innovation in every drive.",
+    siteName: "VoltLux",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Wanderlust - Eco-Tourism &amp; Adventure Travel Experiences",
+        alt: "VoltLux - Premium Electric Vehicles &amp; Future Mobility",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Wanderlust - Eco-Tourism &amp; Adventure Travel Experiences",
-    description: "Discover transformative eco-tourism adventures that connect you with nature. Wanderlust offers sustainable travel experiences, wilderness expeditions, and mindful exploration across pristine landscapes.",
+    title: "VoltLux - Premium Electric Vehicles &amp; Future Mobility",
+    description: "Experience the future of luxury mobility with VoltLux premium electric vehicles. Cutting-edge technology, unparalleled performance, and sustainable innovation in every drive.",
     images: ["/og-image.jpg"],
     creator: "@codestam",
   },
@@ -90,10 +90,10 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-        <link rel="mask-icon" href="/mask-icon.svg" color="#8B5A3C" />
+        <link rel="mask-icon" href="/mask-icon.svg" color="#00D4FF" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <meta name="theme-color" content="#8B5A3C" />
-        <meta name="msapplication-TileColor" content="#8B5A3C" />
+        <meta name="theme-color" content="#00D4FF" />
+        <meta name="msapplication-TileColor" content="#00D4FF" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
       <body className={`${josefinSans.className} font-sans antialiased`}>

@@ -2,16 +2,16 @@ import type { Metadata } from "next"
 import ContactPageClient from "@/components/contact-page-client"
 
 export const metadata: Metadata = {
-  title: "Contact Us - Wanderlust",
-  description: "Get in touch with our eco-tourism experts. We're here to help you plan your next sustainable adventure and answer any questions about our services.",
+  title: "Contact Us - VoltLux",
+  description: "Get in touch with VoltLux. Contact our team for inquiries about our electric vehicles, schedule test drives, find showroom locations, or get customer support.",
   keywords: [
-    "contact Wanderlust",
-    "eco-tourism contact",
-    "travel planning",
-    "sustainable travel support",
-    "adventure booking",
-    "travel consultation",
-    "Wanderlust"
+    "VoltLux contact",
+    "electric vehicle support",
+    "test drive booking",
+    "showroom locations",
+    "customer service",
+    "EV inquiries",
+    "VoltLux support"
   ],
   authors: [{ name: "Codestam Technologies" }],
   creator: "Codestam Technologies",
@@ -24,14 +24,23 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://codestam.com/contact",
-    title: "Contact Us - Wanderlust",
-    description: "Get in touch with our eco-tourism experts. We're here to help you plan your next sustainable adventure and answer any questions about our services.",
-    siteName: "Wanderlust",
+    title: "Contact Us - VoltLux",
+    description: "Get in touch with VoltLux. Contact our team for inquiries about our electric vehicles, schedule test drives, find showroom locations, or get customer support.",
+    siteName: "VoltLux",
+    images: [
+      {
+        url: "/og-contact.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Contact VoltLux",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Contact Us - Wanderlust",
-    description: "Get in touch with our eco-tourism experts. We're here to help you plan your next sustainable adventure and answer any questions about our services.",
+    title: "Contact Us - VoltLux",
+    description: "Get in touch with VoltLux. Contact our team for inquiries about our electric vehicles, schedule test drives, find showroom locations, or get customer support.",
+    images: ["/og-contact.jpg"],
     creator: "@codestam",
   },
 }

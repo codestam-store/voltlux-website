@@ -1,432 +1,374 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { ArrowRight, MapPin, Mountain, Compass, Users, Star, Leaf, Globe } from "lucide-react"
 import Link from "next/link"
-
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import { 
+  Zap, 
+  Battery, 
+  Gauge, 
+  Shield, 
+  Leaf, 
+  ArrowRight, 
+  Play,
+  Star,
+  Users,
+  Award,
+  ChevronRight
+} from "lucide-react"
 
-const featuredDestinations = [
+const fadeInUp = {
+  initial: { opacity: 0, y: 60 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.6, ease: "easeOut" }
+}
+
+const staggerContainer = {
+  animate: {
+    transition: {
+      staggerChildren: 0.1
+    }
+  }
+}
+
+const vehicles = [
   {
-    name: "Norwegian Fjords",
-    description: "Sail through pristine fjords and witness the Northern Lights",
-    image: "https://images.unsplash.com/photo-1513519245088-0e12902e35ca?w=800&h=600&fit=crop",
-    rating: 4.9,
-    duration: "8 days",
-    price: "From $2,400",
-    badge: "Popular"
+    name: "VoltLux Apex",
+    type: "Luxury Sedan",
+    range: "520 miles",
+    acceleration: "0-60 in 2.8s",
+    price: "From $89,900",
+    image: "https://images.unsplash.com/photo-1617788138017-80ad40651399?w=800&h=600&fit=crop&crop=center",
+    features: ["Autonomous Driving", "Premium Interior", "Fast Charging"]
   },
   {
-    name: "Patagonian Wilderness",
-    description: "Trek through untouched landscapes and ancient glaciers",
-    image: "https://images.unsplash.com/photo-1551632811-561732d1e306?w=800&h=600&fit=crop",
-    rating: 4.8,
-    duration: "12 days",
-    price: "From $3,200",
-    badge: "New"
+    name: "VoltLux Titan",
+    type: "Electric SUV",
+    range: "480 miles",
+    acceleration: "0-60 in 3.2s",
+    price: "From $95,900",
+    image: "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=800&h=600&fit=crop&crop=center",
+    features: ["7-Seater", "Off-Road Capable", "Panoramic Roof"]
   },
   {
-    name: "Swiss Alpine Trails",
-    description: "Hike through flower-filled meadows and snow-capped peaks",
-    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop",
-    rating: 4.7,
-    duration: "6 days",
-    price: "From $1,800",
-    badge: "Featured"
+    name: "VoltLux Velocity",
+    type: "Sports Coupe",
+    range: "450 miles",
+    acceleration: "0-60 in 2.1s",
+    price: "From $125,900",
+    image: "https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?w=800&h=600&fit=crop&crop=center",
+    features: ["Track Mode", "Carbon Fiber", "Racing Suspension"]
   }
 ]
 
-const adventureTypes = [
+const features = [
   {
-    icon: Mountain,
-    title: "Mountain Expeditions",
-    description: "Summit peaks and traverse alpine landscapes with expert guides",
-    features: ["Expert guides", "Safety equipment", "Accommodation", "Meals included"]
+    icon: Battery,
+    title: "Advanced Battery Technology",
+    description: "Next-generation lithium-ion batteries with industry-leading energy density and longevity."
   },
   {
-    icon: Compass,
-    title: "Wilderness Trekking",
-    description: "Explore remote trails and connect with nature on foot",
-    features: ["Guided tours", "Camping gear", "Local guides", "Cultural insights"]
+    icon: Zap,
+    title: "Ultra-Fast Charging",
+    description: "Charge from 10% to 80% in just 18 minutes with our proprietary charging technology."
   },
   {
-    icon: MapPin,
-    title: "Cultural Immersion",
-    description: "Experience local traditions and sustainable community tourism",
-    features: ["Local hosts", "Traditional meals", "Cultural activities", "Community support"]
+    icon: Shield,
+    title: "Autonomous Safety",
+    description: "AI-powered safety systems with 360° awareness and predictive collision avoidance."
+  },
+  {
+    icon: Leaf,
+    title: "Zero Emissions",
+    description: "100% electric powertrain with carbon-neutral manufacturing and renewable energy."
   }
 ]
 
-const testimonials = [
-  {
-    name: "Sarah Chen",
-    role: "Adventure Photographer",
-    content: "Wanderlust transformed my perspective on travel. The Norwegian fjords expedition was not just a trip—it was a life-changing experience that deepened my connection with nature.",
-    rating: 5,
-    image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face"
-  },
-  {
-    name: "Marcus Rodriguez",
-    role: "Environmental Scientist",
-    content: "As someone who studies ecosystems, I was impressed by Wanderlust&apos;s commitment to sustainability. The Patagonia trek was both educational and breathtaking.",
-    rating: 5,
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face"
-  },
-  {
-    name: "Emma Thompson",
-    role: "Yoga Instructor",
-    content: "The mindfulness retreat in the Swiss Alps was exactly what I needed. Perfect balance of adventure and tranquility, with incredible attention to eco-friendly practices.",
-    rating: 5,
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face"
-  }
+const stats = [
+  { value: "500+", label: "Miles Range", icon: Gauge },
+  { value: "18min", label: "Fast Charging", icon: Zap },
+  { value: "2.1s", label: "0-60 MPH", icon: Battery },
+  { value: "5★", label: "Safety Rating", icon: Star }
 ]
 
 export default function HomePageClient() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <img
-            src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&h=1080&fit=crop"
-            alt="Mountain landscape at sunset"
-            className="w-full h-full object-cover"
-            loading="eager"
-          />
-          <div className="absolute inset-0 bg-black/40" />
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        {/* Background */}
+        <div className="absolute inset-0 subtle-gradient">
+          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1920&h=1080&fit=crop&crop=center')] bg-cover bg-center opacity-10"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent"></div>
         </div>
 
-        <motion.div
-          className="relative z-10 text-center text-white px-4 max-w-4xl mx-auto"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <motion.h1
-            className="text-5xl md:text-7xl font-bold mb-6 tracking-tight"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.8 }}
-          >
-            Discover Your
-            <span className="block text-primary-foreground">Wild Adventure</span>
-          </motion.h1>
-          <motion.p
-            className="text-xl md:text-2xl mb-8 text-white/90 max-w-2xl mx-auto"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.8 }}
-          >
-            Embark on transformative eco-tourism journeys that connect you with pristine landscapes and sustainable adventures
-          </motion.p>
+        {/* Content */}
+        <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
           <motion.div
-            className="flex flex-col sm:flex-row gap-4 justify-center"
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 100 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.8 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <Button asChild size="lg" className="text-lg px-8 py-6">
-              <Link href="/destinations">
-                Explore Destinations
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
-            </Button>
-            <Button asChild variant="outline" size="lg" className="text-lg px-8 py-6 border-white/30 text-white hover:bg-white/10">
-              <Link href="/stories">
-                Read Stories
-              </Link>
-            </Button>
+            <Badge className="mb-6 bg-primary text-primary-foreground px-4 py-2">
+              The Future is Electric
+            </Badge>
+            
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 text-foreground leading-tight">
+              VoltLux
+            </h1>
+            
+            <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
+              Experience the pinnacle of electric luxury. Where cutting-edge technology meets uncompromising performance.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <Button 
+                asChild 
+                size="lg" 
+                className="px-8 py-4 text-lg professional-shadow"
+              >
+                <Link href="/vehicles">
+                  Explore Vehicles <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
+              </Button>
+              
+              <Button 
+                variant="outline" 
+                size="lg" 
+                className="px-8 py-4 text-lg"
+              >
+                <Play className="mr-2 h-5 w-5" />
+                Watch Demo
+              </Button>
+            </div>
           </motion.div>
-        </motion.div>
+        </div>
+
+        {/* Floating Elements */}
+        <motion.div
+          className="absolute top-20 left-10 w-20 h-20 rounded-full bg-primary/20 opacity-20 blur-xl"
+          animate={{ 
+            y: [0, -20, 0],
+            scale: [1, 1.1, 1]
+          }}
+          transition={{ 
+            duration: 4,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+        
+        <motion.div
+          className="absolute bottom-32 right-16 w-32 h-32 rounded-full bg-gradient-to-r from-purple-400 to-pink-500 opacity-15 blur-2xl"
+          animate={{ 
+            y: [0, 30, 0],
+            scale: [1, 0.8, 1]
+          }}
+          transition={{ 
+            duration: 6,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 2
+          }}
+        />
       </section>
 
-      {/* Featured Destinations Section */}
-      <section className="py-20 bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Stats Section */}
+      <section className="py-20 bg-muted/30">
+        <div className="max-w-7xl mx-auto px-6">
           <motion.div
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            className="grid grid-cols-2 md:grid-cols-4 gap-8"
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="animate"
             viewport={{ once: true }}
           >
+            {stats.map((stat, index) => (
+              <motion.div
+                key={index}
+                variants={fadeInUp}
+                className="text-center"
+              >
+                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary text-primary-foreground mb-4 professional-shadow">
+                  <stat.icon className="h-8 w-8" />
+                </div>
+                <div className="text-3xl md:text-4xl font-bold text-foreground mb-2">
+                  {stat.value}
+                </div>
+                <div className="text-muted-foreground font-medium">
+                  {stat.label}
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Featured Vehicles */}
+      <section className="py-24 bg-background">
+        <div className="max-w-7xl mx-auto px-6">
+          <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <Badge className="mb-4 bg-primary text-primary-foreground">
+              Our Fleet
+            </Badge>
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
-              Featured Destinations
+              Premium Electric Vehicles
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Explore our handpicked destinations that offer the perfect blend of adventure, sustainability, and natural beauty
+              Discover our range of luxury electric vehicles, each engineered for performance, comfort, and sustainability.
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {featuredDestinations.map((destination, index) => (
-              <motion.div
-                key={destination.name}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1, duration: 0.6 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -8 }}
-                className="group"
-              >
-                <Card className="overflow-hidden border-0 shadow-lg group-hover:shadow-xl transition-all duration-300">
-                  <div className="relative h-64 overflow-hidden">
+          <motion.div
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+          >
+            {vehicles.map((vehicle, index) => (
+              <motion.div key={index} variants={fadeInUp}>
+                <Card className="group overflow-hidden professional-shadow hover:shadow-lg transition-all duration-500">
+                  <div className="relative overflow-hidden">
                     <img
-                      src={destination.image}
-                      alt={destination.name}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      loading="lazy"
+                      src={vehicle.image}
+                      alt={vehicle.name}
+                      className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700"
                     />
-                    <Badge className="absolute top-4 right-4 bg-primary text-primary-foreground">
-                      {destination.badge}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <Badge className="absolute top-4 left-4 bg-primary text-primary-foreground">
+                      {vehicle.type}
                     </Badge>
                   </div>
-                  <CardHeader className="pb-4">
-                    <div className="flex items-center justify-between mb-2">
-                      <CardTitle className="text-xl">{destination.name}</CardTitle>
-                      <div className="flex items-center gap-1">
-                        <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                        <span className="text-sm font-medium">{destination.rating}</span>
-                      </div>
+                  
+                  <CardContent className="p-6">
+                    <h3 className="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">
+                      {vehicle.name}
+                    </h3>
+                    
+                    <div className="grid grid-cols-2 gap-4 mb-4 text-sm text-muted-foreground">
+                      <div>Range: <span className="font-semibold text-foreground">{vehicle.range}</span></div>
+                      <div>0-60: <span className="font-semibold text-foreground">{vehicle.acceleration}</span></div>
                     </div>
-                    <CardDescription className="text-base">
-                      {destination.description}
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent className="pt-0">
+
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {vehicle.features.map((feature, idx) => (
+                        <Badge key={idx} variant="secondary" className="text-xs">
+                          {feature}
+                        </Badge>
+                      ))}
+                    </div>
+
                     <div className="flex items-center justify-between">
-                      <div className="text-sm text-muted-foreground">
-                        {destination.duration} • {destination.price}
-                      </div>
-                      <Button variant="ghost" size="sm" className="group-hover:text-primary">
-                        Learn More
-                        <ArrowRight className="ml-1 h-4 w-4" />
+                      <span className="text-2xl font-bold text-primary">
+                        {vehicle.price}
+                      </span>
+                      <Button 
+                        variant="ghost" 
+                        size="sm"
+                        className="group-hover:bg-primary group-hover:text-primary-foreground transition-colors"
+                      >
+                        Learn More <ChevronRight className="ml-1 h-4 w-4" />
                       </Button>
                     </div>
                   </CardContent>
                 </Card>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* Adventure Types Section */}
-      <section className="py-20 bg-muted/30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Technology Features */}
+      <section className="py-24 bg-gradient-to-br from-slate-900 via-blue-900 to-purple-900 text-white">
+        <div className="max-w-7xl mx-auto px-6">
           <motion.div
             className="text-center mb-16"
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
-              Types of Adventures
+            <Badge className="mb-4 bg-white/20 text-white border-white/30">
+              Innovation
+            </Badge>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 neon-text">
+              Cutting-Edge Technology
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Choose from our diverse range of eco-tourism experiences designed to connect you with nature and local communities
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              Every VoltLux vehicle is powered by breakthrough innovations that redefine what&apos;s possible in electric mobility.
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {adventureTypes.map((type, index) => (
-              <motion.div
-                key={type.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1, duration: 0.6 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -5 }}
-                className="group"
-              >
-                <Card className="h-full border-0 shadow-lg group-hover:shadow-xl transition-all duration-300">
-                  <CardHeader className="text-center pb-6">
-                    <div className="mx-auto mb-4 h-16 w-16 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                      <type.icon className="h-8 w-8 text-primary" />
-                    </div>
-                    <CardTitle className="text-2xl mb-3">{type.title}</CardTitle>
-                    <CardDescription className="text-base">
-                      {type.description}
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent className="pt-0">
-                    <ul className="space-y-2">
-                      {type.features.map((feature) => (
-                        <li key={feature} className="flex items-center text-sm text-muted-foreground">
-                          <div className="h-1.5 w-1.5 rounded-full bg-primary mr-3" />
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
-                    <Button asChild className="w-full mt-6" variant="outline">
-                      <Link href="/adventures">
-                        Explore {type.title}
-                        <ArrowRight className="ml-2 h-4 w-4" />
-                      </Link>
-                    </Button>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials Section */}
-      <section className="py-20 bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="animate"
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
-              What Our Travelers Say
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Hear from adventurers who have experienced the transformative power of eco-tourism with Wanderlust
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
+            {features.map((feature, index) => (
               <motion.div
-                key={testimonial.name}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1, duration: 0.6 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -5 }}
+                key={index}
+                variants={fadeInUp}
+                className="text-center group"
               >
-                <Card className="h-full border-0 shadow-lg hover:shadow-xl transition-all duration-300">
-                  <CardContent className="p-6">
-                    <div className="flex items-center gap-1 mb-4">
-                      {[...Array(testimonial.rating)].map((_, i) => (
-                        <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                      ))}
-                    </div>
-                    <blockquote className="text-lg mb-6 text-muted-foreground italic">
-                      &quot;{testimonial.content}&quot;
-                    </blockquote>
-                    <div className="flex items-center gap-4">
-                      <img
-                        src={testimonial.image}
-                        alt={testimonial.name}
-                        className="h-12 w-12 rounded-full object-cover"
-                        loading="lazy"
-                      />
-                      <div>
-                        <div className="font-semibold text-foreground">{testimonial.name}</div>
-                        <div className="text-sm text-muted-foreground">{testimonial.role}</div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
+                <div className="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-primary text-primary-foreground mb-6 group-hover:scale-110 transition-transform duration-300 professional-shadow">
+                  <feature.icon className="h-10 w-10" />
+                </div>
+                <h3 className="text-xl font-bold mb-4 group-hover:text-primary transition-colors">
+                  {feature.title}
+                </h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  {feature.description}
+                </p>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* Sustainability Commitment Section */}
-      <section className="py-20 bg-muted/30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
-                Committed to Sustainable Tourism
-              </h2>
-              <p className="text-xl text-muted-foreground mb-8">
-                We believe in preserving the natural beauty of our destinations for future generations through responsible travel practices.
-              </p>
-
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <Leaf className="h-4 w-4 text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-lg mb-2">Carbon Neutral Operations</h3>
-                    <p className="text-muted-foreground">All our trips are carbon-neutral, with investments in renewable energy projects.</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <Users className="h-4 w-4 text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-lg mb-2">Community Partnership</h3>
-                    <p className="text-muted-foreground">We work directly with local communities to ensure tourism benefits everyone.</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <Globe className="h-4 w-4 text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-lg mb-2">Wildlife Protection</h3>
-                    <p className="text-muted-foreground">Our tours respect wildlife habitats and support conservation efforts.</p>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-              className="relative"
-            >
-              <img
-                src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&h=600&fit=crop"
-                alt="Sustainable forest landscape"
-                className="rounded-2xl shadow-2xl"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-black/20 to-transparent" />
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Call to Action Section */}
-      <section className="py-20 bg-primary text-primary-foreground">
-        <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+      {/* CTA Section */}
+      <section className="py-24 professional-gradient">
+        <div className="max-w-4xl mx-auto px-6 text-center text-white">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Ready for Your Next Adventure?
+              Ready to Experience the Future?
             </h2>
-            <p className="text-xl mb-8 text-primary-foreground/90 max-w-2xl mx-auto">
-              Join thousands of travelers who have discovered the transformative power of eco-tourism with Wanderlust
+            <p className="text-xl mb-8 opacity-90">
+              Schedule a test drive and discover why VoltLux is leading the electric revolution.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild size="lg" variant="secondary" className="text-lg px-8 py-6">
-                <Link href="/destinations">
-                  Start Planning
-                  <ArrowRight className="ml-2 h-5 w-5" />
+              <Button 
+                asChild 
+                size="lg" 
+                className="bg-white text-slate-900 hover:bg-gray-100 px-8 py-4 text-lg font-semibold"
+              >
+                <Link href="/test-drive">
+                  Schedule Test Drive <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="text-lg px-8 py-6 border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10">
-                <Link href="/contact">
-                  Get in Touch
+              <Button 
+                asChild
+                variant="outline" 
+                size="lg" 
+                className="border-white text-white hover:bg-white/10 px-8 py-4 text-lg"
+              >
+                <Link href="/showroom">
+                  Visit Showroom
                 </Link>
               </Button>
             </div>
