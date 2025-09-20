@@ -212,7 +212,7 @@ export default function StoriesPageClient() {
                             Featured Stories
                         </h2>
                         <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                            Our most popular and impactful stories from the Wanderlust community
+                            Our most popular and impactful stories from the VoltLux community
                         </p>
                     </motion.div>
 

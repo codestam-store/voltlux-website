@@ -22,7 +22,7 @@ const footerLinks = {
     { name: "Water Adventures", href: "/adventures/water-adventures" },
   ],
   company: [
-    { name: "About Wanderlust", href: "/about" },
+    { name: "About VoltLux", href: "/about" },
     { name: "Our Mission", href: "/mission" },
     { name: "Sustainability", href: "/sustainability" },
     { name: "Careers", href: "/careers" },
@@ -63,7 +63,7 @@ export function Footer() {
                 <Compass className="h-6 w-6 text-primary-foreground" />
               </div>
               <span className="text-2xl font-bold tracking-tight text-foreground">
-                Wanderlust
+                VoltLux
               </span>
             </motion.div>
 
@@ -270,7 +270,7 @@ export function Footer() {
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              &copy; 2024 Wanderlust. All rights reserved. A Codestam Technologies company.
+              &copy; 2024 VoltLux. All rights reserved. A Codestam Technologies company.
             </motion.div>
 
             <motion.div

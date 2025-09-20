@@ -176,7 +176,7 @@ export default function VehiclesPageClient() {
                 size="lg" 
                 className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white border-0 px-8 py-4 text-lg neon-glow"
               >
-                <Link href="/test-drive">
+                <Link href="/schedule">
                   Schedule Test Drive <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
@@ -355,7 +355,7 @@ export default function VehiclesPageClient() {
                 size="lg" 
                 className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-4 text-lg font-semibold"
               >
-                <Link href="/test-drive">
+                <Link href="/schedule">
                   Schedule Test Drive <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </Button>

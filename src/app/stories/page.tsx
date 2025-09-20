@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import StoriesPageClient from "@/components/stories-page-client"
 
 export const metadata: Metadata = {
-  title: "Stories - Wanderlust",
+  title: "Stories - VoltLux",
   description: "Read inspiring travel stories, expert insights, and discover the transformative power of eco-tourism through the eyes of our community.",
   keywords: [
     "travel stories",
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     "sustainable travel stories",
     "adventure stories",
     "travel inspiration",
-    "Wanderlust"
+    "VoltLux"
   ],
   authors: [{ name: "Codestam Technologies" }],
   creator: "Codestam Technologies",
@@ -24,13 +24,13 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://codestam.com/stories",
-    title: "Stories - Wanderlust",
+    title: "Stories - VoltLux",
     description: "Read inspiring travel stories, expert insights, and discover the transformative power of eco-tourism through the eyes of our community.",
-    siteName: "Wanderlust",
+    siteName: "VoltLux",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Stories - Wanderlust",
+    title: "Stories - VoltLux",
     description: "Read inspiring travel stories, expert insights, and discover the transformative power of eco-tourism through the eyes of our community.",
     creator: "@codestam",
   },

@@ -82,7 +82,7 @@ export function Navbar() {
         <div className="flex items-center gap-4">
           <ThemeToggle />
           <Button asChild size="sm" className="hidden sm:inline-flex">
-            <Link href="/test-drive">
+            <Link href="/schedule">
               Schedule Test Drive
             </Link>
           </Button>
@@ -139,7 +139,7 @@ export function Navbar() {
           })}
           <div className="pt-4">
             <Button asChild className="w-full">
-              <Link href="/test-drive" onClick={() => setMobileMenuOpen(false)}>
+              <Link href="/schedule" onClick={() => setMobileMenuOpen(false)}>
                 Schedule Test Drive
               </Link>
             </Button>

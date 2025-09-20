@@ -98,10 +98,42 @@ export default function HomePageClient() {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Background */}
-        <div className="absolute inset-0 subtle-gradient">
-          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1920&h=1080&fit=crop&crop=center')] bg-cover bg-center opacity-10"></div>
-          <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent"></div>
+        {/* Car Background Showcase */}
+        <div className="absolute inset-0">
+          {/* Main Hero Car */}
+          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1617788138017-80ad40651399?w=1920&h=1080&fit=crop&crop=center')] bg-cover bg-center">
+            <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/60 to-background/95"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-background/40"></div>
+          </div>
+          
+          {/* Secondary Car Images - Floating */}
+          <motion.div 
+            className="absolute top-10 right-10 w-80 h-48 rounded-2xl overflow-hidden professional-shadow opacity-30"
+            initial={{ opacity: 0, x: 100 }}
+            animate={{ opacity: 0.3, x: 0 }}
+            transition={{ duration: 1, delay: 0.5 }}
+          >
+            <div className="w-full h-full bg-[url('https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=800&h=600&fit=crop&crop=center')] bg-cover bg-center"></div>
+          </motion.div>
+          
+          <motion.div 
+            className="absolute bottom-20 left-10 w-72 h-44 rounded-2xl overflow-hidden professional-shadow opacity-25"
+            initial={{ opacity: 0, x: -100 }}
+            animate={{ opacity: 0.25, x: 0 }}
+            transition={{ duration: 1, delay: 0.8 }}
+          >
+            <div className="w-full h-full bg-[url('https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?w=800&h=600&fit=crop&crop=center')] bg-cover bg-center"></div>
+          </motion.div>
+          
+          {/* Additional Car Silhouettes */}
+          <motion.div 
+            className="absolute top-1/2 left-20 w-64 h-36 rounded-xl overflow-hidden professional-shadow opacity-20"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 0.2, scale: 1 }}
+            transition={{ duration: 1, delay: 1.2 }}
+          >
+            <div className="w-full h-full bg-[url('https://images.unsplash.com/photo-1619767886558-efdc259cde1a?w=800&h=600&fit=crop&crop=center')] bg-cover bg-center"></div>
+          </motion.div>
         </div>
 
         {/* Content */}
@@ -111,15 +143,15 @@ export default function HomePageClient() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <Badge className="mb-6 bg-primary text-primary-foreground px-4 py-2">
+            <Badge className="mb-6 bg-primary text-primary-foreground px-4 py-2 professional-shadow">
               The Future is Electric
             </Badge>
             
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 text-foreground leading-tight">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 text-foreground leading-tight drop-shadow-lg">
               VoltLux
             </h1>
             
-            <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl md:text-2xl text-foreground/90 mb-8 max-w-3xl mx-auto leading-relaxed drop-shadow-md font-medium">
               Experience the pinnacle of electric luxury. Where cutting-edge technology meets uncompromising performance.
             </p>
 
@@ -127,7 +159,7 @@ export default function HomePageClient() {
               <Button 
                 asChild 
                 size="lg" 
-                className="px-8 py-4 text-lg professional-shadow"
+                className="px-8 py-4 text-lg professional-shadow hover:scale-105 transition-transform"
               >
                 <Link href="/vehicles">
                   Explore Vehicles <ArrowRight className="ml-2 h-5 w-5" />
@@ -137,7 +169,7 @@ export default function HomePageClient() {
               <Button 
                 variant="outline" 
                 size="lg" 
-                className="px-8 py-4 text-lg"
+                className="px-8 py-4 text-lg professional-shadow hover:scale-105 transition-transform bg-background/80 backdrop-blur-sm"
               >
                 <Play className="mr-2 h-5 w-5" />
                 Watch Demo
@@ -146,31 +178,33 @@ export default function HomePageClient() {
           </motion.div>
         </div>
 
-        {/* Floating Elements */}
+        {/* Animated Car Elements */}
         <motion.div
-          className="absolute top-20 left-10 w-20 h-20 rounded-full bg-primary/20 opacity-20 blur-xl"
+          className="absolute top-1/4 right-1/4 w-16 h-16 rounded-full bg-primary/30 opacity-40 blur-lg"
           animate={{ 
-            y: [0, -20, 0],
-            scale: [1, 1.1, 1]
+            y: [0, -30, 0],
+            scale: [1, 1.2, 1],
+            rotate: [0, 180, 360]
           }}
           transition={{ 
-            duration: 4,
+            duration: 8,
             repeat: Infinity,
             ease: "easeInOut"
           }}
         />
         
         <motion.div
-          className="absolute bottom-32 right-16 w-32 h-32 rounded-full bg-gradient-to-r from-purple-400 to-pink-500 opacity-15 blur-2xl"
+          className="absolute bottom-1/3 right-1/3 w-24 h-24 rounded-full bg-gradient-to-r from-primary/20 to-secondary/20 opacity-30 blur-xl"
           animate={{ 
-            y: [0, 30, 0],
-            scale: [1, 0.8, 1]
+            y: [0, 40, 0],
+            scale: [1, 0.7, 1],
+            rotate: [360, 180, 0]
           }}
           transition={{ 
-            duration: 6,
+            duration: 10,
             repeat: Infinity,
             ease: "easeInOut",
-            delay: 2
+            delay: 3
           }}
         />
       </section>
@@ -357,7 +391,7 @@ export default function HomePageClient() {
                 size="lg" 
                 className="bg-white text-slate-900 hover:bg-gray-100 px-8 py-4 text-lg font-semibold"
               >
-                <Link href="/test-drive">
+                <Link href="/schedule">
                   Schedule Test Drive <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
