@@ -1,5 +1,8 @@
+"use client"
+
 import type { Metadata } from "next"
 import Link from "next/link"
+import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -25,15 +28,18 @@ import {
   CheckCircle
 } from "lucide-react"
 
-export const metadata: Metadata = {
-  title: "Contact Us | Noir Studio - Vintage Film Photography",
-  description: "Get in touch with Noir Studio for your vintage film photography needs. Book a consultation, request a quote, or visit our studio. We&apos;re here to help capture your story.",
-  publisher: "Codestam Technologies",
-  openGraph: {
-    title: "Contact Us | Noir Studio - Vintage Film Photography",
-    description: "Get in touch with Noir Studio for your vintage film photography needs. Book a consultation, request a quote, or visit our studio. We&apos;re here to help capture your story.",
-    url: "https://codestam.com",
-  },
+const fadeInUp = {
+  initial: { opacity: 0, y: 60 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.8, ease: "easeOut" }
+}
+
+const staggerContainer = {
+  animate: {
+    transition: {
+      staggerChildren: 0.15
+    }
+  }
 }
 
 const contactInfo = [
@@ -114,25 +120,41 @@ export default function ContactPage() {
         </div>
         
         <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
-          <div className="space-y-8">
-            <Badge className="mb-8 bg-primary/20 text-primary border-primary/30 px-6 py-2 text-sm tracking-wider uppercase">
-              <MessageSquare className="w-4 h-4 mr-2" />
-              Get In Touch
-            </Badge>
+          <motion.div
+            variants={staggerContainer}
+            initial="initial"
+            animate="animate"
+            className="space-y-8"
+          >
+            <motion.div variants={fadeInUp}>
+              <Badge className="mb-8 bg-primary/20 text-primary border-primary/30 px-6 py-2 text-sm tracking-wider uppercase">
+                <MessageSquare className="w-4 h-4 mr-2" />
+                Get In Touch
+              </Badge>
+            </motion.div>
 
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 text-foreground leading-tight tracking-tight">
+            <motion.h1 
+              className="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 text-foreground leading-tight tracking-tight"
+              variants={fadeInUp}
+            >
               Let&apos;s Create Something
               <span className="block text-primary typewriter-effect">
                 Beautiful Together
               </span>
-            </h1>
+            </motion.h1>
 
-            <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-4xl mx-auto leading-relaxed">
+            <motion.p 
+              className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-4xl mx-auto leading-relaxed"
+              variants={fadeInUp}
+            >
               Every great photograph begins with a conversation. Whether you&apos;re planning a wedding,
               need professional portraits, or want to learn film photography, we&apos;re here to help.
-            </p>
+            </motion.p>
 
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+            <motion.div 
+              className="flex flex-col sm:flex-row gap-6 justify-center items-center"
+              variants={fadeInUp}
+            >
               <Button 
                 asChild 
                 size="lg" 
@@ -156,8 +178,8 @@ export default function ContactPage() {
                   View Portfolio
                 </Link>
               </Button>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
 
         {/* Scroll indicator */}

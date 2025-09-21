@@ -127,19 +127,20 @@ export default function HomePageClient() {
         
         <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
           <motion.div
-            initial={{ opacity: 0, y: 100 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: "easeOut" }}
+            variants={staggerContainer}
+            initial="initial"
+            animate="animate"
+            className="space-y-8"
           >
-            <Badge className="mb-8 bg-primary/20 text-primary border-primary/30 px-6 py-2 text-sm tracking-wider uppercase">
-              Est. 2014 • Film Photography
-            </Badge>
+            <motion.div variants={fadeInUp}>
+              <Badge className="mb-8 bg-primary/20 text-primary border-primary/30 px-6 py-2 text-sm tracking-wider uppercase">
+                Est. 2014 • Film Photography
+              </Badge>
+            </motion.div>
             
             <motion.h1 
               className="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 text-foreground leading-tight tracking-tight"
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.2 }}
+              variants={fadeInUp}
             >
               Timeless
               <span className="block text-primary typewriter-effect">Moments</span>
@@ -147,9 +148,7 @@ export default function HomePageClient() {
             
             <motion.p 
               className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-4xl mx-auto leading-relaxed"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.4 }}
+              variants={fadeInUp}
             >
               Capturing life&apos;s most precious moments through the art of vintage film photography. 
               Where every frame tells a story that transcends time.
@@ -157,9 +156,7 @@ export default function HomePageClient() {
 
             <motion.div 
               className="flex flex-col sm:flex-row gap-6 justify-center items-center"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.6 }}
+              variants={fadeInUp}
             >
               <Button 
                 asChild 

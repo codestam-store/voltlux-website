@@ -1,5 +1,8 @@
+"use client"
+
 import type { Metadata } from "next"
 import Link from "next/link"
+import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -24,15 +27,18 @@ import {
   Calendar
 } from "lucide-react"
 
-export const metadata: Metadata = {
-  title: "Photography Services | Noir Studio - Vintage Film Photography",
-  description: "Discover our comprehensive range of vintage film photography services including portraits, weddings, commercial shoots, and fine art prints. Timeless elegance in every frame.",
-  publisher: "Codestam Technologies",
-  openGraph: {
-    title: "Photography Services | Noir Studio - Vintage Film Photography",
-    description: "Discover our comprehensive range of vintage film photography services including portraits, weddings, commercial shoots, and fine art prints. Timeless elegance in every frame.",
-    url: "https://codestam.com",
-  },
+const fadeInUp = {
+  initial: { opacity: 0, y: 60 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.8, ease: "easeOut" }
+}
+
+const staggerContainer = {
+  animate: {
+    transition: {
+      staggerChildren: 0.15
+    }
+  }
 }
 
 const services = [
@@ -215,32 +221,40 @@ export default function ServicesPage() {
         </div>
         
         <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
-          <div
+          <motion.div
+            variants={staggerContainer}
+            initial="initial"
+            animate="animate"
             className="space-y-8"
           >
-            <Badge className="mb-8 bg-primary/20 text-primary border-primary/30 px-6 py-2 text-sm tracking-wider uppercase">
-              <Camera className="w-4 h-4 mr-2" />
-              Our Services
-            </Badge>
+            <motion.div variants={fadeInUp}>
+              <Badge className="mb-8 bg-primary/20 text-primary border-primary/30 px-6 py-2 text-sm tracking-wider uppercase">
+                <Camera className="w-4 h-4 mr-2" />
+                Our Services
+              </Badge>
+            </motion.div>
 
-            <h1 
+            <motion.h1 
               className="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 text-foreground leading-tight tracking-tight"
+              variants={fadeInUp}
             >
               Capturing Life&apos;s Most
               <span className="block text-primary typewriter-effect">
                 Precious Moments
               </span>
-            </h1>
+            </motion.h1>
 
-            <p 
+            <motion.p 
               className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-4xl mx-auto leading-relaxed"
+              variants={fadeInUp}
             >
               From intimate portraits to grand celebrations, we offer a comprehensive range of photography
               services, all captured with the timeless elegance of vintage film techniques.
-            </p>
+            </motion.p>
 
-            <div 
+            <motion.div 
               className="flex flex-col sm:flex-row gap-6 justify-center items-center"
+              variants={fadeInUp}
             >
               <Button 
                 asChild 
@@ -265,8 +279,8 @@ export default function ServicesPage() {
                   View Portfolio
                 </Link>
               </Button>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
 
         {/* Scroll indicator */}

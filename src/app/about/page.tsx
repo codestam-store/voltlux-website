@@ -1,5 +1,8 @@
+"use client"
+
 import type { Metadata } from "next"
 import Link from "next/link"
+import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -23,15 +26,18 @@ import {
   Calendar
 } from "lucide-react"
 
-export const metadata: Metadata = {
-  title: "About Us | Noir Studio - Vintage Film Photography",
-  description: "Discover the story behind Noir Studio, where vintage film photography meets timeless artistry. Learn about our passion for capturing authentic moments in classic black and white.",
-  publisher: "Codestam Technologies",
-  openGraph: {
-    title: "About Us | Noir Studio - Vintage Film Photography",
-    description: "Discover the story behind Noir Studio, where vintage film photography meets timeless artistry. Learn about our passion for capturing authentic moments in classic black and white.",
-    url: "https://codestam.com",
-  },
+const fadeInUp = {
+  initial: { opacity: 0, y: 60 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.8, ease: "easeOut" }
+}
+
+const staggerContainer = {
+  animate: {
+    transition: {
+      staggerChildren: 0.15
+    }
+  }
 }
 
 const values = [
@@ -134,25 +140,41 @@ export default function AboutPage() {
         </div>
         
         <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
-          <div className="space-y-8">
-            <Badge className="mb-8 bg-primary/20 text-primary border-primary/30 px-6 py-2 text-sm tracking-wider uppercase">
-              <Camera className="w-4 h-4 mr-2" />
-              About Our Studio
-            </Badge>
+          <motion.div
+            variants={staggerContainer}
+            initial="initial"
+            animate="animate"
+            className="space-y-8"
+          >
+            <motion.div variants={fadeInUp}>
+              <Badge className="mb-8 bg-primary/20 text-primary border-primary/30 px-6 py-2 text-sm tracking-wider uppercase">
+                <Camera className="w-4 h-4 mr-2" />
+                About Our Studio
+              </Badge>
+            </motion.div>
 
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 text-foreground leading-tight tracking-tight">
+            <motion.h1 
+              className="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 text-foreground leading-tight tracking-tight"
+              variants={fadeInUp}
+            >
               Preserving Moments in
               <span className="block text-primary typewriter-effect">
                 Timeless Elegance
               </span>
-            </h1>
+            </motion.h1>
 
-            <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-4xl mx-auto leading-relaxed">
+            <motion.p 
+              className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-4xl mx-auto leading-relaxed"
+              variants={fadeInUp}
+            >
               Noir Studio is dedicated to the art of vintage film photography, where every frame tells a story
               and every moment is captured with the timeless beauty of classic black and white imagery.
-            </p>
+            </motion.p>
 
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+            <motion.div 
+              className="flex flex-col sm:flex-row gap-6 justify-center items-center"
+              variants={fadeInUp}
+            >
               <Button 
                 asChild 
                 size="lg" 
@@ -176,8 +198,8 @@ export default function AboutPage() {
                   View Portfolio
                 </Link>
               </Button>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
 
         {/* Scroll indicator */}

@@ -137,7 +137,7 @@ const portfolioItems = [
     category: "weddings",
     year: "2024",
     client: "Grace & James",
-    image: "https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?w=800&h=1000&fit=crop&crop=center",
+    image: "https://cdn0.weddingwire.in/article/5577/3_2/960/jpg/77755-benefits-of-planning-an-intimate-wedding-wedding-story-mumbai-lead-image.jpeg",
     description: "Small ceremony with focus on emotional moments and details."
   },
   {
@@ -196,19 +196,20 @@ export default function PortfolioPageClient() {
         
         <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
           <motion.div
-            initial={{ opacity: 0, y: 100 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: "easeOut" }}
+            variants={staggerContainer}
+            initial="initial"
+            animate="animate"
+            className="space-y-8"
           >
-            <Badge className="mb-8 bg-primary/20 text-primary border-primary/30 px-6 py-2 text-sm tracking-wider uppercase">
-              Our Work
-            </Badge>
+            <motion.div variants={fadeInUp}>
+              <Badge className="mb-8 bg-primary/20 text-primary border-primary/30 px-6 py-2 text-sm tracking-wider uppercase">
+                Our Work
+              </Badge>
+            </motion.div>
             
             <motion.h1 
               className="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 text-foreground leading-tight tracking-tight"
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.2 }}
+              variants={fadeInUp}
             >
               Photography
               <span className="block text-primary typewriter-effect">Portfolio</span>
@@ -216,9 +217,7 @@ export default function PortfolioPageClient() {
             
             <motion.p 
               className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-4xl mx-auto leading-relaxed"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.4 }}
+              variants={fadeInUp}
             >
               A curated collection of our finest work, showcasing the timeless beauty 
               of vintage film photography and authentic storytelling.
@@ -226,9 +225,7 @@ export default function PortfolioPageClient() {
 
             <motion.div 
               className="flex flex-col sm:flex-row gap-6 justify-center items-center"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.6 }}
+              variants={fadeInUp}
             >
               <Button 
                 asChild 
