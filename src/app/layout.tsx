@@ -12,11 +12,11 @@ const josefinSans = Josefin_Sans({
 
 export const metadata: Metadata = {
   title: {
-    default: "QuantumForge - Next-Generation Digital Solutions",
-    template: "%s | QuantumForge"
+    default: "FunLearn Academy - Magical Learning Adventures for Kids",
+    template: "%s | FunLearn Academy"
   },
-  description: "Revolutionize your digital presence with QuantumForge. We deliver cutting-edge AI solutions, advanced web development, and transformative digital experiences that propel businesses into the future.",
-  keywords: ["AI solutions", "web development", "digital transformation", "quantum computing", "machine learning", "cloud architecture", "cybersecurity"],
+  description: "Join our magical learning adventures! FunLearn Academy offers fun, interactive educational experiences for children with cartoon characters, games, and exciting activities that make learning an adventure.",
+  keywords: ["kids education", "children learning", "cartoon learning", "educational games", "interactive learning", "fun education", "kids activities"],
   authors: [{ name: "Codestam Technologies" }],
   creator: "Codestam Technologies",
   publisher: "Codestam Technologies",
@@ -25,30 +25,30 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL("https://quantumforge.com"),
+  metadataBase: new URL("https://codestam.com"),
   alternates: {
     canonical: "/",
   },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://quantumforge.com",
-    title: "QuantumForge - Next-Generation Digital Solutions",
-    description: "Revolutionize your digital presence with QuantumForge. We deliver cutting-edge AI solutions, advanced web development, and transformative digital experiences that propel businesses into the future.",
-    siteName: "QuantumForge",
+    url: "https://codestam.com",
+    title: "FunLearn Academy - Magical Learning Adventures for Kids",
+    description: "Join our magical learning adventures! FunLearn Academy offers fun, interactive educational experiences for children with cartoon characters, games, and exciting activities that make learning an adventure.",
+    siteName: "FunLearn Academy",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "QuantumForge - Next-Generation Digital Solutions",
+        alt: "FunLearn Academy - Magical Learning Adventures for Kids",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "QuantumForge - Next-Generation Digital Solutions",
-    description: "Revolutionize your digital presence with QuantumForge. We deliver cutting-edge AI solutions, advanced web development, and transformative digital experiences that propel businesses into the future.",
+    title: "FunLearn Academy - Magical Learning Adventures for Kids",
+    description: "Join our magical learning adventures! FunLearn Academy offers fun, interactive educational experiences for children with cartoon characters, games, and exciting activities that make learning an adventure.",
     images: ["/og-image.jpg"],
     creator: "@codestamtech",
   },
@@ -81,7 +81,7 @@ export default function RootLayout({
         <meta name="theme-color" content="#000000" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <meta name="apple-mobile-web-app-title" content="QuantumForge" />
+        <meta name="apple-mobile-web-app-title" content="FunLearn Academy" />
         <link rel="apple-touch-icon" href="/favicon.svg" />
         <link rel="manifest" href="/manifest.json" />
       </head>
