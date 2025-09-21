@@ -36,7 +36,7 @@ const staggerContainer = {
 const vehicles = {
   sedans: [
     {
-      name: "VoltLux Apex",
+      name: "NOIR  Apex",
       subtitle: "Flagship Luxury Sedan",
       range: "520 miles",
       acceleration: "0-60 in 2.8s",
@@ -52,7 +52,7 @@ const vehicles = {
       }
     },
     {
-      name: "VoltLux Elite",
+      name: "NOIR  Elite",
       subtitle: "Executive Sedan",
       range: "480 miles",
       acceleration: "0-60 in 3.4s",
@@ -70,7 +70,7 @@ const vehicles = {
   ],
   suvs: [
     {
-      name: "VoltLux Titan",
+      name: "NOIR  Titan",
       subtitle: "Luxury Electric SUV",
       range: "480 miles",
       acceleration: "0-60 in 3.2s",
@@ -86,7 +86,7 @@ const vehicles = {
       }
     },
     {
-      name: "VoltLux Explorer",
+      name: "NOIR  Explorer",
       subtitle: "Adventure SUV",
       range: "450 miles",
       acceleration: "0-60 in 3.8s",
@@ -104,7 +104,7 @@ const vehicles = {
   ],
   sports: [
     {
-      name: "VoltLux Velocity",
+      name: "NOIR  Velocity",
       subtitle: "High-Performance Coupe",
       range: "450 miles",
       acceleration: "0-60 in 2.1s",
@@ -120,7 +120,7 @@ const vehicles = {
       }
     },
     {
-      name: "VoltLux Thunder",
+      name: "NOIR  Thunder",
       subtitle: "Electric Supercar",
       range: "380 miles",
       acceleration: "0-60 in 1.8s",
@@ -344,7 +344,7 @@ export default function VehiclesPageClient() {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Find Your Perfect VoltLux
+              Find Your Perfect NOIR 
             </h2>
             <p className="text-xl mb-8 opacity-90">
               Experience the future of mobility with a personalized test drive at our showroom.

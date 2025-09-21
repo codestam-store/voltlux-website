@@ -23,7 +23,7 @@ const contactMethods = [
     icon: Mail,
     title: "Email Support",
     description: "Send us your questions and feedback",
-    contact: "support@voltlux.com",
+    contact: "support@NOIR .com",
     hours: "24/7 Response",
     color: "text-blue-400"
   },
@@ -51,7 +51,7 @@ const offices = [
     type: "Headquarters",
     address: "123 Electric Avenue, Manhattan, NY 10001",
     phone: "+1 (555) 123-VOLT",
-    email: "ny@voltlux.com",
+    email: "ny@NOIR .com",
     hours: "Mon-Fri: 9AM-6PM EST",
     image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&h=400&fit=crop&crop=center"
   },
@@ -60,7 +60,7 @@ const offices = [
     type: "West Coast Hub",
     address: "456 Future Blvd, Beverly Hills, CA 90210",
     phone: "+1 (555) 456-VOLT",
-    email: "la@voltlux.com",
+    email: "la@NOIR .com",
     hours: "Mon-Fri: 9AM-6PM PST",
     image: "https://images.unsplash.com/photo-1444723121867-7a241cacace9?w=600&h=400&fit=crop&crop=center"
   },
@@ -69,7 +69,7 @@ const offices = [
     type: "Southeast Office",
     address: "789 Ocean Drive, South Beach, FL 33139",
     phone: "+1 (555) 789-VOLT",
-    email: "miami@voltlux.com",
+    email: "miami@NOIR .com",
     hours: "Mon-Fri: 9AM-6PM EST",
     image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=400&fit=crop&crop=center"
   }
@@ -133,11 +133,11 @@ export default function ContactPageClient() {
             </Badge>
             <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
               Contact
-              <span className="block text-white">VoltLux</span>
+              <span className="block text-white">NOIR </span>
             </h1>
             <p className="text-xl text-slate-300 leading-relaxed">
               Ready to experience the future of electric mobility? Our team is here to help you 
-              discover the perfect VoltLux vehicle for your lifestyle.
+              discover the perfect NOIR  vehicle for your lifestyle.
             </p>
           </motion.div>
         </div>
@@ -304,7 +304,7 @@ export default function ContactPageClient() {
                   <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-2xl blur-xl" />
                   <img
                     src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800&h=600&fit=crop&crop=center"
-                    alt="VoltLux Team"
+                    alt="NOIR  Team"
                     className="relative z-10 w-full h-64 object-cover rounded-2xl shadow-2xl"
                   />
                 </div>
@@ -439,7 +439,7 @@ export default function ContactPageClient() {
               Ready to Go Electric?
             </h2>
             <p className="text-xl text-slate-300 mb-8">
-              Join thousands of satisfied customers who have made the switch to VoltLux electric vehicles.
+              Join thousands of satisfied customers who have made the switch to NOIR  electric vehicles.
             </p>
             <motion.button
               whileHover={{ scale: 1.05 }}

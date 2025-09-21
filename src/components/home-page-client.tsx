@@ -1,301 +1,278 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { motion, useScroll, useTransform } from "framer-motion"
 import Link from "next/link"
+import { useRef, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { 
-  Zap, 
-  Battery, 
-  Gauge, 
-  Shield, 
-  Leaf, 
+  Camera, 
+  Film, 
+  Aperture, 
+  Timer, 
+  Award, 
   ArrowRight, 
   Play,
   Star,
   Users,
-  Award,
-  ChevronRight
+  Heart,
+  ChevronRight,
+  Quote,
+  Calendar,
+  MapPin
 } from "lucide-react"
 
 const fadeInUp = {
   initial: { opacity: 0, y: 60 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6, ease: "easeOut" }
+  transition: { duration: 0.8, ease: "easeOut" }
 }
 
 const staggerContainer = {
   animate: {
     transition: {
-      staggerChildren: 0.1
+      staggerChildren: 0.15
     }
   }
 }
 
-const vehicles = [
+const services = [
   {
-    name: "VoltLux Apex",
-    type: "Luxury Sedan",
-    range: "520 miles",
-    acceleration: "0-60 in 2.8s",
-    price: "From $89,900",
-    image: "https://images.unsplash.com/photo-1617788138017-80ad40651399?w=800&h=600&fit=crop&crop=center",
-    features: ["Autonomous Driving", "Premium Interior", "Fast Charging"]
+    name: "Portrait Sessions",
+    type: "Classic & Contemporary",
+    duration: "2-3 hours",
+    deliverables: "50+ edited photos",
+    price: "From $350",
+    image: "https://images.unsplash.com/photo-1554151228-14d9def656e4?w=800&h=600&fit=crop&crop=center",
+    features: ["Film & Digital", "Studio & Location", "Professional Editing"]
   },
   {
-    name: "VoltLux Titan",
-    type: "Electric SUV",
-    range: "480 miles",
-    acceleration: "0-60 in 3.2s",
-    price: "From $95,900",
-    image: "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=800&h=600&fit=crop&crop=center",
-    features: ["7-Seater", "Off-Road Capable", "Panoramic Roof"]
+    name: "Wedding Photography",
+    type: "Vintage Film Style",
+    duration: "Full day coverage",
+    deliverables: "200+ photos + album",
+    price: "From $2,500",
+    image: "https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=800&h=600&fit=crop&crop=center",
+    features: ["Engagement Session", "Film Processing", "Custom Album"]
   },
   {
-    name: "VoltLux Velocity",
-    type: "Sports Coupe",
-    range: "450 miles",
-    acceleration: "0-60 in 2.1s",
-    price: "From $125,900",
-    image: "https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?w=800&h=600&fit=crop&crop=center",
-    features: ["Track Mode", "Carbon Fiber", "Racing Suspension"]
+    name: "Commercial Shoots",
+    type: "Brand & Product",
+    duration: "Half/Full day",
+    deliverables: "Custom package",
+    price: "From $800",
+    image: "https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=800&h=600&fit=crop&crop=center",
+    features: ["Creative Direction", "Multiple Formats", "Usage Rights"]
   }
 ]
 
-const features = [
+const testimonials = [
   {
-    icon: Battery,
-    title: "Advanced Battery Technology",
-    description: "Next-generation lithium-ion batteries with industry-leading energy density and longevity."
+    name: "Sarah Mitchell",
+    role: "Bride",
+    content: "The vintage aesthetic and attention to detail was absolutely perfect. Every photo tells a story.",
+    rating: 5,
+    image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=center"
   },
   {
-    icon: Zap,
-    title: "Ultra-Fast Charging",
-    description: "Charge from 10% to 80% in just 18 minutes with our proprietary charging technology."
+    name: "David Chen",
+    role: "Business Owner",
+    content: "Professional, creative, and delivered exactly what we envisioned for our brand campaign.",
+    rating: 5,
+    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=center"
   },
   {
-    icon: Shield,
-    title: "Autonomous Safety",
-    description: "AI-powered safety systems with 360° awareness and predictive collision avoidance."
-  },
-  {
-    icon: Leaf,
-    title: "Zero Emissions",
-    description: "100% electric powertrain with carbon-neutral manufacturing and renewable energy."
+    name: "Emma Rodriguez",
+    role: "Model",
+    content: "The film photography approach created such authentic and timeless portraits. Highly recommend!",
+    rating: 5,
+    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=center"
   }
 ]
 
 const stats = [
-  { value: "500+", label: "Miles Range", icon: Gauge },
-  { value: "18min", label: "Fast Charging", icon: Zap },
-  { value: "2.1s", label: "0-60 MPH", icon: Battery },
-  { value: "5★", label: "Safety Rating", icon: Star }
+  { number: "500+", label: "Sessions Completed" },
+  { number: "50+", label: "Weddings Captured" },
+  { number: "10+", label: "Years Experience" },
+  { number: "98%", label: "Client Satisfaction" }
 ]
 
 export default function HomePageClient() {
-  return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Car Background Showcase */}
-        <div className="absolute inset-0">
-          {/* Main Hero Car */}
-          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1617788138017-80ad40651399?w=1920&h=1080&fit=crop&crop=center')] bg-cover bg-center">
-            <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/60 to-background/95"></div>
-            <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-background/40"></div>
-          </div>
-          
-          {/* Secondary Car Images - Floating */}
-          <motion.div 
-            className="absolute top-10 right-10 w-80 h-48 rounded-2xl overflow-hidden professional-shadow opacity-30"
-            initial={{ opacity: 0, x: 100 }}
-            animate={{ opacity: 0.3, x: 0 }}
-            transition={{ duration: 1, delay: 0.5 }}
-          >
-            <div className="w-full h-full bg-[url('https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=800&h=600&fit=crop&crop=center')] bg-cover bg-center"></div>
-          </motion.div>
-          
-          <motion.div 
-            className="absolute bottom-20 left-10 w-72 h-44 rounded-2xl overflow-hidden professional-shadow opacity-25"
-            initial={{ opacity: 0, x: -100 }}
-            animate={{ opacity: 0.25, x: 0 }}
-            transition={{ duration: 1, delay: 0.8 }}
-          >
-            <div className="w-full h-full bg-[url('https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?w=800&h=600&fit=crop&crop=center')] bg-cover bg-center"></div>
-          </motion.div>
-          
-          {/* Additional Car Silhouettes */}
-          <motion.div 
-            className="absolute top-1/2 left-20 w-64 h-36 rounded-xl overflow-hidden professional-shadow opacity-20"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 0.2, scale: 1 }}
-            transition={{ duration: 1, delay: 1.2 }}
-          >
-            <div className="w-full h-full bg-[url('https://images.unsplash.com/photo-1619767886558-efdc259cde1a?w=800&h=600&fit=crop&crop=center')] bg-cover bg-center"></div>
-          </motion.div>
-        </div>
+  const heroRef = useRef(null)
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"]
+  })
+  
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"])
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
 
-        {/* Content */}
+  return (
+    <div className="min-h-screen bg-background">
+      {/* Hero Section */}
+      <section ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden film-grain">
+        <motion.div 
+          className="absolute inset-0 z-0"
+          style={{ y, opacity }}
+        >
+          <img 
+            src="https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=1920&h=1080&fit=crop&crop=center" 
+            alt="Vintage photography studio with classic camera equipment"
+            className="w-full h-full object-cover grayscale"
+            loading="eager"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/40 to-background/80"></div>
+        </motion.div>
+        
         <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
           <motion.div
             initial={{ opacity: 0, y: 100 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            transition={{ duration: 1, ease: "easeOut" }}
           >
-            <Badge className="mb-6 bg-primary text-primary-foreground px-4 py-2 professional-shadow">
-              The Future is Electric
+            <Badge className="mb-8 bg-primary/20 text-primary border-primary/30 px-6 py-2 text-sm tracking-wider uppercase">
+              Est. 2014 • Film Photography
             </Badge>
             
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 text-foreground leading-tight drop-shadow-lg">
-              VoltLux
-            </h1>
+            <motion.h1 
+              className="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 text-foreground leading-tight tracking-tight"
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.2 }}
+            >
+              Timeless
+              <span className="block text-primary typewriter-effect">Moments</span>
+            </motion.h1>
             
-            <p className="text-xl md:text-2xl text-foreground/90 mb-8 max-w-3xl mx-auto leading-relaxed drop-shadow-md font-medium">
-              Experience the pinnacle of electric luxury. Where cutting-edge technology meets uncompromising performance.
-            </p>
+            <motion.p 
+              className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-4xl mx-auto leading-relaxed"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.4 }}
+            >
+              Capturing life&apos;s most precious moments through the art of vintage film photography. 
+              Where every frame tells a story that transcends time.
+            </motion.p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <motion.div 
+              className="flex flex-col sm:flex-row gap-6 justify-center items-center"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.6 }}
+            >
               <Button 
                 asChild 
                 size="lg" 
-                className="px-8 py-4 text-lg professional-shadow hover:scale-105 transition-transform"
+                className="retro-shadow text-base px-8 py-6 uppercase tracking-wider font-medium"
               >
-                <Link href="/vehicles">
-                  Explore Vehicles <ArrowRight className="ml-2 h-5 w-5" />
+                <Link href="/schedule" className="flex items-center gap-3">
+                  <Calendar className="w-5 h-5" />
+                  Book Your Session
+                  <ArrowRight className="w-5 h-5" />
                 </Link>
               </Button>
               
               <Button 
+                asChild 
                 variant="outline" 
-                size="lg" 
-                className="px-8 py-4 text-lg professional-shadow hover:scale-105 transition-transform bg-background/80 backdrop-blur-sm"
+                size="lg"
+                className="text-base px-8 py-6 uppercase tracking-wider font-medium vintage-border"
               >
-                <Play className="mr-2 h-5 w-5" />
-                Watch Demo
+                <Link href="/vehicles" className="flex items-center gap-3">
+                  <Camera className="w-5 h-5" />
+                  View Portfolio
+                </Link>
               </Button>
-            </div>
+            </motion.div>
           </motion.div>
         </div>
 
-        {/* Animated Car Elements */}
-        <motion.div
-          className="absolute top-1/4 right-1/4 w-16 h-16 rounded-full bg-primary/30 opacity-40 blur-lg"
-          animate={{ 
-            y: [0, -30, 0],
-            scale: [1, 1.2, 1],
-            rotate: [0, 180, 360]
-          }}
-          transition={{ 
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-        
-        <motion.div
-          className="absolute bottom-1/3 right-1/3 w-24 h-24 rounded-full bg-gradient-to-r from-primary/20 to-secondary/20 opacity-30 blur-xl"
-          animate={{ 
-            y: [0, 40, 0],
-            scale: [1, 0.7, 1],
-            rotate: [360, 180, 0]
-          }}
-          transition={{ 
-            duration: 10,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 3
-          }}
-        />
+        {/* Scroll indicator */}
+        <motion.div 
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 1 }}
+        >
+          <div className="w-6 h-10 border-2 border-muted-foreground rounded-full flex justify-center">
+            <motion.div 
+              className="w-1 h-3 bg-muted-foreground rounded-full mt-2"
+              animate={{ y: [0, 12, 0] }}
+              transition={{ duration: 2, repeat: Infinity }}
+            />
+          </div>
+        </motion.div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-20 bg-muted/30">
+      {/* Services Section */}
+      <section className="py-24 bg-muted/30">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
-            className="grid grid-cols-2 md:grid-cols-4 gap-8"
             variants={staggerContainer}
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
-          >
-            {stats.map((stat, index) => (
-              <motion.div
-                key={index}
-                variants={fadeInUp}
-                className="text-center"
-              >
-                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary text-primary-foreground mb-4 professional-shadow">
-                  <stat.icon className="h-8 w-8" />
-                </div>
-                <div className="text-3xl md:text-4xl font-bold text-foreground mb-2">
-                  {stat.value}
-                </div>
-                <div className="text-muted-foreground font-medium">
-                  {stat.label}
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Featured Vehicles */}
-      <section className="py-24 bg-background">
-        <div className="max-w-7xl mx-auto px-6">
-          <motion.div
             className="text-center mb-16"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
           >
-            <Badge className="mb-4 bg-primary text-primary-foreground">
-              Our Fleet
-            </Badge>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
-              Premium Electric Vehicles
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Discover our range of luxury electric vehicles, each engineered for performance, comfort, and sustainability.
-            </p>
+            <motion.div variants={fadeInUp}>
+              <Badge className="mb-6 bg-accent/20 text-accent-foreground border-accent/30 px-4 py-2 uppercase tracking-wider">
+                Our Services
+              </Badge>
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
+                Photography That Speaks
+              </h2>
+              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+                From intimate portraits to grand celebrations, we specialize in capturing 
+                authentic moments with vintage film aesthetics.
+              </p>
+            </motion.div>
           </motion.div>
 
-          <motion.div
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+          <motion.div 
+            className="grid md:grid-cols-3 gap-8"
             variants={staggerContainer}
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
           >
-            {vehicles.map((vehicle, index) => (
-              <motion.div key={index} variants={fadeInUp}>
-                <Card className="group overflow-hidden professional-shadow hover:shadow-lg transition-all duration-500">
-                  <div className="relative overflow-hidden">
-                    <img
-                      src={vehicle.image}
-                      alt={vehicle.name}
-                      className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700"
+            {services.map((service, index) => (
+              <motion.div key={service.name} variants={fadeInUp}>
+                <Card className="group overflow-hidden retro-shadow hover:shadow-2xl transition-all duration-500 photo-frame">
+                  <div className="relative aspect-[4/3] overflow-hidden">
+                    <img 
+                      src={service.image} 
+                      alt={service.name}
+                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
+                      loading="lazy"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    <Badge className="absolute top-4 left-4 bg-primary text-primary-foreground">
-                      {vehicle.type}
-                    </Badge>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div className="absolute bottom-4 left-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                      <Badge className="bg-primary/80 text-primary-foreground">
+                        {service.type}
+                      </Badge>
+                    </div>
                   </div>
                   
                   <CardContent className="p-6">
-                    <h3 className="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">
-                      {vehicle.name}
+                    <h3 className="text-2xl font-bold mb-3 text-foreground typewriter-effect">
+                      {service.name}
                     </h3>
                     
-                    <div className="grid grid-cols-2 gap-4 mb-4 text-sm text-muted-foreground">
-                      <div>Range: <span className="font-semibold text-foreground">{vehicle.range}</span></div>
-                      <div>0-60: <span className="font-semibold text-foreground">{vehicle.acceleration}</span></div>
+                    <div className="space-y-2 mb-4 text-sm text-muted-foreground">
+                      <div className="flex items-center gap-2">
+                        <Timer className="w-4 h-4" />
+                        {service.duration}
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Camera className="w-4 h-4" />
+                        {service.deliverables}
+                      </div>
                     </div>
 
                     <div className="flex flex-wrap gap-2 mb-4">
-                      {vehicle.features.map((feature, idx) => (
-                        <Badge key={idx} variant="secondary" className="text-xs">
+                      {service.features.map((feature) => (
+                        <Badge key={feature} variant="secondary" className="text-xs">
                           {feature}
                         </Badge>
                       ))}
@@ -303,14 +280,18 @@ export default function HomePageClient() {
 
                     <div className="flex items-center justify-between">
                       <span className="text-2xl font-bold text-primary">
-                        {vehicle.price}
+                        {service.price}
                       </span>
                       <Button 
+                        asChild 
                         variant="ghost" 
                         size="sm"
-                        className="group-hover:bg-primary group-hover:text-primary-foreground transition-colors"
+                        className="group/btn"
                       >
-                        Learn More <ChevronRight className="ml-1 h-4 w-4" />
+                        <Link href="/services" className="flex items-center gap-2">
+                          Learn More
+                          <ChevronRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                        </Link>
                       </Button>
                     </div>
                   </CardContent>
@@ -321,49 +302,93 @@ export default function HomePageClient() {
         </div>
       </section>
 
-      {/* Technology Features */}
-      <section className="py-24 bg-gradient-to-br from-slate-900 via-blue-900 to-purple-900 text-white">
+      {/* Stats Section */}
+      <section className="py-16 bg-primary text-primary-foreground">
         <div className="max-w-7xl mx-auto px-6">
-          <motion.div
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <Badge className="mb-4 bg-white/20 text-white border-white/30">
-              Innovation
-            </Badge>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 neon-text">
-              Cutting-Edge Technology
-            </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Every VoltLux vehicle is powered by breakthrough innovations that redefine what&apos;s possible in electric mobility.
-            </p>
-          </motion.div>
-
-          <motion.div
-            className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
+          <motion.div 
+            className="grid grid-cols-2 md:grid-cols-4 gap-8"
             variants={staggerContainer}
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
           >
-            {features.map((feature, index) => (
-              <motion.div
-                key={index}
+            {stats.map((stat, index) => (
+              <motion.div 
+                key={stat.label}
                 variants={fadeInUp}
-                className="text-center group"
+                className="text-center"
               >
-                <div className="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-primary text-primary-foreground mb-6 group-hover:scale-110 transition-transform duration-300 professional-shadow">
-                  <feature.icon className="h-10 w-10" />
+                <div className="text-4xl md:text-5xl font-bold mb-2 typewriter-effect">
+                  {stat.number}
                 </div>
-                <h3 className="text-xl font-bold mb-4 group-hover:text-primary transition-colors">
-                  {feature.title}
-                </h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  {feature.description}
-                </p>
+                <div className="text-sm uppercase tracking-wider opacity-90">
+                  {stat.label}
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-24">
+        <div className="max-w-7xl mx-auto px-6">
+          <motion.div
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <motion.div variants={fadeInUp}>
+              <Badge className="mb-6 bg-accent/20 text-accent-foreground border-accent/30 px-4 py-2 uppercase tracking-wider">
+                Client Stories
+              </Badge>
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
+                What Our Clients Say
+              </h2>
+            </motion.div>
+          </motion.div>
+
+          <motion.div 
+            className="grid md:grid-cols-3 gap-8"
+            variants={staggerContainer}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+          >
+            {testimonials.map((testimonial, index) => (
+              <motion.div key={testimonial.name} variants={fadeInUp}>
+                <Card className="p-6 retro-shadow vintage-border">
+                  <CardContent className="p-0">
+                    <Quote className="w-8 h-8 text-primary mb-4" />
+                    <p className="text-muted-foreground mb-6 leading-relaxed">
+                      &quot;{testimonial.content}&quot;
+                    </p>
+                    
+                    <div className="flex items-center gap-4">
+                      <img 
+                        src={testimonial.image} 
+                        alt={testimonial.name}
+                        className="w-12 h-12 rounded-full grayscale photo-frame"
+                        loading="lazy"
+                      />
+                      <div>
+                        <div className="font-semibold text-foreground typewriter-effect">
+                          {testimonial.name}
+                        </div>
+                        <div className="text-sm text-muted-foreground">
+                          {testimonial.role}
+                        </div>
+                      </div>
+                      <div className="ml-auto flex gap-1">
+                        {[...Array(testimonial.rating)].map((_, i) => (
+                          <Star key={i} className="w-4 h-4 fill-primary text-primary" />
+                        ))}
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
               </motion.div>
             ))}
           </motion.div>
@@ -371,38 +396,44 @@ export default function HomePageClient() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 professional-gradient">
-        <div className="max-w-4xl mx-auto px-6 text-center text-white">
+      <section className="py-24 bg-muted/30 film-grain">
+        <div className="max-w-4xl mx-auto px-6 text-center">
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            variants={fadeInUp}
+            initial="initial"
+            whileInView="animate"
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Ready to Experience the Future?
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
+              Ready to Create Something
+              <span className="block text-primary typewriter-effect">Timeless?</span>
             </h2>
-            <p className="text-xl mb-8 opacity-90">
-              Schedule a test drive and discover why VoltLux is leading the electric revolution.
+            <p className="text-xl text-muted-foreground mb-12 max-w-2xl mx-auto">
+              Let&apos;s discuss your vision and create photographs that will be treasured for generations.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            
+            <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <Button 
                 asChild 
                 size="lg" 
-                className="bg-white text-slate-900 hover:bg-gray-100 px-8 py-4 text-lg font-semibold"
+                className="retro-shadow text-base px-8 py-6 uppercase tracking-wider font-medium"
               >
-                <Link href="/schedule">
-                  Schedule Test Drive <ArrowRight className="ml-2 h-5 w-5" />
+                <Link href="/schedule" className="flex items-center gap-3">
+                  <Calendar className="w-5 h-5" />
+                  Book Consultation
+                  <ArrowRight className="w-5 h-5" />
                 </Link>
               </Button>
+              
               <Button 
-                asChild
+                asChild 
                 variant="outline" 
-                size="lg" 
-                className="border-white text-white hover:bg-white/10 px-8 py-4 text-lg"
+                size="lg"
+                className="text-base px-8 py-6 uppercase tracking-wider font-medium vintage-border"
               >
-                <Link href="/showroom">
-                  Visit Showroom
+                <Link href="/contact" className="flex items-center gap-3">
+                  <MapPin className="w-5 h-5" />
+                  Visit Studio
                 </Link>
               </Button>
             </div>

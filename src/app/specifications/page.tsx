@@ -2,8 +2,8 @@ import type { Metadata } from "next"
 import SpecificationsPageClient from "@/components/specifications-page-client"
 
 export const metadata: Metadata = {
-  title: "Vehicle Specifications - VoltLux",
-  description: "Detailed technical specifications for all VoltLux electric vehicles. Compare performance, range, charging capabilities, and features across our entire lineup.",
+  title: "Vehicle Specifications - NOIR ",
+  description: "Detailed technical specifications for all NOIR  electric vehicles. Compare performance, range, charging capabilities, and features across our entire lineup.",
   keywords: [
     "electric vehicle specs",
     "EV specifications",
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     "battery capacity",
     "charging speed",
     "range comparison",
-    "VoltLux specs"
+    "NOIR  specs"
   ],
   authors: [{ name: "Codestam Technologies" }],
   creator: "Codestam Technologies",
@@ -24,22 +24,22 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://codestam.com/specifications",
-    title: "Vehicle Specifications - VoltLux",
-    description: "Detailed technical specifications for all VoltLux electric vehicles. Compare performance, range, charging capabilities, and features across our entire lineup.",
-    siteName: "VoltLux",
+    title: "Vehicle Specifications - NOIR ",
+    description: "Detailed technical specifications for all NOIR  electric vehicles. Compare performance, range, charging capabilities, and features across our entire lineup.",
+    siteName: "NOIR ",
     images: [
       {
         url: "/og-specifications.jpg",
         width: 1200,
         height: 630,
-        alt: "VoltLux Vehicle Specifications",
+        alt: "NOIR  Vehicle Specifications",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Vehicle Specifications - VoltLux",
-    description: "Detailed technical specifications for all VoltLux electric vehicles. Compare performance, range, charging capabilities, and features across our entire lineup.",
+    title: "Vehicle Specifications - NOIR ",
+    description: "Detailed technical specifications for all NOIR  electric vehicles. Compare performance, range, charging capabilities, and features across our entire lineup.",
     images: ["/og-specifications.jpg"],
     creator: "@codestam",
   },

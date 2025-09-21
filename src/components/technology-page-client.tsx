@@ -171,7 +171,7 @@ export default function TechnologyPageClient() {
             </h1>
             
             <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-4xl mx-auto leading-relaxed">
-              Discover the revolutionary technologies that power VoltLux vehicles, from advanced AI systems to breakthrough battery innovations.
+              Discover the revolutionary technologies that power NOIR  vehicles, from advanced AI systems to breakthrough battery innovations.
             </p>
 
             <Button 
@@ -238,7 +238,7 @@ export default function TechnologyPageClient() {
               Revolutionary Innovations
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Each VoltLux vehicle incorporates breakthrough technologies that redefine what&apos;s possible in electric mobility.
+              Each NOIR  vehicle incorporates breakthrough technologies that redefine what&apos;s possible in electric mobility.
             </p>
           </motion.div>
 
@@ -331,7 +331,7 @@ export default function TechnologyPageClient() {
               What&apos;s Coming Next
             </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Explore the groundbreaking technologies we&apos;re developing for the next generation of VoltLux vehicles.
+              Explore the groundbreaking technologies we&apos;re developing for the next generation of NOIR  vehicles.
             </p>
           </motion.div>
 

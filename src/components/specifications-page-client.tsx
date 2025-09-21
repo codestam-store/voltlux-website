@@ -10,7 +10,7 @@ import { Zap, Battery, Gauge, Shield, Cpu, Wifi } from "lucide-react"
 const vehicles = [
   {
     id: "luxe-s",
-    name: "VoltLux Luxe S",
+    name: "NOIR  Luxe S",
     category: "Luxury Sedan",
     image: "https://images.unsplash.com/photo-1617788138017-80ad40651399?w=800&h=600&fit=crop&crop=center",
     specs: {
@@ -25,7 +25,7 @@ const vehicles = [
   },
   {
     id: "terra-x",
-    name: "VoltLux Terra X",
+    name: "NOIR  Terra X",
     category: "Electric SUV",
     image: "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=800&h=600&fit=crop&crop=center",
     specs: {
@@ -40,7 +40,7 @@ const vehicles = [
   },
   {
     id: "volt-r",
-    name: "VoltLux Volt R",
+    name: "NOIR  Volt R",
     category: "Sports Coupe",
     image: "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=800&h=600&fit=crop&crop=center",
     specs: {
@@ -97,7 +97,7 @@ export default function SpecificationsPageClient() {
               <span className="block text-white">Redefined</span>
             </h1>
             <p className="text-xl text-slate-300 leading-relaxed">
-              Discover the cutting-edge technology and engineering excellence that powers every VoltLux vehicle. 
+              Discover the cutting-edge technology and engineering excellence that powers every NOIR  vehicle. 
               From lightning-fast acceleration to industry-leading range, explore the specifications that set us apart.
             </p>
           </motion.div>
@@ -259,7 +259,7 @@ export default function SpecificationsPageClient() {
                 Advanced Technology
               </h2>
               <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-                Every VoltLux vehicle is equipped with cutting-edge technology for safety, performance, and connectivity
+                Every NOIR  vehicle is equipped with cutting-edge technology for safety, performance, and connectivity
               </p>
             </motion.div>
 

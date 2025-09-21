@@ -9,7 +9,7 @@ const milestones = [
   {
     year: "2018",
     title: "The Vision",
-    description: "VoltLux was founded with a simple yet ambitious vision: to create the world&apos;s most luxurious and sustainable electric vehicles.",
+    description: "NOIR  was founded with a simple yet ambitious vision: to create the world&apos;s most luxurious and sustainable electric vehicles.",
     image: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&h=400&fit=crop&crop=center"
   },
   {
@@ -33,7 +33,7 @@ const milestones = [
   {
     year: "2022",
     title: "First Delivery",
-    description: "Delivered our first VoltLux Luxe S to customers, marking the beginning of a new era in electric luxury mobility.",
+    description: "Delivered our first NOIR  Luxe S to customers, marking the beginning of a new era in electric luxury mobility.",
     image: "https://images.unsplash.com/photo-1617788138017-80ad40651399?w=600&h=400&fit=crop&crop=center"
   },
   {
@@ -125,7 +125,7 @@ export default function BrandStoryPageClient() {
               <span className="block text-white">The Future</span>
             </h1>
             <p className="text-xl text-slate-300 leading-relaxed">
-              From a bold vision to revolutionary reality, discover how VoltLux is transforming 
+              From a bold vision to revolutionary reality, discover how NOIR  is transforming 
               the automotive industry through innovation, sustainability, and uncompromising luxury.
             </p>
           </motion.div>
@@ -153,7 +153,7 @@ export default function BrandStoryPageClient() {
                 </p>
                 <p className="text-lg text-slate-400">
                   We believe that the future of mobility should not require compromise between 
-                  performance, luxury, and environmental responsibility. Every VoltLux vehicle 
+                  performance, luxury, and environmental responsibility. Every NOIR  vehicle 
                   represents our commitment to proving that sustainable can be spectacular.
                 </p>
               </div>
@@ -161,7 +161,7 @@ export default function BrandStoryPageClient() {
                 <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-2xl blur-xl" />
                 <img
                   src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop&crop=center"
-                  alt="VoltLux Mission"
+                  alt="NOIR  Mission"
                   className="relative z-10 w-full h-96 object-cover rounded-2xl shadow-2xl"
                 />
               </div>
@@ -184,7 +184,7 @@ export default function BrandStoryPageClient() {
                 Our Journey
               </h2>
               <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-                From inception to global impact, explore the key milestones that have shaped VoltLux
+                From inception to global impact, explore the key milestones that have shaped NOIR 
               </p>
             </motion.div>
 
@@ -403,7 +403,7 @@ export default function BrandStoryPageClient() {
               Join Our Journey
             </h2>
             <p className="text-xl text-slate-300 mb-8">
-              Be part of the electric revolution. Experience the future of luxury mobility with VoltLux.
+              Be part of the electric revolution. Experience the future of luxury mobility with NOIR .
             </p>
             <motion.button
               whileHover={{ scale: 1.05 }}

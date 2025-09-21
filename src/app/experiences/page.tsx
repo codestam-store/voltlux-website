@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import ExperiencesPageClient from "@/components/experiences-page-client"
 
 export const metadata: Metadata = {
-  title: "Experiences - VoltLux",
+  title: "Experiences - NOIR ",
   description: "Discover unique eco-tourism experiences that go beyond traditional travel. From wildlife conservation to cultural workshops, immerse yourself in transformative journeys.",
   keywords: [
     "eco-tourism experiences",
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     "cultural experiences",
     "wildlife experiences",
     "adventure experiences",
-    "VoltLux"
+    "NOIR "
   ],
   authors: [{ name: "Codestam Technologies" }],
   creator: "Codestam Technologies",
@@ -24,13 +24,13 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://codestam.com/experiences",
-    title: "Experiences - VoltLux",
+    title: "Experiences - NOIR ",
     description: "Discover unique eco-tourism experiences that go beyond traditional travel. From wildlife conservation to cultural workshops, immerse yourself in transformative journeys.",
-    siteName: "VoltLux",
+    siteName: "NOIR ",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Experiences - VoltLux",
+    title: "Experiences - NOIR ",
     description: "Discover unique eco-tourism experiences that go beyond traditional travel. From wildlife conservation to cultural workshops, immerse yourself in transformative journeys.",
     creator: "@codestam",
   },
