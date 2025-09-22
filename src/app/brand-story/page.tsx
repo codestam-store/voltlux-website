@@ -2,10 +2,10 @@ import type { Metadata } from "next"
 import BrandStoryPageClient from "@/components/brand-story-page-client"
 
 export const metadata: Metadata = {
-  title: "Brand Story - VoltLux",
-  description: "Discover the VoltLux story - our mission to revolutionize electric mobility through innovation, sustainability, and luxury. Learn about our journey, values, and vision for the future.",
+  title: "Brand Story - NOIR ",
+  description: "Discover the NOIR  story - our mission to revolutionize electric mobility through innovation, sustainability, and luxury. Learn about our journey, values, and vision for the future.",
   keywords: [
-    "VoltLux brand story",
+    "NOIR  brand story",
     "electric vehicle company",
     "sustainable mobility",
     "luxury EV brand",
@@ -24,22 +24,22 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://codestam.com/brand-story",
-    title: "Brand Story - VoltLux",
-    description: "Discover the VoltLux story - our mission to revolutionize electric mobility through innovation, sustainability, and luxury. Learn about our journey, values, and vision for the future.",
-    siteName: "VoltLux",
+    title: "Brand Story - NOIR ",
+    description: "Discover the NOIR  story - our mission to revolutionize electric mobility through innovation, sustainability, and luxury. Learn about our journey, values, and vision for the future.",
+    siteName: "NOIR ",
     images: [
       {
         url: "/og-brand-story.jpg",
         width: 1200,
         height: 630,
-        alt: "VoltLux Brand Story",
+        alt: "NOIR  Brand Story",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Brand Story - VoltLux",
-    description: "Discover the VoltLux story - our mission to revolutionize electric mobility through innovation, sustainability, and luxury. Learn about our journey, values, and vision for the future.",
+    title: "Brand Story - NOIR ",
+    description: "Discover the NOIR  story - our mission to revolutionize electric mobility through innovation, sustainability, and luxury. Learn about our journey, values, and vision for the future.",
     images: ["/og-brand-story.jpg"],
     creator: "@codestam",
   },

@@ -380,7 +380,7 @@ export default function AdventuresPageClient() {
               Ready to Start Your Adventure?
             </h2>
             <p className="text-xl mb-8 text-primary-foreground/90 max-w-2xl mx-auto">
-              Join thousands of travelers who have discovered the transformative power of eco-tourism with VoltLux
+              Join thousands of travelers who have discovered the transformative power of eco-tourism with NOIR 
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild size="lg" variant="secondary" className="text-lg px-8 py-6">

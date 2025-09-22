@@ -10,7 +10,7 @@ import { useState } from "react"
 const vehicles = [
   {
     id: 1,
-    name: "VoltLux Luxe S",
+    name: "NOIR  Luxe S",
     category: "Luxury Sedan",
     price: "From $89,900",
     image: "https://images.unsplash.com/photo-1617788138017-80ad40651399?w=1200&h=800&fit=crop&crop=center",
@@ -20,7 +20,7 @@ const vehicles = [
   },
   {
     id: 2,
-    name: "VoltLux Terra X",
+    name: "NOIR  Terra X",
     category: "Electric SUV",
     price: "From $94,900",
     image: "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=1200&h=800&fit=crop&crop=center",
@@ -30,7 +30,7 @@ const vehicles = [
   },
   {
     id: 3,
-    name: "VoltLux Volt R",
+    name: "NOIR  Volt R",
     category: "Sports Coupe",
     price: "From $119,900",
     image: "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=1200&h=800&fit=crop&crop=center",
@@ -102,7 +102,7 @@ export default function ShowroomPageClient() {
             </Badge>
             <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
               Experience
-              <span className="block text-white">VoltLux</span>
+              <span className="block text-white">NOIR </span>
             </h1>
             <p className="text-xl text-slate-300 leading-relaxed">
               Immerse yourself in the future of electric mobility. Explore our vehicles in stunning detail, 
@@ -263,7 +263,7 @@ export default function ShowroomPageClient() {
                 Visit Our Showrooms
               </h2>
               <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-                Experience VoltLux vehicles in person at our premium showroom locations
+                Experience NOIR  vehicles in person at our premium showroom locations
               </p>
             </motion.div>
 
@@ -379,7 +379,7 @@ export default function ShowroomPageClient() {
             className="text-center max-w-4xl mx-auto"
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
-              Ready to Experience VoltLux?
+              Ready to Experience NOIR ?
             </h2>
             <p className="text-xl text-slate-300 mb-8">
               Schedule your personalized showroom experience or test drive today.

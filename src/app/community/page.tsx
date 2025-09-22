@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import CommunityPageClient from "@/components/community-page-client"
 
 export const metadata: Metadata = {
-  title: "Community - VoltLux",
+  title: "Community - NOIR ",
   description: "Connect with fellow eco-tourists, share your travel stories, and join our global community of conscious travelers.",
   keywords: [
     "eco-tourism community",
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     "traveler stories",
     "eco-tourist network",
     "travel community",
-    "VoltLux"
+    "NOIR "
   ],
   authors: [{ name: "Codestam Technologies" }],
   creator: "Codestam Technologies",
@@ -24,13 +24,13 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://codestam.com/community",
-    title: "Community - VoltLux",
+    title: "Community - NOIR ",
     description: "Connect with fellow eco-tourists, share your travel stories, and join our global community of conscious travelers.",
-    siteName: "VoltLux",
+    siteName: "NOIR ",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Community - VoltLux",
+    title: "Community - NOIR ",
     description: "Connect with fellow eco-tourists, share your travel stories, and join our global community of conscious travelers.",
     creator: "@codestam",
   },

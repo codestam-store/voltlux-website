@@ -1,207 +1,205 @@
+"use client"
+
 import type { Metadata } from "next"
 import Link from "next/link"
+import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
 import {
   ArrowRight,
-  Code2,
-  Smartphone,
-  Globe,
-  Shield,
-  Zap,
-  Users,
-  Database,
-  Cloud,
-  Lock,
-  BarChart3,
-  Palette,
-  Cpu,
-  Rocket,
-  Target,
-  CheckCircle,
-  Star,
-  Clock,
-  MessageSquare,
-  FileText,
-  Settings,
-  Wrench,
-  TrendingUp,
-  Lightbulb,
-  Building2,
+  Camera,
   Heart,
-  Award,
+  Users,
+  Building2,
+  Palette,
+  BookOpen,
+  Clock,
+  Star,
+  CheckCircle,
   Eye,
-  Brain,
-  Handshake
+  Award,
+  Sparkles,
+  Film,
+  Image,
+  Printer,
+  Calendar
 } from "lucide-react"
 
-export const metadata: Metadata = {
-  title: "Services | Codestam Technologies",
-  description: "Comprehensive digital solutions including custom software development, mobile apps, web development, cloud infrastructure, cybersecurity, and digital transformation services.",
-  openGraph: {
-    title: "Services | Codestam Technologies",
-    description: "Comprehensive digital solutions including custom software development, mobile apps, web development, cloud infrastructure, cybersecurity, and digital transformation services.",
-  },
+const fadeInUp = {
+  initial: { opacity: 0, y: 60 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.8, ease: "easeOut" }
+}
+
+const staggerContainer = {
+  animate: {
+    transition: {
+      staggerChildren: 0.15
+    }
+  }
 }
 
 const services = [
   {
-    icon: Code2,
-    title: "Custom Software Development",
-    description: "Tailored software solutions built from the ground up to meet your specific business requirements and objectives.",
-    features: [
-      "Enterprise applications",
-      "Business process automation",
-      "Legacy system modernization",
-      "API development & integration",
-      "Microservices architecture",
-      "Scalable backend systems"
-    ],
-    color: "from-blue-500 to-cyan-500",
-    price: "From $15,000"
-  },
-  {
-    icon: Smartphone,
-    title: "Mobile App Development",
-    description: "Native and cross-platform mobile applications that deliver exceptional user experiences across all devices.",
-    features: [
-      "iOS & Android development",
-      "React Native & Flutter",
-      "Progressive Web Apps",
-      "App store optimization",
-      "Push notifications",
-      "Offline functionality"
-    ],
-    color: "from-purple-500 to-pink-500",
-    price: "From $12,000"
-  },
-  {
-    icon: Globe,
-    title: "Web Development",
-    description: "Responsive, scalable web applications and platforms that drive engagement and business growth.",
-    features: [
-      "E-commerce platforms",
-      "Content management systems",
-      "Progressive web apps",
-      "Single page applications",
-      "Multi-tenant platforms",
-      "Real-time applications"
-    ],
-    color: "from-green-500 to-emerald-500",
-    price: "From $10,000"
-  },
-  {
-    icon: Shield,
-    title: "Cybersecurity Solutions",
-    description: "Comprehensive security measures and protocols to protect your digital assets and maintain compliance.",
-    features: [
-      "Security audits & assessments",
-      "Penetration testing",
-      "Compliance frameworks",
-      "Data encryption",
-      "Access control systems",
-      "Security monitoring"
-    ],
-    color: "from-red-500 to-orange-500",
-    price: "From $8,000"
-  },
-  {
-    icon: Zap,
-    title: "Cloud Infrastructure",
-    description: "Scalable cloud solutions that optimize performance, reduce costs, and ensure business continuity.",
-    features: [
-      "AWS, Azure, Google Cloud",
-      "Container orchestration",
-      "Serverless architecture",
-      "Auto-scaling solutions",
-      "Disaster recovery",
-      "Cost optimization"
-    ],
-    color: "from-indigo-500 to-blue-500",
-    price: "From $5,000"
-  },
-  {
     icon: Users,
-    title: "Digital Transformation",
-    description: "End-to-end digital transformation services to modernize your business processes and technology stack.",
+    title: "Portrait Sessions",
+    description: "Intimate individual and family portraits that capture the essence of your personality",
     features: [
-      "Process optimization",
-      "Technology assessment",
-      "Change management",
-      "Training & support",
-      "Performance monitoring",
-      "Continuous improvement"
+      "Individual portrait sessions",
+      "Family photography",
+      "Professional headshots",
+      "Maternity & newborn",
+      "Senior portraits",
+      "Pet photography"
     ],
-    color: "from-yellow-500 to-orange-500",
-    price: "From $25,000"
+    duration: "2-3 hours",
+    deliverables: "20-30 edited images",
+    price: "Starting at $350",
+    image: "https://images.unsplash.com/photo-1554151228-14d9def656e4?w=600&h=400&fit=crop"
+  },
+  {
+    icon: Heart,
+    title: "Wedding Photography",
+    description: "Timeless documentation of your special day with vintage elegance and emotional depth",
+    features: [
+      "Full day coverage",
+      "Engagement sessions",
+      "Bridal portraits",
+      "Ceremony & reception",
+      "Candid moments",
+      "Family group photos"
+    ],
+    duration: "8-12 hours",
+    deliverables: "100-200 edited images",
+    price: "Starting at $2,500",
+    image: "https://images.unsplash.com/photo-1519741497674-611481863552?w=600&h=400&fit=crop"
+  },
+  {
+    icon: Building2,
+    title: "Commercial Photography",
+    description: "Professional imagery for businesses, brands, and publications with artistic flair",
+    features: [
+      "Brand photography",
+      "Product shoots",
+      "Corporate portraits",
+      "Editorial work",
+      "Advertising campaigns",
+      "Architecture photography"
+    ],
+    duration: "4-8 hours",
+    deliverables: "30-50 edited images",
+    price: "Starting at $800",
+    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop"
+  },
+  {
+    icon: Palette,
+    title: "Fine Art Prints",
+    description: "Museum-quality prints and custom framing services for your treasured photographs",
+    features: [
+      "Archival quality prints",
+      "Custom framing",
+      "Canvas & metal prints",
+      "Limited edition series",
+      "Gallery exhibitions",
+      "Print restoration"
+    ],
+    duration: "1-2 weeks",
+    deliverables: "Custom print sizes",
+    price: "Starting at $75",
+    image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=400&fit=crop"
+  },
+  {
+    icon: Film,
+    title: "Film Development",
+    description: "Traditional darkroom processing and restoration services for vintage film",
+    features: [
+      "35mm & medium format",
+      "Black & white processing",
+      "Print development",
+      "Negative scanning",
+      "Photo restoration",
+      "Archival storage"
+    ],
+    duration: "3-5 days",
+    deliverables: "Developed film & prints",
+    price: "Starting at $25",
+    image: "https://images.unsplash.com/photo-1606983340126-99ab4feaa64a?w=600&h=400&fit=crop"
+  },
+  {
+    icon: BookOpen,
+    title: "Photography Workshops",
+    description: "Learn the art and craft of vintage film photography from experienced professionals",
+    features: [
+      "Film photography basics",
+      "Darkroom techniques",
+      "Composition & lighting",
+      "Portrait photography",
+      "Street photography",
+      "One-on-one mentoring"
+    ],
+    duration: "4-6 hours",
+    deliverables: "Hands-on experience",
+    price: "Starting at $200",
+    image: "https://images.unsplash.com/photo-1452587925148-ce544e77e70d?w=600&h=400&fit=crop"
   }
 ]
 
 const process = [
   {
     step: "01",
-    title: "Discovery & Planning",
-    description: "We start by understanding your business goals, challenges, and requirements to create a comprehensive project plan.",
-    icon: Target
+    title: "Initial Consultation",
+    description: "We begin with a detailed conversation about your vision, style preferences, and specific requirements.",
+    icon: Eye
   },
   {
     step: "02",
-    title: "Design & Architecture",
-    description: "Our team designs the solution architecture and creates detailed technical specifications and wireframes.",
-    icon: Palette
+    title: "Planning & Preparation",
+    description: "We plan every detail of your session, from location scouting to equipment preparation and styling guidance.",
+    icon: Clock
   },
   {
     step: "03",
-    title: "Development & Testing",
-    description: "We build your solution using agile methodologies with continuous testing and quality assurance.",
-    icon: Code2
+    title: "Photography Session",
+    description: "The magic happens during our session, where we capture authentic moments with artistic vision and technical precision.",
+    icon: Camera
   },
   {
     step: "04",
-    title: "Deployment & Launch",
-    description: "We deploy your solution to production with comprehensive monitoring and support systems in place.",
-    icon: Rocket
+    title: "Post-Production",
+    description: "Each image is carefully processed and edited to achieve the perfect vintage aesthetic while maintaining authenticity.",
+    icon: Palette
   },
   {
     step: "05",
-    title: "Support & Maintenance",
-    description: "We provide ongoing support, maintenance, and updates to ensure your solution continues to perform optimally.",
-    icon: Wrench
+    title: "Delivery & Prints",
+    description: "Your final images are delivered digitally, with optional fine art prints and custom framing available.",
+    icon: Printer
   }
-]
-
-const technologies = [
-  { category: "Frontend", items: ["React", "Next.js", "Vue.js", "Angular", "TypeScript", "Tailwind CSS"] },
-  { category: "Backend", items: ["Node.js", "Python", "Java", "Go", "PHP", "Ruby"] },
-  { category: "Database", items: ["PostgreSQL", "MongoDB", "Redis", "MySQL", "Elasticsearch"] },
-  { category: "Cloud", items: ["AWS", "Google Cloud", "Azure", "Docker", "Kubernetes"] },
-  { category: "Mobile", items: ["React Native", "Flutter", "Swift", "Kotlin", "Ionic"] },
-  { category: "DevOps", items: ["CI/CD", "Terraform", "Ansible", "Jenkins", "GitLab"] }
 ]
 
 const testimonials = [
   {
-    name: "Jennifer Martinez",
-    role: "CTO, TechFlow Solutions",
-    content: "Codestam Technologies delivered our custom software solution ahead of schedule with exceptional quality. Their expertise in modern technologies and attention to detail exceeded our expectations.",
+    name: "Sarah Mitchell",
+    role: "Bride",
+    content: "Elena captured our wedding with such artistry and emotion. The vintage style perfectly matched our vision, and every photo tells our story beautifully.",
     rating: 5,
-    service: "Custom Software Development"
+    image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face"
   },
   {
-    name: "Robert Chen",
-    role: "CEO, InnovateCorp",
-    content: "The mobile app developed by Codestam has transformed our customer engagement. The user experience is intuitive and the performance is outstanding across all devices.",
+    name: "David Chen",
+    role: "Business Owner",
+    content: "The commercial photography for our brand exceeded all expectations. The artistic approach elevated our visual identity significantly.",
     rating: 5,
-    service: "Mobile App Development"
+    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face"
   },
   {
-    name: "Amanda Wilson",
-    role: "IT Director, DataSync",
-    content: "Our digital transformation project with Codestam has increased our operational efficiency by 300%. Their strategic approach and technical expertise are unmatched.",
+    name: "Maria Rodriguez",
+    role: "Family Portrait Client",
+    content: "Our family portraits are absolutely stunning. The vintage aesthetic and attention to detail made this experience truly special.",
     rating: 5,
-    service: "Digital Transformation"
+    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face"
   }
 ]
 
@@ -209,98 +207,169 @@ export default function ServicesPage() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-background via-background to-primary/5 py-20 lg:py-32">
-        <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:50px_50px]" />
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-transparent to-secondary/10" />
-
-        <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center space-y-8 max-w-4xl mx-auto">
-            <div className="space-y-4">
-              <Badge variant="secondary" className="inline-flex items-center space-x-2 px-3 py-1">
-                <Code2 className="w-4 h-4" />
-                <span>Our Services</span>
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden film-grain">
+        <div 
+          className="absolute inset-0 z-0"
+        >
+          <img 
+            src="https://images.unsplash.com/photo-1452587925148-ce544e77e70d?w=1920&h=1080&fit=crop&crop=center" 
+            alt="Photography workshop and learning environment"
+            className="w-full h-full object-cover grayscale"
+            loading="eager"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/40 to-background/80"></div>
+        </div>
+        
+        <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
+          <motion.div
+            variants={staggerContainer}
+            initial="initial"
+            animate="animate"
+            className="space-y-8"
+          >
+            <motion.div variants={fadeInUp}>
+              <Badge className="mb-8 bg-primary/20 text-primary border-primary/30 px-6 py-2 text-sm tracking-wider uppercase">
+                <Camera className="w-4 h-4 mr-2" />
+                Our Services
               </Badge>
+            </motion.div>
 
-              <h1 className="text-4xl lg:text-6xl font-bold tracking-tight text-balance">
-                Comprehensive Digital
-                <span className="block bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                  Solutions
-                </span>
-              </h1>
+            <motion.h1 
+              className="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 text-foreground leading-tight tracking-tight"
+              variants={fadeInUp}
+            >
+              Capturing Life&apos;s Most
+              <span className="block text-primary typewriter-effect">
+                Precious Moments
+              </span>
+            </motion.h1>
 
-              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                We offer a full spectrum of digital services designed to transform your business and drive
-                sustainable growth. From custom software development to digital transformation, we have the
-                expertise to bring your vision to life.
-              </p>
-            </div>
+            <motion.p 
+              className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-4xl mx-auto leading-relaxed"
+              variants={fadeInUp}
+            >
+              From intimate portraits to grand celebrations, we offer a comprehensive range of photography
+              services, all captured with the timeless elegance of vintage film techniques.
+            </motion.p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild size="lg" className="group">
-                <Link href="/contact">
-                  Start Your Project
-                  <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            <motion.div 
+              className="flex flex-col sm:flex-row gap-6 justify-center items-center"
+              variants={fadeInUp}
+            >
+              <Button 
+                asChild 
+                size="lg" 
+                className="retro-shadow text-base px-8 py-6 uppercase tracking-wider font-medium"
+              >
+                <Link href="/schedule" className="flex items-center gap-3">
+                  <Calendar className="w-5 h-5" />
+                  Book Your Session
+                  <ArrowRight className="w-5 h-5" />
                 </Link>
               </Button>
-
-              <Button variant="outline" size="lg" asChild>
-                <Link href="#services">
-                  View All Services
+              
+              <Button 
+                asChild 
+                variant="outline" 
+                size="lg"
+                className="text-base px-8 py-6 uppercase tracking-wider font-medium vintage-border"
+              >
+                <Link href="/vehicles" className="flex items-center gap-3">
+                  <Camera className="w-5 h-5" />
+                  View Portfolio
                 </Link>
               </Button>
-            </div>
+            </motion.div>
+          </motion.div>
+        </div>
+
+        {/* Scroll indicator */}
+        <div 
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+        >
+          <div className="w-6 h-10 border-2 border-muted-foreground rounded-full flex justify-center">
+            <div 
+              className="w-1 h-3 bg-muted-foreground rounded-full mt-2"
+            />
           </div>
         </div>
       </section>
 
       {/* Services Grid */}
-      <section id="services" className="py-20 lg:py-32">
+      <section className="py-20 lg:py-32">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-4 mb-16">
-            <Badge variant="outline" className="px-3 py-1">
+            <Badge variant="outline" className="px-3 py-1 vintage-border">
               What We Offer
             </Badge>
-            <h2 className="text-3xl lg:text-5xl font-bold">
-              Our Core Services
+            <h2 className="text-3xl lg:text-5xl font-bold typewriter-effect">
+              Our Photography Services
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              We provide end-to-end digital solutions that help businesses innovate, scale, and succeed
-              in the digital economy.
+              Each service is crafted with meticulous attention to detail and artistic vision,
+              ensuring your memories are preserved with timeless elegance.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid lg:grid-cols-2 gap-8">
             {services.map((service, index) => (
-              <Card key={index} className="group hover:shadow-xl transition-all duration-300 border-0 bg-card/50 backdrop-blur-sm">
-                <CardHeader>
-                  <div className={`w-12 h-12 bg-gradient-to-br ${service.color} rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
-                    <service.icon className="w-6 h-6 text-white" />
+              <Card key={index} className="group hover:shadow-lg transition-all duration-300 vintage-border retro-shadow">
+                <div className="relative overflow-hidden rounded-t-lg">
+                  <img
+                    src={service.image}
+                    alt={service.title}
+                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
+                  <div className="absolute bottom-4 left-4">
+                    <div className="w-12 h-12 bg-background/90 rounded-xl flex items-center justify-center vintage-border">
+                      <service.icon className="w-6 h-6 text-foreground" />
+                    </div>
                   </div>
-                  <CardTitle className="text-xl">{service.title}</CardTitle>
-                  <CardDescription className="text-base">
-                    {service.description}
-                  </CardDescription>
-                  <div className="text-lg font-semibold text-primary">
-                    {service.price}
+                </div>
+
+                <CardHeader>
+                  <div className="flex justify-between items-start">
+                    <div>
+                      <CardTitle className="text-2xl mb-2">{service.title}</CardTitle>
+                      <CardDescription className="text-base">{service.description}</CardDescription>
+                    </div>
+                    <Badge variant="secondary" className="vintage-border">
+                      {service.price}
+                    </Badge>
                   </div>
                 </CardHeader>
-                <CardContent>
-                  <div className="space-y-3">
-                    <h4 className="font-medium text-foreground">Key Features:</h4>
-                    <ul className="space-y-2">
-                      {service.features.map((feature, featureIndex) => (
-                        <li key={featureIndex} className="flex items-center space-x-2 text-sm text-muted-foreground">
-                          <CheckCircle className="w-4 h-4 text-primary flex-shrink-0" />
-                          <span>{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
+
+                <CardContent className="space-y-6">
+                  <div className="grid grid-cols-2 gap-4 text-sm">
+                    <div>
+                      <div className="font-medium text-foreground mb-1">Duration</div>
+                      <div className="text-muted-foreground">{service.duration}</div>
+                    </div>
+                    <div>
+                      <div className="font-medium text-foreground mb-1">Deliverables</div>
+                      <div className="text-muted-foreground">{service.deliverables}</div>
+                    </div>
                   </div>
 
-                  <Button asChild className="w-full mt-6 group">
-                    <Link href="/contact">
-                      Get Started
-                      <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  <Separator />
+
+                  <div>
+                    <h4 className="font-medium text-foreground mb-3">What&apos;s Included:</h4>
+                    <div className="grid grid-cols-2 gap-2">
+                      {service.features.map((feature, featureIndex) => (
+                        <div key={featureIndex} className="flex items-center space-x-2 text-sm">
+                          <CheckCircle className="w-4 h-4 text-foreground flex-shrink-0" />
+                          <span className="text-muted-foreground">{feature}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <Button asChild className="w-full vintage-border">
+                    <Link href="/schedule">
+                      Book This Service
+                      <ArrowRight className="ml-2 w-4 h-4" />
                     </Link>
                   </Button>
                 </CardContent>
@@ -314,118 +383,76 @@ export default function ServicesPage() {
       <section className="py-20 lg:py-32 bg-muted/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-4 mb-16">
-            <Badge variant="outline" className="px-3 py-1">
+            <Badge variant="outline" className="px-3 py-1 vintage-border">
               Our Process
             </Badge>
-            <h2 className="text-3xl lg:text-5xl font-bold">
+            <h2 className="text-3xl lg:text-5xl font-bold typewriter-effect">
               How We Work
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Our proven development process ensures transparency, quality, and successful project delivery
-              from concept to completion.
+              Our proven process ensures that every project is executed with precision,
+              creativity, and attention to your unique vision.
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8">
             {process.map((step, index) => (
-              <div key={index} className="relative">
-                <div className="text-center space-y-4">
-                  <div className="relative mx-auto">
-                    <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-                      <step.icon className="w-8 h-8 text-primary" />
-                    </div>
-                    <div className="absolute -top-2 -right-2 w-8 h-8 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-bold">
-                      {step.step}
-                    </div>
+              <div key={index} className="text-center group">
+                <div className="relative mb-6">
+                  <div className="w-20 h-20 bg-card border border-border rounded-2xl flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-300 vintage-border retro-shadow">
+                    <step.icon className="w-8 h-8 text-foreground" />
                   </div>
-                  <div>
-                    <h3 className="text-lg font-semibold mb-2">{step.title}</h3>
-                    <p className="text-sm text-muted-foreground">{step.description}</p>
+                  <div className="absolute -top-2 -right-2 w-8 h-8 bg-foreground text-background rounded-full flex items-center justify-center text-sm font-bold">
+                    {step.step}
                   </div>
                 </div>
-
-                {index < process.length - 1 && (
-                  <div className="hidden lg:block absolute top-8 left-full w-full h-0.5 bg-border transform translate-x-4 z-0"></div>
-                )}
+                <h3 className="text-lg font-semibold mb-3">{step.title}</h3>
+                <p className="text-sm text-muted-foreground">{step.description}</p>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Technologies Section */}
-      <section className="py-20 lg:py-32">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center space-y-4 mb-16">
-            <Badge variant="outline" className="px-3 py-1">
-              Technologies
-            </Badge>
-            <h2 className="text-3xl lg:text-5xl font-bold">
-              Our Tech Stack
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              We work with the latest technologies and tools to deliver robust, scalable, and future-proof solutions.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {technologies.map((tech, index) => (
-              <Card key={index} className="group hover:shadow-xl transition-all duration-300 border-0 bg-card/50 backdrop-blur-sm">
-                <CardHeader>
-                  <CardTitle className="text-xl">{tech.category}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex flex-wrap gap-2">
-                    {tech.items.map((item, itemIndex) => (
-                      <Badge key={itemIndex} variant="secondary" className="text-xs">
-                        {item}
-                      </Badge>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
             ))}
           </div>
         </div>
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-20 lg:py-32 bg-muted/30">
+      <section className="py-20 lg:py-32">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-4 mb-16">
-            <Badge variant="outline" className="px-3 py-1">
-              Client Success
+            <Badge variant="outline" className="px-3 py-1 vintage-border">
+              Client Stories
             </Badge>
-            <h2 className="text-3xl lg:text-5xl font-bold">
+            <h2 className="text-3xl lg:text-5xl font-bold typewriter-effect">
               What Our Clients Say
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Don&apos;t just take our word for it. Here&apos;s what our clients have to say about
-              their experience working with us.
+              The trust our clients place in us is the foundation of our success.
+              Here&apos;s what they have to say about their experience.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
-              <Card key={index} className="relative border-0 bg-card/50 backdrop-blur-sm">
-                <CardContent className="p-6">
-                  <div className="flex items-center space-x-1 mb-4">
+              <Card key={index} className="group hover:shadow-lg transition-all duration-300 vintage-border retro-shadow">
+                <CardHeader>
+                  <div className="flex items-center space-x-4">
+                    <img
+                      src={testimonial.image}
+                      alt={testimonial.name}
+                      className="w-12 h-12 rounded-full object-cover vintage-border"
+                    />
+                    <div>
+                      <CardTitle className="text-lg">{testimonial.name}</CardTitle>
+                      <CardDescription>{testimonial.role}</CardDescription>
+                    </div>
+                  </div>
+                  <div className="flex space-x-1">
                     {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                      <Star key={i} className="w-4 h-4 fill-foreground text-foreground" />
                     ))}
                   </div>
-
-                  <blockquote className="text-lg mb-6">
-                    &quot;{testimonial.content}&quot;
-                  </blockquote>
-
-                  <div className="space-y-2">
-                    <div className="font-semibold">{testimonial.name}</div>
-                    <div className="text-sm text-muted-foreground">{testimonial.role}</div>
-                    <Badge variant="outline" className="text-xs">
-                      {testimonial.service}
-                    </Badge>
-                  </div>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground italic">&quot;{testimonial.content}&quot;</p>
                 </CardContent>
               </Card>
             ))}
@@ -433,115 +460,29 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Why Choose Us Section */}
-      <section className="py-20 lg:py-32">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center space-y-4 mb-16">
-            <Badge variant="outline" className="px-3 py-1">
-              Why Choose Us
-            </Badge>
-            <h2 className="text-3xl lg:text-5xl font-bold">
-              The Codestam Advantage
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              We combine technical expertise with strategic thinking to deliver solutions that drive real business value.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="text-center space-y-4">
-              <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto">
-                <Eye className="w-8 h-8 text-primary" />
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold mb-2">Transparent Process</h3>
-                <p className="text-muted-foreground">
-                  Clear communication and regular updates throughout the project lifecycle.
-                </p>
-              </div>
-            </div>
-
-            <div className="text-center space-y-4">
-              <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto">
-                <Brain className="w-8 h-8 text-primary" />
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold mb-2">Expert Team</h3>
-                <p className="text-muted-foreground">
-                  Experienced professionals with deep expertise in modern technologies.
-                </p>
-              </div>
-            </div>
-
-            <div className="text-center space-y-4">
-              <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto">
-                <TrendingUp className="w-8 h-8 text-primary" />
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold mb-2">Proven Results</h3>
-                <p className="text-muted-foreground">
-                  Track record of delivering successful projects that drive business growth.
-                </p>
-              </div>
-            </div>
-
-            <div className="text-center space-y-4">
-              <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto">
-                <Handshake className="w-8 h-8 text-primary" />
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold mb-2">Long-term Partnership</h3>
-                <p className="text-muted-foreground">
-                  We build lasting relationships and provide ongoing support and maintenance.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* CTA Section */}
-      <section className="py-20 lg:py-32 bg-gradient-to-br from-primary/10 via-secondary/10 to-primary/10">
+      <section className="py-20 lg:py-32 bg-muted/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center space-y-8 max-w-4xl mx-auto">
-            <div className="space-y-4">
-              <h2 className="text-3xl lg:text-5xl font-bold">
-                Ready to Get Started?
-              </h2>
-              <p className="text-xl text-muted-foreground">
-                Let&apos;s discuss your project requirements and how we can help you achieve your digital goals
-                with our comprehensive services.
-              </p>
-            </div>
-
+          <div className="text-center space-y-8 max-w-3xl mx-auto">
+            <h2 className="text-3xl lg:text-5xl font-bold typewriter-effect">
+              Ready to Begin Your Story?
+            </h2>
+            <p className="text-xl text-muted-foreground">
+              Every great photograph begins with a vision. Let&apos;s discuss yours and create
+              something truly extraordinary together.
+            </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild size="lg" className="group">
-                <Link href="/contact">
-                  Start Your Project
-                  <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              <Button asChild size="lg" className="vintage-border">
+                <Link href="/schedule">
+                  Book Your Session
+                  <ArrowRight className="ml-2 w-4 h-4" />
                 </Link>
               </Button>
-
-              <Button variant="outline" size="lg" asChild>
+              <Button variant="outline" size="lg" asChild className="vintage-border">
                 <Link href="/contact">
-                  Schedule Consultation
+                  Get Custom Quote
                 </Link>
               </Button>
-            </div>
-
-            <div className="flex items-center justify-center space-x-8 text-sm text-muted-foreground">
-              <div className="flex items-center space-x-2">
-                <Clock className="w-4 h-4" />
-                <span>Free consultation</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Award className="w-4 h-4" />
-                <span>Expert team</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Heart className="w-4 h-4" />
-                <span>Proven results</span>
-              </div>
             </div>
           </div>
         </div>

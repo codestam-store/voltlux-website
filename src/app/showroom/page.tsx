@@ -1,17 +1,19 @@
 import type { Metadata } from "next"
-import ShowroomPageClient from "@/components/showroom-page-client"
+import StudioPageClient from "@/components/studio-page-client"
 
 export const metadata: Metadata = {
-  title: "Virtual Showroom - VoltLux",
-  description: "Explore VoltLux electric vehicles in our immersive virtual showroom. Experience 360° views, interactive features, and detailed walkthroughs of our luxury EV lineup.",
+  title: "Photography Studio - NOIR Studio",
+  description: "Professional photography studio specializing in vintage film photography, timeless portraits, and classic black & white aesthetics. Book your session today.",
   keywords: [
-    "virtual showroom",
-    "electric vehicle showroom",
-    "VoltLux showroom",
-    "EV experience center",
-    "interactive car viewing",
-    "luxury electric vehicles",
-    "virtual test drive"
+    "photography studio",
+    "vintage film photography",
+    "portrait photography",
+    "NOIR studio",
+    "black and white photography",
+    "film development",
+    "professional photography",
+    "wedding photography",
+    "fashion photography"
   ],
   authors: [{ name: "Codestam Technologies" }],
   creator: "Codestam Technologies",
@@ -24,27 +26,27 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://codestam.com/showroom",
-    title: "Virtual Showroom - VoltLux",
-    description: "Explore VoltLux electric vehicles in our immersive virtual showroom. Experience 360° views, interactive features, and detailed walkthroughs of our luxury EV lineup.",
-    siteName: "VoltLux",
+    title: "Photography Studio - NOIR Studio",
+    description: "Professional photography studio specializing in vintage film photography, timeless portraits, and classic black & white aesthetics. Book your session today.",
+    siteName: "NOIR Studio",
     images: [
       {
-        url: "/og-showroom.jpg",
+        url: "/og-studio.jpg",
         width: 1200,
         height: 630,
-        alt: "VoltLux Virtual Showroom",
+        alt: "NOIR Photography Studio",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Virtual Showroom - VoltLux",
-    description: "Explore VoltLux electric vehicles in our immersive virtual showroom. Experience 360° views, interactive features, and detailed walkthroughs of our luxury EV lineup.",
-    images: ["/og-showroom.jpg"],
+    title: "Photography Studio - NOIR Studio",
+    description: "Professional photography studio specializing in vintage film photography, timeless portraits, and classic black & white aesthetics. Book your session today.",
+    images: ["/og-studio.jpg"],
     creator: "@codestam",
   },
 }
 
-export default function ShowroomPage() {
-  return <ShowroomPageClient />
+export default function StudioPage() {
+  return <StudioPageClient />
 }

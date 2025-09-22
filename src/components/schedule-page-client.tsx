@@ -17,12 +17,12 @@ import {
   MapPin,
   Phone,
   User,
-  Car,
+  Camera,
   CheckCircle,
   ArrowRight,
-  Shield,
-  Zap,
-  Battery
+  Film,
+  Aperture,
+  Timer
 } from "lucide-react"
 import { format } from "date-fns"
 import { cn } from "@/lib/utils"
@@ -33,35 +33,33 @@ const fadeInUp = {
   transition: { duration: 0.6, ease: "easeOut" }
 }
 
-
-
-const vehicles = [
+const services = [
   {
-    id: "apex",
-    name: "VoltLux Apex",
-    type: "Luxury Sedan",
-    range: "520 miles",
-    acceleration: "0-60 in 2.8s",
-    price: "From $89,900",
-    image: "https://images.unsplash.com/photo-1617788138017-80ad40651399?w=600&h=400&fit=crop&crop=center"
+    id: "portrait",
+    name: "Portrait Session",
+    type: "Individual & Family",
+    duration: "2-3 hours",
+    deliverables: "50+ edited photos",
+    price: "From $350",
+    image: "https://images.unsplash.com/photo-1554151228-14d9def656e4?w=600&h=400&fit=crop&crop=center"
   },
   {
-    id: "titan",
-    name: "VoltLux Titan",
-    type: "Electric SUV",
-    range: "480 miles",
-    acceleration: "0-60 in 3.2s",
-    price: "From $95,900",
-    image: "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=600&h=400&fit=crop&crop=center"
+    id: "wedding",
+    name: "Wedding Photography",
+    type: "Full Day Coverage",
+    duration: "8-10 hours",
+    deliverables: "200+ photos + album",
+    price: "From $2,500",
+    image: "https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=600&h=400&fit=crop&crop=center"
   },
   {
-    id: "velocity",
-    name: "VoltLux Velocity",
-    type: "Sports Coupe",
-    range: "450 miles",
-    acceleration: "0-60 in 2.1s",
-    price: "From $125,900",
-    image: "https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?w=600&h=400&fit=crop&crop=center"
+    id: "commercial",
+    name: "Commercial Shoot",
+    type: "Brand & Product",
+    duration: "Half/Full day",
+    deliverables: "Custom package",
+    price: "From $800",
+    image: "https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=600&h=400&fit=crop&crop=center"
   }
 ]
 
@@ -72,24 +70,24 @@ const timeSlots = [
 
 const locations = [
   {
-    name: "VoltLux Beverly Hills Showroom",
-    address: "9876 Rodeo Drive, Beverly Hills, CA 90210",
-    phone: "(310) 555-0123"
+    name: "Noir Studio Downtown",
+    address: "123 Main Street, Downtown District",
+    phone: "(555) 123-4567"
   },
   {
-    name: "VoltLux Manhattan Experience Center",
-    address: "123 Fifth Avenue, New York, NY 10001",
-    phone: "(212) 555-0456"
+    name: "Outdoor Location Shoot",
+    address: "Various scenic locations in the city",
+    phone: "(555) 123-4567"
   },
   {
-    name: "VoltLux Miami Design District",
-    address: "456 NE 40th Street, Miami, FL 33137",
-    phone: "(305) 555-0789"
+    name: "Client Location",
+    address: "Your preferred location",
+    phone: "(555) 123-4567"
   }
 ]
 
 export default function SchedulePageClient() {
-  const [selectedVehicle, setSelectedVehicle] = useState("")
+  const [selectedService, setSelectedService] = useState("")
   const [selectedDate, setSelectedDate] = useState<Date>()
   const [selectedTime, setSelectedTime] = useState("")
   const [selectedLocation, setSelectedLocation] = useState("")
@@ -109,8 +107,8 @@ export default function SchedulePageClient() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     // Here you would typically send the data to your backend
-    console.log("Test drive scheduled:", {
-      vehicle: selectedVehicle,
+    console.log("Photography session scheduled:", {
+      service: selectedService,
       date: selectedDate,
       time: selectedTime,
       location: selectedLocation,
@@ -121,26 +119,26 @@ export default function SchedulePageClient() {
 
   if (isSubmitted) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background to-muted/30">
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background to-muted/30 film-grain">
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6 }}
           className="text-center max-w-2xl mx-auto px-6"
         >
-          <div className="w-24 h-24 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-8">
-            <CheckCircle className="w-12 h-12 text-white" />
+          <div className="w-24 h-24 bg-primary rounded-sm flex items-center justify-center mx-auto mb-8 retro-shadow">
+            <CheckCircle className="w-12 h-12 text-primary-foreground" />
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Test Drive Scheduled!
+          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6 typewriter-effect">
+            Session Booked!
           </h1>
           <p className="text-xl text-muted-foreground mb-8">
-            Thank you for scheduling your VoltLux test drive. We&apos;ll send you a confirmation email shortly with all the details.
+            Thank you for booking your photography session with Noir Studio. We&apos;ll send you a confirmation email shortly with all the details.
           </p>
-          <div className="bg-muted/50 rounded-2xl p-6 mb-8">
-            <h3 className="font-semibold text-lg mb-4">Your Appointment Details:</h3>
+          <div className="bg-muted/50 rounded-sm p-6 mb-8 vintage-border">
+            <h3 className="font-semibold text-lg mb-4 typewriter-effect">Your Session Details:</h3>
             <div className="space-y-2 text-left">
-              <p><strong>Vehicle:</strong> {vehicles.find(v => v.id === selectedVehicle)?.name}</p>
+              <p><strong>Service:</strong> {services.find(s => s.id === selectedService)?.name}</p>
               <p><strong>Date:</strong> {selectedDate ? format(selectedDate, "PPP") : ""}</p>
               <p><strong>Time:</strong> {selectedTime}</p>
               <p><strong>Location:</strong> {locations.find(l => l.name === selectedLocation)?.name}</p>
@@ -149,9 +147,9 @@ export default function SchedulePageClient() {
           <Button 
             onClick={() => setIsSubmitted(false)}
             size="lg"
-            className="professional-shadow"
+            className="retro-shadow uppercase tracking-wider"
           >
-            Schedule Another Test Drive
+            Book Another Session
           </Button>
         </motion.div>
       </div>
@@ -161,8 +159,8 @@ export default function SchedulePageClient() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-background to-muted/30">
       {/* Hero Section */}
-      <section className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1617788138017-80ad40651399?w=1920&h=1080&fit=crop&crop=center')] bg-cover bg-center opacity-10"></div>
+      <section className="relative py-20 overflow-hidden film-grain">
+        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1554151228-14d9def656e4?w=1920&h=1080&fit=crop&crop=center')] bg-cover bg-center opacity-20 grayscale"></div>
         <div className="absolute inset-0 bg-gradient-to-t from-background/90 to-background/60"></div>
         
         <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
@@ -171,17 +169,18 @@ export default function SchedulePageClient() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <Badge className="mb-6 bg-primary text-primary-foreground px-4 py-2">
-              Experience Electric Luxury
+            <Badge className="mb-6 bg-primary/20 text-primary border-primary/30 px-4 py-2 uppercase tracking-wider">
+              Professional Photography
             </Badge>
             
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-foreground leading-tight">
-              Schedule Your
-              <span className="block text-primary">Test Drive</span>
+              Book Your
+              <span className="block text-primary typewriter-effect">Photography Session</span>
             </h1>
             
             <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-              Experience the future of driving. Book your personalized test drive and discover why VoltLux is redefining electric luxury.
+              Schedule your personalized photography experience. From intimate portraits to grand celebrations, 
+              we capture your moments with timeless vintage aesthetics.
             </p>
           </motion.div>
         </div>
@@ -191,62 +190,62 @@ export default function SchedulePageClient() {
       <section className="py-20">
         <div className="max-w-6xl mx-auto px-6">
           <form onSubmit={handleSubmit} className="space-y-12">
-            {/* Vehicle Selection */}
+            {/* Service Selection */}
             <motion.div
               variants={fadeInUp}
               initial="initial"
               whileInView="animate"
               viewport={{ once: true }}
             >
-              <Card className="professional-shadow">
+              <Card className="retro-shadow vintage-border">
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-3">
-                    <Car className="w-6 h-6 text-primary" />
-                    Choose Your Vehicle
+                  <CardTitle className="flex items-center gap-3 typewriter-effect">
+                    <Camera className="w-6 h-6 text-primary" />
+                    Choose Your Service
                   </CardTitle>
                   <CardDescription>
-                    Select the VoltLux model you&apos;d like to experience
+                    Select the photography service you&apos;d like to book
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="grid md:grid-cols-3 gap-6">
-                    {vehicles.map((vehicle) => (
+                    {services.map((service) => (
                       <motion.div
-                        key={vehicle.id}
+                        key={service.id}
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                         className={cn(
-                          "relative rounded-2xl overflow-hidden cursor-pointer border-2 transition-all",
-                          selectedVehicle === vehicle.id
+                          "relative rounded-sm overflow-hidden cursor-pointer border-2 transition-all photo-frame",
+                          selectedService === service.id
                             ? "border-primary ring-2 ring-primary/20"
                             : "border-border hover:border-primary/50"
                         )}
-                        onClick={() => setSelectedVehicle(vehicle.id)}
+                        onClick={() => setSelectedService(service.id)}
                       >
-                        <div className="aspect-video bg-cover bg-center" style={{ backgroundImage: `url(${vehicle.image})` }}>
+                        <div className="aspect-video bg-cover bg-center grayscale hover:grayscale-0 transition-all duration-500" style={{ backgroundImage: `url(${service.image})` }}>
                           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                           <div className="absolute bottom-4 left-4 text-white">
-                            <h3 className="font-bold text-lg">{vehicle.name}</h3>
-                            <p className="text-sm opacity-90">{vehicle.type}</p>
+                            <h3 className="font-bold text-lg typewriter-effect">{service.name}</h3>
+                            <p className="text-sm opacity-90">{service.type}</p>
                           </div>
-                          {selectedVehicle === vehicle.id && (
+                          {selectedService === service.id && (
                             <div className="absolute top-4 right-4">
                               <CheckCircle className="w-6 h-6 text-primary bg-white rounded-full" />
                             </div>
                           )}
                         </div>
                         <div className="p-4 bg-card">
-                          <div className="flex justify-between items-center text-sm">
+                          <div className="flex justify-between items-center text-sm mb-2">
                             <span className="flex items-center gap-1">
-                              <Battery className="w-4 h-4" />
-                              {vehicle.range}
+                              <Timer className="w-4 h-4" />
+                              {service.duration}
                             </span>
                             <span className="flex items-center gap-1">
-                              <Zap className="w-4 h-4" />
-                              {vehicle.acceleration}
+                              <Film className="w-4 h-4" />
+                              {service.deliverables}
                             </span>
                           </div>
-                          <p className="font-semibold text-primary mt-2">{vehicle.price}</p>
+                          <p className="font-semibold text-primary typewriter-effect">{service.price}</p>
                         </div>
                       </motion.div>
                     ))}
@@ -262,26 +261,26 @@ export default function SchedulePageClient() {
               whileInView="animate"
               viewport={{ once: true }}
             >
-              <Card className="professional-shadow">
+              <Card className="retro-shadow vintage-border">
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-3">
+                  <CardTitle className="flex items-center gap-3 typewriter-effect">
                     <CalendarIcon className="w-6 h-6 text-primary" />
                     Select Date & Time
                   </CardTitle>
                   <CardDescription>
-                    Choose your preferred appointment date and time
+                    Choose your preferred session date and time
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="grid md:grid-cols-2 gap-8">
                     <div>
-                      <Label className="text-base font-medium mb-4 block">Select Date</Label>
+                      <Label className="text-base font-medium mb-4 block uppercase tracking-wider">Select Date</Label>
                       <Popover>
                         <PopoverTrigger asChild>
                           <Button
                             variant="outline"
                             className={cn(
-                              "w-full justify-start text-left font-normal h-12",
+                              "w-full justify-start text-left font-normal h-12 vintage-border",
                               !selectedDate && "text-muted-foreground"
                             )}
                           >
@@ -302,9 +301,9 @@ export default function SchedulePageClient() {
                     </div>
                     
                     <div>
-                      <Label className="text-base font-medium mb-4 block">Select Time</Label>
+                      <Label className="text-base font-medium mb-4 block uppercase tracking-wider">Select Time</Label>
                       <Select value={selectedTime} onValueChange={setSelectedTime}>
-                        <SelectTrigger className="h-12">
+                        <SelectTrigger className="h-12 vintage-border">
                           <SelectValue placeholder="Choose time slot" />
                         </SelectTrigger>
                         <SelectContent>
@@ -331,14 +330,14 @@ export default function SchedulePageClient() {
               whileInView="animate"
               viewport={{ once: true }}
             >
-              <Card className="professional-shadow">
+              <Card className="retro-shadow vintage-border">
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-3">
+                  <CardTitle className="flex items-center gap-3 typewriter-effect">
                     <MapPin className="w-6 h-6 text-primary" />
                     Choose Location
                   </CardTitle>
                   <CardDescription>
-                    Select your preferred VoltLux showroom
+                    Select where you&apos;d like your session to take place
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -347,28 +346,30 @@ export default function SchedulePageClient() {
                       <motion.div
                         key={location.name}
                         whileHover={{ scale: 1.01 }}
+                        whileTap={{ scale: 0.99 }}
                         className={cn(
-                          "p-4 rounded-xl border-2 cursor-pointer transition-all",
+                          "p-4 rounded-sm border-2 cursor-pointer transition-all vintage-border",
                           selectedLocation === location.name
-                            ? "border-primary bg-primary/5"
-                            : "border-border hover:border-primary/50"
+                            ? "border-primary bg-primary/10"
+                            : "border-border hover:border-primary/50 hover:bg-accent/50"
                         )}
                         onClick={() => setSelectedLocation(location.name)}
                       >
                         <div className="flex items-start justify-between">
-                          <div>
-                            <h3 className="font-semibold text-lg">{location.name}</h3>
-                            <p className="text-muted-foreground flex items-center gap-2 mt-1">
-                              <MapPin className="w-4 h-4" />
+                          <div className="flex-1">
+                            <h3 className="font-semibold text-foreground typewriter-effect mb-1">
+                              {location.name}
+                            </h3>
+                            <p className="text-sm text-muted-foreground mb-2">
                               {location.address}
                             </p>
-                            <p className="text-muted-foreground flex items-center gap-2 mt-1">
-                              <Phone className="w-4 h-4" />
+                            <p className="text-sm text-muted-foreground flex items-center gap-1">
+                              <Phone className="w-3 h-3" />
                               {location.phone}
                             </p>
                           </div>
                           {selectedLocation === location.name && (
-                            <CheckCircle className="w-6 h-6 text-primary" />
+                            <CheckCircle className="w-5 h-5 text-primary flex-shrink-0" />
                           )}
                         </div>
                       </motion.div>
@@ -385,74 +386,85 @@ export default function SchedulePageClient() {
               whileInView="animate"
               viewport={{ once: true }}
             >
-              <Card className="professional-shadow">
+              <Card className="retro-shadow vintage-border">
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-3">
+                  <CardTitle className="flex items-center gap-3 typewriter-effect">
                     <User className="w-6 h-6 text-primary" />
                     Your Information
                   </CardTitle>
                   <CardDescription>
-                    Please provide your contact details
+                    Tell us about yourself and your photography needs
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
-                      <Label htmlFor="firstName" className="text-base font-medium">First Name *</Label>
+                      <Label htmlFor="firstName" className="text-base font-medium mb-2 block uppercase tracking-wider">
+                        First Name
+                      </Label>
                       <Input
                         id="firstName"
                         value={formData.firstName}
                         onChange={(e) => handleInputChange("firstName", e.target.value)}
-                        className="mt-2 h-12"
+                        className="h-12 vintage-border"
                         required
                       />
                     </div>
                     
                     <div>
-                      <Label htmlFor="lastName" className="text-base font-medium">Last Name *</Label>
+                      <Label htmlFor="lastName" className="text-base font-medium mb-2 block uppercase tracking-wider">
+                        Last Name
+                      </Label>
                       <Input
                         id="lastName"
                         value={formData.lastName}
                         onChange={(e) => handleInputChange("lastName", e.target.value)}
-                        className="mt-2 h-12"
+                        className="h-12 vintage-border"
                         required
                       />
                     </div>
                     
                     <div>
-                      <Label htmlFor="email" className="text-base font-medium">Email Address *</Label>
+                      <Label htmlFor="email" className="text-base font-medium mb-2 block uppercase tracking-wider">
+                        Email Address
+                      </Label>
                       <Input
                         id="email"
                         type="email"
                         value={formData.email}
                         onChange={(e) => handleInputChange("email", e.target.value)}
-                        className="mt-2 h-12"
+                        className="h-12 vintage-border"
                         required
                       />
                     </div>
                     
                     <div>
-                      <Label htmlFor="phone" className="text-base font-medium">Phone Number *</Label>
+                      <Label htmlFor="phone" className="text-base font-medium mb-2 block uppercase tracking-wider">
+                        Phone Number
+                      </Label>
                       <Input
                         id="phone"
                         type="tel"
                         value={formData.phone}
                         onChange={(e) => handleInputChange("phone", e.target.value)}
-                        className="mt-2 h-12"
+                        className="h-12 vintage-border"
                         required
                       />
                     </div>
-                    
-                    <div className="md:col-span-2">
-                      <Label htmlFor="message" className="text-base font-medium">Additional Message (Optional)</Label>
-                      <Textarea
-                        id="message"
-                        value={formData.message}
-                        onChange={(e) => handleInputChange("message", e.target.value)}
-                        className="mt-2 min-h-[100px]"
-                        placeholder="Any specific questions or requirements for your test drive?"
-                      />
-                    </div>
+                  </div>
+                  
+                  <div className="mt-6">
+                    <Label htmlFor="message" className="text-base font-medium mb-2 block uppercase tracking-wider">
+                      Tell Us About Your Vision
+                    </Label>
+                    <Textarea
+                      id="message"
+                      value={formData.message}
+                      onChange={(e) => handleInputChange("message", e.target.value)}
+                      placeholder="Describe your photography needs, style preferences, or any special requests..."
+                      className="min-h-[120px] vintage-border"
+                      rows={5}
+                    />
                   </div>
                 </CardContent>
               </Card>
@@ -466,30 +478,16 @@ export default function SchedulePageClient() {
               viewport={{ once: true }}
               className="text-center"
             >
-              <Button
-                type="submit"
-                size="lg"
-                className="px-12 py-4 text-lg professional-shadow hover:scale-105 transition-transform"
-                disabled={!selectedVehicle || !selectedDate || !selectedTime || !selectedLocation || !formData.firstName || !formData.lastName || !formData.email || !formData.phone}
+              <Button 
+                type="submit" 
+                size="lg" 
+                className="retro-shadow text-base px-12 py-6 uppercase tracking-wider font-medium"
+                disabled={!selectedService || !selectedDate || !selectedTime || !selectedLocation || !formData.firstName || !formData.lastName || !formData.email || !formData.phone}
               >
-                Schedule Test Drive
-                <ArrowRight className="ml-2 w-5 h-5" />
+                <Aperture className="w-5 h-5 mr-3" />
+                Book Photography Session
+                <ArrowRight className="w-5 h-5 ml-3" />
               </Button>
-              
-              <div className="flex items-center justify-center gap-6 mt-8 text-sm text-muted-foreground">
-                <div className="flex items-center gap-2">
-                  <Shield className="w-4 h-4" />
-                  Secure & Private
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle className="w-4 h-4" />
-                  No Commitment
-                </div>
-                <div className="flex items-center gap-2">
-                  <Clock className="w-4 h-4" />
-                  Instant Confirmation
-                </div>
-              </div>
             </motion.div>
           </form>
         </div>

@@ -587,6 +587,7 @@ function postSuccessCleanup(repoName) {
             logDetailed('Could not unlink from Vercel project (may not be linked)');
         }
 
+        
         logSuccess('Post-success cleanup completed');
         logDetailed('Local tracking configurations removed - next deployment will create fresh repository and Vercel project');
     } catch (error) {
