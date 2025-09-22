@@ -3,54 +3,38 @@ import { Josefin_Sans } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 
-const josefinSans = Josefin_Sans({
-  preload: true,
+const josefinSans = Josefin_Sans({ 
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-josefin-sans",
+  variable: "--font-josefin-sans"
 });
 
 export const metadata: Metadata = {
-  title: {
-    default: "FunLearn Academy - Magical Learning Adventures for Kids",
-    template: "%s | FunLearn Academy"
-  },
-  description: "Join our magical learning adventures! FunLearn Academy offers fun, interactive educational experiences for children with cartoon characters, games, and exciting activities that make learning an adventure.",
-  keywords: ["kids education", "children learning", "cartoon learning", "educational games", "interactive learning", "fun education", "kids activities"],
-  authors: [{ name: "Codestam Technologies" }],
-  creator: "Codestam Technologies",
+  title: "Eternal Vows - Premium Wedding Contract Services",
+  description: "Professional wedding contract templates, legal consultation, and vendor management tools. Secure your perfect day with expert legal guidance and personalized support.",
+  keywords: ["wedding contracts", "legal templates", "wedding planning", "vendor agreements", "legal consultation", "wedding services"],
+  authors: [{ name: "Codestam Technologies", url: "https://codestam.com" }],
   publisher: "Codestam Technologies",
-  formatDetection: {
-    email: false,
-    address: false,
-    telephone: false,
-  },
-  metadataBase: new URL("https://codestam.com"),
-  alternates: {
-    canonical: "/",
-  },
   openGraph: {
-    type: "website",
-    locale: "en_US",
+    title: "Eternal Vows - Premium Wedding Contract Services",
+    description: "Professional wedding contract templates, legal consultation, and vendor management tools. Secure your perfect day with expert legal guidance and personalized support.",
     url: "https://codestam.com",
-    title: "FunLearn Academy - Magical Learning Adventures for Kids",
-    description: "Join our magical learning adventures! FunLearn Academy offers fun, interactive educational experiences for children with cartoon characters, games, and exciting activities that make learning an adventure.",
-    siteName: "FunLearn Academy",
+    siteName: "Eternal Vows",
     images: [
       {
-        url: "/og-image.jpg",
+        url: "https://maxm-imggenurl.web.val.run/elegant wedding contract documents with gold rings and flowers professional photography",
         width: 1200,
         height: 630,
-        alt: "FunLearn Academy - Magical Learning Adventures for Kids",
-      },
+        alt: "Eternal Vows Wedding Contract Services"
+      }
     ],
+    locale: "en_US",
+    type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "FunLearn Academy - Magical Learning Adventures for Kids",
-    description: "Join our magical learning adventures! FunLearn Academy offers fun, interactive educational experiences for children with cartoon characters, games, and exciting activities that make learning an adventure.",
-    images: ["/og-image.jpg"],
-    creator: "@codestamtech",
+    title: "Eternal Vows - Premium Wedding Contract Services",
+    description: "Professional wedding contract templates, legal consultation, and vendor management tools. Secure your perfect day with expert legal guidance and personalized support.",
+    images: ["https://maxm-imggenurl.web.val.run/elegant wedding contract documents with gold rings and flowers professional photography"],
   },
   robots: {
     index: true,
@@ -70,25 +54,15 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-        <link rel="mask-icon" href="/mask-icon.svg" color="#000000" />
-        <meta name="theme-color" content="#000000" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <meta name="apple-mobile-web-app-title" content="FunLearn Academy" />
-        <link rel="apple-touch-icon" href="/favicon.svg" />
-        <link rel="manifest" href="/manifest.json" />
-      </head>
       <body className={`${josefinSans.className} font-sans antialiased`}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
+          defaultTheme="light"
           enableSystem
           disableTransitionOnChange
         >

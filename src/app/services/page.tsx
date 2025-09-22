@@ -1,468 +1,366 @@
-import type { Metadata } from "next";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
-import {
-  ArrowRight,
-  Code,
-  Smartphone,
-  Palette,
-  Cloud,
-  Settings,
-  Users,
-  BookOpen,
-  Rocket,
-  Star,
-  CheckCircle,
-  Clock,
-  TrendingUp,
-  Shield,
-  Zap,
-  Globe,
-  Database,
-  Server,
-  Wifi,
-  Eye,
-  Fingerprint,
-  Key,
-  Lock,
-  Target,
-  Gauge,
-  Activity,
-  BarChart,
-  PieChart,
-  LineChart,
-  TrendingDown,
-  Users as UsersIcon,
-  Building,
-  Factory,
-  ShoppingCart,
-  CreditCard,
-  Car,
-  Plane,
-  Ship,
-  Train,
-  Bus,
-  Truck,
-  Bike,
-  Heart,
-  Calendar,
-  MapPin,
-  Phone,
-  Mail,
-  MessageSquare,
-  Video,
-  Camera,
-  Mic,
-  Headphones,
-  Speaker,
-  Volume2,
-  VolumeX,
-  Volume1,
-  Volume,
-  Bell,
-  BellOff,
-  BellRing,
-  User,
-  UserCheck,
-  UserX,
-  UserPlus,
-  UserMinus,
-  UserCog,
-  UserSearch,
-  Sparkles,
-  ArrowUpRight,
-  Play,
-  Quote,
-  Award,
-  BarChart3,
-  Trophy,
-  Lightbulb,
-  Monitor,
-  Layers,
-  Cpu,
-  Network,
-  Hexagon,
-  Atom,
-  Brain,
-  Database as DatabaseIcon,
-  Target as TargetIcon
-} from "lucide-react";
+"use client";
+
+import { motion } from "framer-motion";
+import { WeddingNavbar } from "@/components/wedding-navbar";
+import { PageHeroSection } from "@/components/sections/page-hero-section";
+import { FileText, Users, Scale, Clock, Shield, Heart, CheckCircle, Star, ArrowRight, Sparkles, Phone, Mail, MessageCircle, Award, Zap, Crown, Circle } from "lucide-react";
 import Link from "next/link";
-import Navbar from "@/components/landing/navbar";
-import Footer from "@/components/landing/footer";
 
-export const metadata: Metadata = {
-  title: "Services - QuantumForge",
-  description: "Comprehensive digital services including web development, mobile development, UI/UX design, DevOps, consulting, and training solutions.",
-  keywords: ["web development", "mobile development", "UI/UX design", "DevOps", "consulting", "training", "digital services"],
-  openGraph: {
-    title: "Services - QuantumForge",
-    description: "Comprehensive digital services including web development, mobile development, UI/UX design, DevOps, consulting, and training solutions.",
-    url: "https://quantumforge.com/services",
-    siteName: "QuantumForge",
-    images: [
-      {
-        url: "/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "QuantumForge Services",
-      },
-    ],
-    locale: "en_US",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Services - QuantumForge",
-    description: "Comprehensive digital services including web development, mobile development, UI/UX design, DevOps, consulting, and training solutions.",
-    images: ["/og-image.jpg"],
-    creator: "@codestamtech",
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
-};
 
-const services = [
+
+const mainServices = [
   {
-    icon: Code,
-    title: "Web Development",
-    description: "Modern, scalable web applications built with cutting-edge technologies and best practices.",
+    id: "templates",
+    title: "Contract Templates",
+    description: "Professional, legally-reviewed contract templates for all your wedding vendors",
+    icon: FileText,
     color: "from-blue-500 to-cyan-500",
-    href: "/services/web-development",
     features: [
-      "React & Next.js Applications",
-      "Node.js Backend Development",
-      "Progressive Web Apps (PWA)",
-      "E-commerce Solutions",
-      "API Development & Integration",
-      "Performance Optimization"
+      "50+ Professional Templates",
+      "Legally Reviewed & Compliant",
+      "Instant Download",
+      "Fully Customizable",
+      "Multiple File Formats",
+      "Regular Updates"
     ],
     benefits: [
-      "Lightning-fast loading times",
-      "Mobile-first responsive design",
-      "SEO-optimized architecture",
-      "Scalable and maintainable code"
+      "Save time and money",
+      "Ensure legal protection",
+      "Professional presentation",
+      "Peace of mind"
     ],
-    image: "https://maxm-imggenurl.web.val.run/modern web development workspace with code editor, multiple screens, and development tools, high quality"
+    pricing: "Starting at Free",
+    image: "https://maxm-imggenurl.web.val.run/professional wedding contract documents on elegant desk, legal papers, pen, wedding rings, soft lighting"
   },
   {
-    icon: Smartphone,
-    title: "Mobile Development",
-    description: "Native and cross-platform mobile applications that deliver exceptional user experiences.",
-    color: "from-green-500 to-emerald-500",
-    href: "/services/mobile-development",
-    features: [
-      "iOS & Android Development",
-      "React Native Applications",
-      "Flutter Cross-platform",
-      "Mobile App Optimization",
-      "App Store Deployment",
-      "Mobile Testing & QA"
-    ],
-    benefits: [
-      "Native performance",
-      "Cross-platform compatibility",
-      "App store optimization",
-      "Regular updates & maintenance"
-    ],
-    image: "https://maxm-imggenurl.web.val.run/mobile app development with smartphones and tablets showing different app interfaces, high quality"
-  },
-  {
-    icon: Palette,
-    title: "UI/UX Design",
-    description: "User-centered design solutions that create intuitive and engaging digital experiences.",
-    color: "from-purple-500 to-pink-500",
-    href: "/services/ui-ux-design",
-    features: [
-      "User Research & Analysis",
-      "Wireframing & Prototyping",
-      "Visual Design & Branding",
-      "User Testing & Iteration",
-      "Design Systems",
-      "Accessibility Compliance"
-    ],
-    benefits: [
-      "Improved user engagement",
-      "Reduced development time",
-      "Enhanced brand consistency",
-      "Better conversion rates"
-    ],
-    image: "https://maxm-imggenurl.web.val.run/UI UX design workspace with wireframes, prototypes, and design tools on multiple screens, high quality"
-  },
-  {
-    icon: Cloud,
-    title: "DevOps & Cloud",
-    description: "Scalable cloud infrastructure and DevOps automation for reliable, efficient deployments.",
-    color: "from-orange-500 to-red-500",
-    href: "/services/devops-cloud",
-    features: [
-      "AWS, Azure & Google Cloud",
-      "Container Orchestration",
-      "CI/CD Pipeline Automation",
-      "Infrastructure as Code",
-      "Monitoring & Logging",
-      "Security & Compliance"
-    ],
-    benefits: [
-      "99.9% uptime guarantee",
-      "Automatic scaling",
-      "Reduced deployment time",
-      "Cost optimization"
-    ],
-    image: "https://maxm-imggenurl.web.val.run/cloud infrastructure and DevOps automation with server racks, cloud computing, and deployment pipelines, high quality"
-  },
-  {
+    id: "custom",
+    title: "Custom Contract Creation",
+    description: "Tailored contracts designed specifically for your unique wedding requirements",
     icon: Users,
-    title: "Consulting",
-    description: "Strategic technology consulting to help you make informed decisions and achieve your goals.",
-    color: "from-indigo-500 to-purple-500",
-    href: "/services/consulting",
+    color: "from-purple-500 to-pink-500",
     features: [
-      "Technology Strategy",
-      "Architecture Review",
-      "Digital Transformation",
-      "Security Assessment",
-      "Performance Audits",
-      "Team Training"
+      "Personalized Legal Documents",
+      "Expert Legal Consultation",
+      "Unlimited Revisions",
+      "Fast Turnaround",
+      "Comprehensive Coverage",
+      "Ongoing Support"
     ],
     benefits: [
-      "Expert guidance",
-      "Cost-effective solutions",
-      "Risk mitigation",
-      "Long-term planning"
+      "Perfect fit for your needs",
+      "Expert legal guidance",
+      "Comprehensive protection",
+      "Professional support"
     ],
-    image: "https://maxm-imggenurl.web.val.run/business consulting meeting with professionals discussing technology strategy and digital transformation, high quality"
+    pricing: "Starting at $299",
+    image: "https://maxm-imggenurl.web.val.run/wedding lawyer consulting with bride and groom, custom contract creation, professional office setting"
   },
   {
-    icon: BookOpen,
-    title: "Training",
-    description: "Comprehensive training programs to upskill your team and maximize technology investments.",
-    color: "from-yellow-500 to-orange-500",
-    href: "/services/training",
+    id: "consultation",
+    title: "Legal Consultation",
+    description: "Expert legal advice from experienced wedding contract attorneys",
+    icon: Scale,
+    color: "from-green-500 to-emerald-500",
     features: [
-      "Custom Training Programs",
-      "Technology Workshops",
-      "Certification Preparation",
-      "Hands-on Projects",
-      "Ongoing Support",
-      "Progress Tracking"
+      "Expert Legal Advice",
+      "Contract Review",
+      "Risk Assessment",
+      "Vendor Negotiation Help",
+      "Dispute Resolution",
+      "Emergency Support"
     ],
     benefits: [
-      "Improved team skills",
-      "Faster project delivery",
-      "Reduced dependency",
-      "Knowledge retention"
+      "Professional expertise",
+      "Risk mitigation",
+      "Confident decisions",
+      "Legal protection"
     ],
-    image: "https://maxm-imggenurl.web.val.run/technology training session with professionals learning new skills and working on hands-on projects, high quality"
+    pricing: "Starting at $150/hour",
+    image: "https://maxm-imggenurl.web.val.run/wedding legal consultation, attorney reviewing contracts with couple, professional law office"
+  }
+];
+
+const additionalServices = [
+  {
+    title: "Contract Review & Analysis",
+    description: "Professional review of existing vendor contracts",
+    icon: Shield,
+    price: "$75"
+  },
+  {
+    title: "Vendor Negotiation Support",
+    description: "Expert assistance with contract negotiations",
+    icon: MessageCircle,
+    price: "$200"
+  },
+  {
+    title: "Rush Service",
+    description: "24-hour contract delivery for urgent needs",
+    icon: Zap,
+    price: "$99"
+  },
+  {
+    title: "International Wedding Support",
+    description: "Specialized contracts for destination weddings",
+    icon: Crown,
+    price: "$399"
+  },
+  {
+    title: "Dispute Resolution",
+    description: "Professional mediation for vendor disputes",
+    icon: Scale,
+    price: "$300"
+  },
+  {
+    title: "Insurance Coordination",
+    description: "Help coordinating wedding insurance with contracts",
+    icon: Shield,
+    price: "$150"
   }
 ];
 
 const process = [
   {
-    step: "01",
-    title: "Discovery & Planning",
-    description: "We begin by understanding your business goals, requirements, and constraints to create a comprehensive project plan.",
-    icon: Lightbulb
+    step: 1,
+    title: "Consultation",
+    description: "We discuss your wedding plans and identify your contract needs",
+    icon: Users
   },
   {
-    step: "02",
-    title: "Design & Architecture",
-    description: "Our team designs the solution architecture and creates detailed wireframes and prototypes.",
-    icon: Palette
+    step: 2,
+    title: "Customization",
+    description: "We create or customize contracts specifically for your requirements",
+    icon: FileText
   },
   {
-    step: "03",
-    title: "Development & Testing",
-    description: "We build your solution using best practices and conduct thorough testing to ensure quality.",
-    icon: Code
+    step: 3,
+    title: "Review",
+    description: "Legal experts review all contracts for completeness and compliance",
+    icon: Scale
   },
   {
-    step: "04",
-    title: "Deployment & Launch",
-    description: "We deploy your solution to production and provide ongoing support and maintenance.",
-    icon: Rocket
+    step: 4,
+    title: "Delivery",
+    description: "You receive your professional contracts ready for vendor signatures",
+    icon: CheckCircle
   }
 ];
 
 const testimonials = [
   {
-    name: "Alex Thompson",
-    role: "CTO, TechStart",
-    content: "QuantumForge's web development services exceeded our expectations. They delivered a modern, scalable application that perfectly matches our vision.",
-    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
-    service: "Web Development"
+    name: "Sarah & Michael",
+    location: "New York, NY",
+    text: "Eternal Vows saved our wedding! When our photographer tried to change terms last minute, our contract protected us completely.",
+    rating: 5,
+    image: "https://maxm-imggenurl.web.val.run/happy bride and groom testimonial photo, professional wedding photography, smiling couple"
   },
   {
-    name: "Maria Garcia",
-    role: "Product Manager, InnovateCorp",
-    content: "The UI/UX design work from QuantumForge transformed our user experience. Our conversion rates increased by 40% within the first month.",
-    avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face",
-    service: "UI/UX Design"
+    name: "Jennifer Chen",
+    location: "Los Angeles, CA",
+    text: "The custom contract service was incredible. They created exactly what we needed for our unique venue requirements.",
+    rating: 5,
+    image: "https://maxm-imggenurl.web.val.run/elegant bride testimonial photo, professional portrait, wedding dress, happy expression"
   },
   {
-    name: "David Chen",
-    role: "DevOps Lead, CloudTech",
-    content: "Their DevOps expertise helped us achieve 99.9% uptime and reduced our deployment time from hours to minutes.",
-    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
-    service: "DevOps & Cloud"
+    name: "David & Emma",
+    location: "Chicago, IL",
+    text: "Professional, thorough, and gave us complete peace of mind. Worth every penny for our dream wedding protection.",
+    rating: 5,
+    image: "https://maxm-imggenurl.web.val.run/wedding couple testimonial, professional engagement photo, happy couple outdoors"
   }
-];
-
-const stats = [
-  { label: "Projects Completed", value: "500+", icon: Rocket },
-  { label: "Happy Clients", value: "200+", icon: Users },
-  { label: "Team Members", value: "50+", icon: UsersIcon },
-  { label: "Years Experience", value: "8+", icon: Clock }
 ];
 
 export default function ServicesPage() {
   return (
     <div className="min-h-screen bg-background">
-      <Navbar />
+      <WeddingNavbar />
       
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-background via-background to-primary/5">
-        <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:50px_50px]" />
-        <div className="relative px-4 py-24 md:py-32">
-          <div className="mx-auto max-w-7xl">
-            <div className="text-center space-y-8">
-              <div className="space-y-4">
-                <Badge variant="secondary" className="bg-gradient-to-r from-primary/20 to-primary/10 text-primary border-primary/30 px-4 py-2">
-                  <Sparkles className="h-4 w-4 mr-2" />
-                  Our Services
-                </Badge>
-                <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight">
-                  Comprehensive{" "}
-                  <span className="bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent">
-                    Digital Services
-                  </span>
-                </h1>
-                <p className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-                  From web development to consulting, we provide end-to-end digital services that transform your business and drive measurable results.
-                </p>
-              </div>
-              
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href="/contact">
-                  <Button size="lg" className="h-14 px-8 text-lg bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 shadow-xl hover:shadow-2xl transition-all duration-300">
-                    <Rocket className="h-5 w-5 mr-2" />
-                    Get Started
-                  </Button>
-                </Link>
-                <Link href="#services">
-                  <Button variant="outline" size="lg" className="h-14 px-8 text-lg border-2 hover:bg-primary/10 hover:border-primary/50 transition-all duration-300">
-                    <Play className="h-5 w-5 mr-2" />
-                    Explore Services
-                  </Button>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <PageHeroSection
+        title="Wedding Contract Services"
+        subtitle="Comprehensive Legal Protection"
+        description="From contract templates to custom agreements, we ensure your wedding is legally protected with professional, comprehensive legal services."
+        backgroundImage="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+        icon={Circle}
+        ctaText="Explore Services"
+        ctaHref="#services"
+        gradient="from-blue-900/70 via-indigo-900/60 to-purple-900/70"
+      />
 
-      {/* Stats Section */}
-      <section className="py-16 bg-muted/30">
-        <div className="mx-auto max-w-7xl px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {stats.map((stat) => {
-              const IconComponent = stat.icon;
+      {/* Main Services */}
+      <section id="services" className="py-24">
+        <div className="mx-auto max-w-7xl px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 gradient-text">
+              Our Core Services
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              Professional wedding contract services designed to protect your investment 
+              and ensure your perfect day goes smoothly.
+            </p>
+          </motion.div>
+
+          <div className="space-y-24">
+            {mainServices.map((service, index) => {
+              const IconComponent = service.icon;
+              const isEven = index % 2 === 0;
+              
               return (
-                <div key={stat.label} className="text-center space-y-2">
-                  <div className="flex justify-center">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center">
-                      <IconComponent className="h-6 w-6 text-primary" />
+                <motion.div
+                  key={service.id}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: index * 0.2 }}
+                  viewport={{ once: true }}
+                  className={`grid lg:grid-cols-2 gap-16 items-center ${
+                    isEven ? '' : 'lg:grid-flow-col-dense'
+                  }`}
+                >
+                  <div className={`space-y-8 ${isEven ? '' : 'lg:col-start-2'}`}>
+                    <div className="space-y-6">
+                      <div className="flex items-center space-x-4">
+                        <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${service.color} flex items-center justify-center`}>
+                          <IconComponent className="w-8 h-8 text-white" />
+                        </div>
+                        <div>
+                          <h3 className="text-3xl md:text-4xl font-bold text-foreground">
+                            {service.title}
+                          </h3>
+                          <div className="text-2xl font-bold text-blue-600 mt-2">
+                            {service.pricing}
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <p className="text-xl text-muted-foreground leading-relaxed">
+                        {service.description}
+                      </p>
+                    </div>
+
+                    <div className="grid md:grid-cols-2 gap-8">
+                      <div className="space-y-4">
+                        <h4 className="text-lg font-bold text-foreground">Features:</h4>
+                        <ul className="space-y-2">
+                          {service.features.map((feature, featureIndex) => (
+                            <li key={featureIndex} className="flex items-center space-x-3">
+                              <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
+                              <span className="text-muted-foreground">{feature}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      <div className="space-y-4">
+                        <h4 className="text-lg font-bold text-foreground">Benefits:</h4>
+                        <ul className="space-y-2">
+                          {service.benefits.map((benefit, benefitIndex) => (
+                            <li key={benefitIndex} className="flex items-center space-x-3">
+                              <Star className="w-5 h-5 text-yellow-500 flex-shrink-0" />
+                              <span className="text-muted-foreground">{benefit}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+
+                    <div className="flex flex-col sm:flex-row gap-4">
+                      <Link
+                        href={service.id === 'templates' ? '/templates' : '/contact'}
+                        className="px-8 py-4 bg-gradient-to-r from-primary to-accent text-primary-foreground rounded-2xl font-semibold hover:shadow-xl transition-all duration-300 elegant-shadow flex items-center justify-center space-x-2"
+                      >
+                        <span>
+                          {service.id === 'templates' ? 'Browse Templates' : 'Get Started'}
+                        </span>
+                        <ArrowRight className="w-5 h-5" />
+                      </Link>
+                      
+                      <Link
+                        href="/contact"
+                        className="px-8 py-4 border-2 border-blue-600 text-blue-600 rounded-2xl font-semibold hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 hover:text-white hover:border-transparent transition-all duration-300 flex items-center justify-center space-x-2"
+                      >
+                        <span>Learn More</span>
+                        <MessageCircle className="w-5 h-5" />
+                      </Link>
                     </div>
                   </div>
-                  <div className="text-3xl md:text-4xl font-bold text-foreground">{stat.value}</div>
-                  <div className="text-sm text-muted-foreground">{stat.label}</div>
-                </div>
+
+                  <div className={`relative ${isEven ? '' : 'lg:col-start-1'}`}>
+                    <div className="relative z-10 bg-gradient-to-br from-blue-50/80 via-indigo-50/60 to-purple-50/80 rounded-3xl p-8 wedding-border elegant-shadow">
+                      <img
+                        src={service.image}
+                        alt={service.title}
+                        className="w-full h-auto rounded-2xl elegant-shadow"
+                        loading="lazy"
+                      />
+                    </div>
+                  </div>
+                </motion.div>
               );
             })}
           </div>
         </div>
       </section>
 
-      {/* Services Grid */}
-      <section id="services" className="py-24">
-        <div className="mx-auto max-w-7xl px-4">
-          <div className="text-center space-y-4 mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold">
-              Our{" "}
-              <span className="bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
-                Services
-              </span>
+      {/* Additional Services */}
+      <section className="py-24 bg-gradient-to-br from-blue-50/50 via-indigo-50/30 to-purple-50/50">
+        <div className="mx-auto max-w-7xl px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 gradient-text">
+              Additional Services
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              We offer a comprehensive range of digital services designed to meet your business needs and drive growth.
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              Specialized services to address specific needs and enhance your wedding contract protection.
             </p>
-          </div>
+          </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service) => {
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {additionalServices.map((service, index) => {
               const IconComponent = service.icon;
               return (
-                <Card key={service.title} className="group hover:shadow-2xl transition-all duration-300 border-border/50 hover:border-primary/30 overflow-hidden">
-                  <CardHeader className="pb-4">
-                    <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${service.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
-                      <IconComponent className="h-8 w-8 text-white" />
-                    </div>
-                  </CardHeader>
-                  <CardContent className="space-y-6">
-                    <div className="space-y-3">
-                      <CardTitle className="text-2xl group-hover:text-primary transition-colors">
-                        {service.title}
-                      </CardTitle>
-                      <CardDescription className="text-muted-foreground leading-relaxed text-base">
-                        {service.description}
-                      </CardDescription>
-                    </div>
-
-                    <div className="space-y-4">
-                      <div>
-                        <h4 className="font-semibold text-foreground mb-3">Key Features</h4>
-                        <ul className="space-y-2">
-                          {service.features.slice(0, 4).map((feature) => (
-                            <li key={feature} className="flex items-center gap-2 text-sm text-muted-foreground">
-                              <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
-                              {feature}
-                            </li>
-                          ))}
-                        </ul>
+                <motion.div
+                  key={service.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  whileHover={{ y: -5 }}
+                  className="p-6 bg-card rounded-3xl elegant-shadow wedding-border hover:shadow-xl transition-all duration-500"
+                >
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between">
+                      <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center">
+                        <IconComponent className="w-6 h-6 text-blue-600" />
                       </div>
-
-                      <div>
-                        <h4 className="font-semibold text-foreground mb-3">Benefits</h4>
-                        <ul className="space-y-2">
-                          {service.benefits.map((benefit) => (
-                            <li key={benefit} className="flex items-center gap-2 text-sm text-muted-foreground">
-                              <Star className="h-4 w-4 text-yellow-500 flex-shrink-0" />
-                              {benefit}
-                            </li>
-                          ))}
-                        </ul>
+                      <div className="text-2xl font-bold text-blue-600">
+                        {service.price}
                       </div>
                     </div>
-
-                    <Link href={service.href}>
-                      <Button className="w-full bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 transition-all duration-300">
-                        Learn More
-                        <ArrowRight className="h-4 w-4 ml-2" />
-                      </Button>
-                    </Link>
-                  </CardContent>
-                </Card>
+                    
+                    <h3 className="text-xl font-bold text-card-foreground">
+                      {service.title}
+                    </h3>
+                    
+                    <p className="text-muted-foreground leading-relaxed">
+                      {service.description}
+                    </p>
+                    
+                    <button className="w-full px-6 py-3 bg-gradient-to-r from-blue-500/10 to-purple-500/10 text-blue-600 rounded-xl font-semibold hover:from-blue-600 hover:to-purple-600 hover:text-white transition-all duration-300">
+                      Add to Package
+                    </button>
+                  </div>
+                </motion.div>
               );
             })}
           </div>
@@ -470,129 +368,192 @@ export default function ServicesPage() {
       </section>
 
       {/* Process Section */}
-      <section className="py-24 bg-muted/30">
-        <div className="mx-auto max-w-7xl px-4">
-          <div className="text-center space-y-4 mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold">
-              Our{" "}
-              <span className="bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
-                Process
-              </span>
+      <section className="py-24">
+        <div className="mx-auto max-w-7xl px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 gradient-text">
+              Our Process
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              We follow a proven methodology to ensure successful project delivery and exceptional results.
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              Simple, straightforward steps to get your wedding contracts professionally handled.
             </p>
-          </div>
+          </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {process.map((step) => {
-              const IconComponent = step.icon;
-              return (
-                <Card key={step.step} className="group hover:shadow-2xl transition-all duration-300 border-border/50 hover:border-primary/30 text-center">
-                  <CardContent className="p-8 space-y-4">
-                    <div className="flex justify-center">
-                      <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                        <IconComponent className="h-8 w-8 text-primary" />
+          <div className="relative">
+            <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-primary to-accent rounded-full hidden lg:block"></div>
+            
+            <div className="space-y-12">
+              {process.map((step, index) => {
+                const IconComponent = step.icon;
+                return (
+                  <motion.div
+                    key={step.step}
+                    initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.8, delay: index * 0.2 }}
+                    viewport={{ once: true }}
+                    className={`flex items-center ${
+                      index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
+                    }`}
+                  >
+                    <div className={`w-full lg:w-1/2 ${
+                      index % 2 === 0 ? 'lg:pr-12 lg:text-right' : 'lg:pl-12 lg:text-left'
+                    }`}>
+                      <div className="p-8 bg-card rounded-3xl elegant-shadow wedding-border">
+                        <div className="flex items-center space-x-4 mb-4">
+                          <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-accent text-primary-foreground font-bold text-xl flex items-center justify-center">
+                            {step.step}
+                          </div>
+                          <h3 className="text-2xl font-bold text-card-foreground">
+                            {step.title}
+                          </h3>
+                        </div>
+                        <p className="text-muted-foreground leading-relaxed">
+                          {step.description}
+                        </p>
                       </div>
                     </div>
-                    <div className="space-y-2">
-                      <Badge variant="secondary" className="bg-primary/10 text-primary border-primary/20">
-                        {step.step}
-                      </Badge>
-                      <CardTitle className="text-xl group-hover:text-primary transition-colors">
-                        {step.title}
-                      </CardTitle>
-                      <CardDescription className="text-muted-foreground">
-                        {step.description}
-                      </CardDescription>
+                    
+                    <div className="hidden lg:flex relative z-10 w-16 h-16 bg-gradient-to-br from-primary to-accent rounded-full items-center justify-center flex-shrink-0">
+                      <IconComponent className="w-8 h-8 text-primary-foreground" />
                     </div>
-                  </CardContent>
-                </Card>
-              );
-            })}
+                    
+                    <div className="hidden lg:block w-1/2"></div>
+                  </motion.div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <section className="py-24">
-        <div className="mx-auto max-w-7xl px-4">
-          <div className="text-center space-y-4 mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold">
-              Client{" "}
-              <span className="bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
-                Testimonials
-              </span>
+      {/* Testimonials */}
+      <section className="py-24 bg-gradient-to-b from-background to-muted/20">
+        <div className="mx-auto max-w-7xl px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 gradient-text">
+              What Our Clients Say
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              See what our clients have to say about our services and the results we&apos;ve delivered.
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              Real stories from couples who protected their special day with our services.
             </p>
-          </div>
+          </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial) => (
-              <Card key={testimonial.name} className="group hover:shadow-2xl transition-all duration-300 border-border/50 hover:border-primary/30">
-                <CardContent className="p-6 space-y-4">
-                  <div className="flex items-center gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {testimonials.map((testimonial, index) => (
+              <motion.div
+                key={testimonial.name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.2 }}
+                viewport={{ once: true }}
+                whileHover={{ y: -5 }}
+                className="p-8 bg-card rounded-3xl elegant-shadow wedding-border hover:shadow-xl transition-all duration-500"
+              >
+                <div className="space-y-6">
+                  <div className="flex items-center space-x-1">
+                    {[...Array(testimonial.rating)].map((_, i) => (
+                      <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
+                    ))}
+                  </div>
+                  
+                  <p className="text-muted-foreground leading-relaxed italic">
+                    &quot;{testimonial.text}&quot;
+                  </p>
+                  
+                  <div className="flex items-center space-x-4">
                     <img
-                      src={testimonial.avatar}
+                      src={testimonial.image}
                       alt={testimonial.name}
-                      className="w-12 h-12 rounded-full object-cover"
+                      className="w-12 h-12 rounded-full object-cover elegant-shadow"
+                      loading="lazy"
                     />
                     <div>
-                      <div className="font-semibold">{testimonial.name}</div>
-                      <div className="text-sm text-muted-foreground">{testimonial.role}</div>
+                      <div className="font-bold text-card-foreground">
+                        {testimonial.name}
+                      </div>
+                      <div className="text-sm text-muted-foreground">
+                        {testimonial.location}
+                      </div>
                     </div>
                   </div>
-                  <Quote className="h-8 w-8 text-primary/30" />
-                  <p className="text-muted-foreground leading-relaxed">
-                    &quot;{testimonial.content}&quot;
-                  </p>
-                  <Badge variant="secondary" className="bg-primary/10 text-primary border-primary/20">
-                    {testimonial.service}
-                  </Badge>
-                </CardContent>
-              </Card>
+                </div>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 bg-gradient-to-br from-primary/10 to-primary/5">
-        <div className="mx-auto max-w-4xl px-4 text-center">
-          <div className="space-y-8">
-            <div className="space-y-4">
-              <h2 className="text-3xl md:text-5xl font-bold">
-                Ready to{" "}
-                <span className="bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
-                  Get Started
-                </span>?
-              </h2>
-              <p className="text-xl text-muted-foreground">
-                Let&apos;s discuss your project requirements and create a customized solution that drives results.
-              </p>
+      <section className="py-24 bg-gradient-to-br from-primary/5 via-accent/5 to-background">
+        <div className="mx-auto max-w-7xl px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 gradient-text">
+              Ready to Protect Your Wedding?
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed mb-12">
+              Don&apos;t leave your special day to chance. Get professional wedding contract 
+              protection and enjoy your celebration with complete peace of mind.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-6 justify-center">
+              <Link
+                href="/contact"
+                className="px-10 py-5 bg-gradient-to-r from-primary to-accent text-primary-foreground rounded-full font-bold text-lg hover:shadow-2xl transition-all duration-300 elegant-shadow flex items-center space-x-3"
+              >
+                <span>Get Started Today</span>
+                <ArrowRight className="w-6 h-6" />
+              </Link>
+              
+              <Link
+                href="/templates"
+                className="px-10 py-5 border-2 border-primary text-primary rounded-full font-bold text-lg hover:bg-primary hover:text-primary-foreground transition-all duration-300 flex items-center space-x-3"
+              >
+                <span>Browse Templates</span>
+                <FileText className="w-6 h-6" />
+              </Link>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/contact">
-                <Button size="lg" className="h-14 px-8 text-lg bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 shadow-xl hover:shadow-2xl transition-all duration-300">
-                  <Rocket className="h-5 w-5 mr-2" />
-                  Start Your Project
-                </Button>
-              </Link>
-              <Link href="/contact">
-                <Button variant="outline" size="lg" className="h-14 px-8 text-lg border-2 hover:bg-primary/10 hover:border-primary/50 transition-all duration-300">
-                  Get Free Quote
-                  <ArrowRight className="h-4 w-4 ml-2" />
-                </Button>
-              </Link>
+            <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+              <div className="text-center space-y-3">
+                <Phone className="w-8 h-8 text-primary mx-auto" />
+                <h3 className="font-bold text-foreground">Call Us</h3>
+                <p className="text-primary font-semibold">+1-555-ETERNAL</p>
+              </div>
+              
+              <div className="text-center space-y-3">
+                <Mail className="w-8 h-8 text-primary mx-auto" />
+                <h3 className="font-bold text-foreground">Email Us</h3>
+                <p className="text-primary font-semibold">hello@codestam.com</p>
+              </div>
+              
+              <div className="text-center space-y-3">
+                <MessageCircle className="w-8 h-8 text-primary mx-auto" />
+                <h3 className="font-bold text-foreground">Live Chat</h3>
+                <p className="text-primary font-semibold">Available 24/7</p>
+              </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
-
-      <Footer />
     </div>
   );
 }
