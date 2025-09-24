@@ -1,65 +1,64 @@
 "use client"
 
+import * as React from "react"
+import Link from "next/link"
 import { motion } from "framer-motion"
-import { useState } from "react"
+import { ArrowRight, Calendar, Clock, Users, CheckCircle, Star, Leaf, Video, Phone, MapPin, Gift } from "lucide-react"
+
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Calendar } from "@/components/ui/calendar"
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
-import { Badge } from "@/components/ui/badge"
-import { 
-  Calendar as CalendarIcon,
-  Clock,
-  MapPin,
-  Phone,
-  User,
-  Camera,
-  CheckCircle,
-  ArrowRight,
-  Film,
-  Aperture,
-  Timer
-} from "lucide-react"
-import { format } from "date-fns"
-import { cn } from "@/lib/utils"
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 
-const fadeInUp = {
-  initial: { opacity: 0, y: 60 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6, ease: "easeOut" }
-}
-
-const services = [
+const consultationTypes = [
   {
-    id: "portrait",
-    name: "Portrait Session",
-    type: "Individual & Family",
-    duration: "2-3 hours",
-    deliverables: "50+ edited photos",
-    price: "From $350",
-    image: "https://images.unsplash.com/photo-1554151228-14d9def656e4?w=600&h=400&fit=crop&crop=center"
+    icon: Video,
+    title: "Virtual Consultation",
+    duration: "45 minutes",
+    price: "Free",
+    description: "Perfect for initial planning and system recommendations",
+    features: [
+      "Space assessment via video call",
+      "Personalized system recommendations",
+      "Cost estimates and timeline",
+      "Growing guides and resources",
+      "Follow-up support included"
+    ],
+    popular: true
   },
   {
-    id: "wedding",
-    name: "Wedding Photography",
-    type: "Full Day Coverage",
-    duration: "8-10 hours",
-    deliverables: "200+ photos + album",
-    price: "From $2,500",
-    image: "https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=600&h=400&fit=crop&crop=center"
+    icon: Phone,
+    title: "Phone Consultation",
+    duration: "30 minutes",
+    price: "Free",
+    description: "Quick answers and guidance for your growing questions",
+    features: [
+      "Expert growing advice",
+      "System troubleshooting",
+      "Product recommendations",
+      "Maintenance guidance",
+      "Resource sharing"
+    ],
+    popular: false
   },
   {
-    id: "commercial",
-    name: "Commercial Shoot",
-    type: "Brand & Product",
-    duration: "Half/Full day",
-    deliverables: "Custom package",
-    price: "From $800",
-    image: "https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=600&h=400&fit=crop&crop=center"
+    icon: MapPin,
+    title: "In-Person Visit",
+    duration: "90 minutes",
+    price: "$99",
+    description: "Comprehensive on-site assessment and planning",
+    features: [
+      "Detailed space evaluation",
+      "Custom system design",
+      "Installation planning",
+      "Hands-on demonstration",
+      "Complete project roadmap"
+    ],
+    popular: false,
+    note: "Fee credited toward system purchase"
   }
 ]
 
@@ -68,428 +67,478 @@ const timeSlots = [
   "1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM", "5:00 PM"
 ]
 
-const locations = [
+const benefits = [
   {
-    name: "Noir Studio Downtown",
-    address: "123 Main Street, Downtown District",
-    phone: "(555) 123-4567"
+    icon: Star,
+    title: "Expert Guidance",
+    description: "Get advice from certified growing specialists with years of experience."
   },
   {
-    name: "Outdoor Location Shoot",
-    address: "Various scenic locations in the city",
-    phone: "(555) 123-4567"
+    icon: CheckCircle,
+    title: "Personalized Solutions",
+    description: "Receive recommendations tailored to your specific space and goals."
   },
   {
-    name: "Client Location",
-    address: "Your preferred location",
-    phone: "(555) 123-4567"
+    icon: Gift,
+    title: "Free Resources",
+    description: "Access exclusive growing guides, maintenance tips, and ongoing support."
+  },
+  {
+    icon: Leaf,
+    title: "Sustainable Focus",
+    description: "Learn eco-friendly practices that maximize yield while minimizing impact."
   }
 ]
 
-export default function SchedulePageClient() {
-  const [selectedService, setSelectedService] = useState("")
-  const [selectedDate, setSelectedDate] = useState<Date>()
-  const [selectedTime, setSelectedTime] = useState("")
-  const [selectedLocation, setSelectedLocation] = useState("")
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
+export function SchedulePageClient() {
+  const [formData, setFormData] = React.useState({
+    name: "",
     email: "",
     phone: "",
+    consultationType: "",
+    preferredDate: "",
+    preferredTime: "",
+    spaceType: "",
+    experience: "",
+    goals: "",
+    budget: "",
     message: ""
   })
-  const [isSubmitted, setIsSubmitted] = useState(false)
 
-  const handleInputChange = (field: string, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }))
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target
+    setFormData(prev => ({ ...prev, [name]: value }))
+  }
+
+  const handleSelectChange = (name: string) => (value: string) => {
+    setFormData(prev => ({ ...prev, [name]: value }))
   }
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // Here you would typically send the data to your backend
-    console.log("Photography session scheduled:", {
-      service: selectedService,
-      date: selectedDate,
-      time: selectedTime,
-      location: selectedLocation,
-      ...formData
-    })
-    setIsSubmitted(true)
-  }
-
-  if (isSubmitted) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background to-muted/30 film-grain">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6 }}
-          className="text-center max-w-2xl mx-auto px-6"
-        >
-          <div className="w-24 h-24 bg-primary rounded-sm flex items-center justify-center mx-auto mb-8 retro-shadow">
-            <CheckCircle className="w-12 h-12 text-primary-foreground" />
-          </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6 typewriter-effect">
-            Session Booked!
-          </h1>
-          <p className="text-xl text-muted-foreground mb-8">
-            Thank you for booking your photography session with Noir Studio. We&apos;ll send you a confirmation email shortly with all the details.
-          </p>
-          <div className="bg-muted/50 rounded-sm p-6 mb-8 vintage-border">
-            <h3 className="font-semibold text-lg mb-4 typewriter-effect">Your Session Details:</h3>
-            <div className="space-y-2 text-left">
-              <p><strong>Service:</strong> {services.find(s => s.id === selectedService)?.name}</p>
-              <p><strong>Date:</strong> {selectedDate ? format(selectedDate, "PPP") : ""}</p>
-              <p><strong>Time:</strong> {selectedTime}</p>
-              <p><strong>Location:</strong> {locations.find(l => l.name === selectedLocation)?.name}</p>
-            </div>
-          </div>
-          <Button 
-            onClick={() => setIsSubmitted(false)}
-            size="lg"
-            className="retro-shadow uppercase tracking-wider"
-          >
-            Book Another Session
-          </Button>
-        </motion.div>
-      </div>
-    )
+    // Handle form submission
+    console.log("Consultation scheduled:", formData)
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background to-muted/30">
+    <div className="min-h-screen pt-20">
       {/* Hero Section */}
-      <section className="relative py-20 overflow-hidden film-grain">
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1554151228-14d9def656e4?w=1920&h=1080&fit=crop&crop=center')] bg-cover bg-center opacity-20 grayscale"></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-background/90 to-background/60"></div>
-        
-        <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
+      <section className="py-16 bg-gradient-to-r from-primary/5 via-accent/5 to-primary/5 leaf-pattern">
+        <div className="max-w-7xl mx-auto px-6">
           <motion.div
-            initial={{ opacity: 0, y: 100 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
+            className="text-center"
           >
-            <Badge className="mb-6 bg-primary/20 text-primary border-primary/30 px-4 py-2 uppercase tracking-wider">
-              Professional Photography
-            </Badge>
-            
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-foreground leading-tight">
-              Book Your
-              <span className="block text-primary typewriter-effect">Photography Session</span>
+            <h1 className="text-4xl md:text-6xl font-bold mb-6">
+              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                Free Consultation
+              </span>
+              <br />
+              Start Growing Today
             </h1>
-            
-            <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-              Schedule your personalized photography experience. From intimate portraits to grand celebrations, 
-              we capture your moments with timeless vintage aesthetics.
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Book a personalized consultation with our growing experts. Get tailored recommendations, 
+              cost estimates, and everything you need to start your urban farming journey.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Main Form Section */}
-      <section className="py-20">
-        <div className="max-w-6xl mx-auto px-6">
-          <form onSubmit={handleSubmit} className="space-y-12">
-            {/* Service Selection */}
-            <motion.div
-              variants={fadeInUp}
-              initial="initial"
-              whileInView="animate"
-              viewport={{ once: true }}
-            >
-              <Card className="retro-shadow vintage-border">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-3 typewriter-effect">
-                    <Camera className="w-6 h-6 text-primary" />
-                    Choose Your Service
-                  </CardTitle>
-                  <CardDescription>
-                    Select the photography service you&apos;d like to book
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="grid md:grid-cols-3 gap-6">
-                    {services.map((service) => (
-                      <motion.div
-                        key={service.id}
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
-                        className={cn(
-                          "relative rounded-sm overflow-hidden cursor-pointer border-2 transition-all photo-frame",
-                          selectedService === service.id
-                            ? "border-primary ring-2 ring-primary/20"
-                            : "border-border hover:border-primary/50"
-                        )}
-                        onClick={() => setSelectedService(service.id)}
-                      >
-                        <div className="aspect-video bg-cover bg-center grayscale hover:grayscale-0 transition-all duration-500" style={{ backgroundImage: `url(${service.image})` }}>
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                          <div className="absolute bottom-4 left-4 text-white">
-                            <h3 className="font-bold text-lg typewriter-effect">{service.name}</h3>
-                            <p className="text-sm opacity-90">{service.type}</p>
-                          </div>
-                          {selectedService === service.id && (
-                            <div className="absolute top-4 right-4">
-                              <CheckCircle className="w-6 h-6 text-primary bg-white rounded-full" />
-                            </div>
-                          )}
-                        </div>
-                        <div className="p-4 bg-card">
-                          <div className="flex justify-between items-center text-sm mb-2">
-                            <span className="flex items-center gap-1">
-                              <Timer className="w-4 h-4" />
-                              {service.duration}
-                            </span>
-                            <span className="flex items-center gap-1">
-                              <Film className="w-4 h-4" />
-                              {service.deliverables}
-                            </span>
-                          </div>
-                          <p className="font-semibold text-primary typewriter-effect">{service.price}</p>
-                        </div>
-                      </motion.div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
+      {/* Consultation Types */}
+      <section className="py-16">
+        <div className="max-w-7xl mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Choose Your <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Consultation Type</span>
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Select the consultation format that works best for your schedule and needs.
+            </p>
+          </motion.div>
 
-            {/* Date & Time Selection */}
-            <motion.div
-              variants={fadeInUp}
-              initial="initial"
-              whileInView="animate"
-              viewport={{ once: true }}
-            >
-              <Card className="retro-shadow vintage-border">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-3 typewriter-effect">
-                    <CalendarIcon className="w-6 h-6 text-primary" />
-                    Select Date & Time
-                  </CardTitle>
-                  <CardDescription>
-                    Choose your preferred session date and time
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="grid md:grid-cols-2 gap-8">
-                    <div>
-                      <Label className="text-base font-medium mb-4 block uppercase tracking-wider">Select Date</Label>
-                      <Popover>
-                        <PopoverTrigger asChild>
-                          <Button
-                            variant="outline"
-                            className={cn(
-                              "w-full justify-start text-left font-normal h-12 vintage-border",
-                              !selectedDate && "text-muted-foreground"
-                            )}
-                          >
-                            <CalendarIcon className="mr-2 h-4 w-4" />
-                            {selectedDate ? format(selectedDate, "PPP") : "Pick a date"}
-                          </Button>
-                        </PopoverTrigger>
-                        <PopoverContent className="w-auto p-0" align="start">
-                          <Calendar
-                            mode="single"
-                            selected={selectedDate}
-                            onSelect={setSelectedDate}
-                            disabled={(date) => date < new Date() || date < new Date("1900-01-01")}
-                            initialFocus
-                          />
-                        </PopoverContent>
-                      </Popover>
+          <div className="grid md:grid-cols-3 gap-8">
+            {consultationTypes.map((type, index) => (
+              <motion.div
+                key={type.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="group relative"
+              >
+                {type.popular && (
+                  <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 z-10">
+                    <span className="bg-gradient-to-r from-primary to-accent text-primary-foreground px-4 py-1 rounded-full text-sm font-semibold">
+                      Most Popular
+                    </span>
+                  </div>
+                )}
+                
+                <Card className={`plant-card h-full ${type.popular ? 'ring-2 ring-primary/20 scale-105' : ''} group-hover:scale-105 transition-all duration-300`}>
+                  <CardHeader className="text-center">
+                    <div className="h-16 w-16 rounded-2xl bg-gradient-to-br from-primary to-accent flex items-center justify-center mx-auto mb-4">
+                      <type.icon className="h-8 w-8 text-primary-foreground" />
                     </div>
+                    <CardTitle className="text-xl">{type.title}</CardTitle>
+                    <div className="flex items-center justify-center gap-4 text-sm text-muted-foreground">
+                      <span className="flex items-center gap-1">
+                        <Clock className="h-4 w-4" />
+                        {type.duration}
+                      </span>
+                      <span className="text-2xl font-bold text-primary">{type.price}</span>
+                    </div>
+                    <p className="text-muted-foreground">{type.description}</p>
+                  </CardHeader>
+                  
+                  <CardContent className="space-y-4">
+                    <ul className="space-y-2">
+                      {type.features.map((feature, featureIndex) => (
+                        <li key={featureIndex} className="flex items-start gap-2 text-sm">
+                          <CheckCircle className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+                          <span>{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
                     
-                    <div>
-                      <Label className="text-base font-medium mb-4 block uppercase tracking-wider">Select Time</Label>
-                      <Select value={selectedTime} onValueChange={setSelectedTime}>
-                        <SelectTrigger className="h-12 vintage-border">
-                          <SelectValue placeholder="Choose time slot" />
+                    {type.note && (
+                      <div className="text-xs text-muted-foreground bg-muted/50 p-2 rounded-lg">
+                        <strong>Note:</strong> {type.note}
+                      </div>
+                    )}
+                    
+                    <Button 
+                      className={`w-full curved-organic ${
+                        type.popular 
+                          ? 'bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground border-0' 
+                          : 'border-primary/30 hover:bg-primary/5'
+                      }`}
+                      variant={type.popular ? "default" : "outline"}
+                    >
+                      Select This Option
+                    </Button>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Booking Form */}
+      <section className="py-16 bg-muted/30 organic-texture">
+        <div className="max-w-4xl mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Book Your <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Consultation</span>
+            </h2>
+            <p className="text-xl text-muted-foreground">
+              Fill out the form below and we&apos;ll confirm your appointment within 24 hours.
+            </p>
+          </motion.div>
+
+          <Card className="plant-card">
+            <CardContent className="p-8">
+              <form onSubmit={handleSubmit} className="space-y-6">
+                {/* Personal Information */}
+                <div className="space-y-4">
+                  <h3 className="text-lg font-semibold">Personal Information</h3>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="name">Full Name *</Label>
+                      <Input
+                        id="name"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleInputChange}
+                        placeholder="Your full name"
+                        required
+                        className="curved-organic"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="email">Email Address *</Label>
+                      <Input
+                        id="email"
+                        name="email"
+                        type="email"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        placeholder="your@email.com"
+                        required
+                        className="curved-organic"
+                      />
+                    </div>
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="phone">Phone Number *</Label>
+                    <Input
+                      id="phone"
+                      name="phone"
+                      type="tel"
+                      value={formData.phone}
+                      onChange={handleInputChange}
+                      placeholder="+1 (555) 123-4567"
+                      required
+                      className="curved-organic"
+                    />
+                  </div>
+                </div>
+
+                {/* Consultation Details */}
+                <div className="space-y-4">
+                  <h3 className="text-lg font-semibold">Consultation Details</h3>
+                  <div className="space-y-2">
+                    <Label>Consultation Type *</Label>
+                    <RadioGroup 
+                      value={formData.consultationType} 
+                      onValueChange={handleSelectChange("consultationType")}
+                      className="grid md:grid-cols-3 gap-4"
+                    >
+                      {consultationTypes.map((type) => (
+                        <div key={type.title} className="flex items-center space-x-2 border rounded-lg p-3 cursor-pointer hover:bg-muted/50">
+                          <RadioGroupItem value={type.title} id={type.title} />
+                          <Label htmlFor={type.title} className="cursor-pointer flex-1">
+                            <div className="font-medium">{type.title}</div>
+                            <div className="text-sm text-muted-foreground">{type.price} • {type.duration}</div>
+                          </Label>
+                        </div>
+                      ))}
+                    </RadioGroup>
+                  </div>
+
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="preferredDate">Preferred Date *</Label>
+                      <Input
+                        id="preferredDate"
+                        name="preferredDate"
+                        type="date"
+                        value={formData.preferredDate}
+                        onChange={handleInputChange}
+                        required
+                        className="curved-organic"
+                        min={new Date().toISOString().split('T')[0]}
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="preferredTime">Preferred Time *</Label>
+                      <Select onValueChange={handleSelectChange("preferredTime")} required>
+                        <SelectTrigger className="curved-organic">
+                          <SelectValue placeholder="Select time" />
                         </SelectTrigger>
                         <SelectContent>
                           {timeSlots.map((time) => (
-                            <SelectItem key={time} value={time}>
-                              <div className="flex items-center gap-2">
-                                <Clock className="w-4 h-4" />
-                                {time}
-                              </div>
-                            </SelectItem>
+                            <SelectItem key={time} value={time}>{time}</SelectItem>
                           ))}
                         </SelectContent>
                       </Select>
                     </div>
                   </div>
-                </CardContent>
-              </Card>
-            </motion.div>
+                </div>
 
-            {/* Location Selection */}
-            <motion.div
-              variants={fadeInUp}
-              initial="initial"
-              whileInView="animate"
-              viewport={{ once: true }}
-            >
-              <Card className="retro-shadow vintage-border">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-3 typewriter-effect">
-                    <MapPin className="w-6 h-6 text-primary" />
-                    Choose Location
-                  </CardTitle>
-                  <CardDescription>
-                    Select where you&apos;d like your session to take place
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="grid gap-4">
-                    {locations.map((location) => (
-                      <motion.div
-                        key={location.name}
-                        whileHover={{ scale: 1.01 }}
-                        whileTap={{ scale: 0.99 }}
-                        className={cn(
-                          "p-4 rounded-sm border-2 cursor-pointer transition-all vintage-border",
-                          selectedLocation === location.name
-                            ? "border-primary bg-primary/10"
-                            : "border-border hover:border-primary/50 hover:bg-accent/50"
-                        )}
-                        onClick={() => setSelectedLocation(location.name)}
-                      >
-                        <div className="flex items-start justify-between">
-                          <div className="flex-1">
-                            <h3 className="font-semibold text-foreground typewriter-effect mb-1">
-                              {location.name}
-                            </h3>
-                            <p className="text-sm text-muted-foreground mb-2">
-                              {location.address}
-                            </p>
-                            <p className="text-sm text-muted-foreground flex items-center gap-1">
-                              <Phone className="w-3 h-3" />
-                              {location.phone}
-                            </p>
-                          </div>
-                          {selectedLocation === location.name && (
-                            <CheckCircle className="w-5 h-5 text-primary flex-shrink-0" />
-                          )}
-                        </div>
-                      </motion.div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-
-            {/* Personal Information */}
-            <motion.div
-              variants={fadeInUp}
-              initial="initial"
-              whileInView="animate"
-              viewport={{ once: true }}
-            >
-              <Card className="retro-shadow vintage-border">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-3 typewriter-effect">
-                    <User className="w-6 h-6 text-primary" />
-                    Your Information
-                  </CardTitle>
-                  <CardDescription>
-                    Tell us about yourself and your photography needs
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div>
-                      <Label htmlFor="firstName" className="text-base font-medium mb-2 block uppercase tracking-wider">
-                        First Name
-                      </Label>
-                      <Input
-                        id="firstName"
-                        value={formData.firstName}
-                        onChange={(e) => handleInputChange("firstName", e.target.value)}
-                        className="h-12 vintage-border"
-                        required
-                      />
+                {/* Project Information */}
+                <div className="space-y-4">
+                  <h3 className="text-lg font-semibold">Project Information</h3>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="spaceType">Space Type *</Label>
+                      <Select onValueChange={handleSelectChange("spaceType")} required>
+                        <SelectTrigger className="curved-organic">
+                          <SelectValue placeholder="Select space type" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="apartment">Apartment/Condo</SelectItem>
+                          <SelectItem value="house">House</SelectItem>
+                          <SelectItem value="office">Office</SelectItem>
+                          <SelectItem value="restaurant">Restaurant</SelectItem>
+                          <SelectItem value="school">School/Institution</SelectItem>
+                          <SelectItem value="commercial">Commercial Space</SelectItem>
+                          <SelectItem value="other">Other</SelectItem>
+                        </SelectContent>
+                      </Select>
                     </div>
-                    
-                    <div>
-                      <Label htmlFor="lastName" className="text-base font-medium mb-2 block uppercase tracking-wider">
-                        Last Name
-                      </Label>
-                      <Input
-                        id="lastName"
-                        value={formData.lastName}
-                        onChange={(e) => handleInputChange("lastName", e.target.value)}
-                        className="h-12 vintage-border"
-                        required
-                      />
-                    </div>
-                    
-                    <div>
-                      <Label htmlFor="email" className="text-base font-medium mb-2 block uppercase tracking-wider">
-                        Email Address
-                      </Label>
-                      <Input
-                        id="email"
-                        type="email"
-                        value={formData.email}
-                        onChange={(e) => handleInputChange("email", e.target.value)}
-                        className="h-12 vintage-border"
-                        required
-                      />
-                    </div>
-                    
-                    <div>
-                      <Label htmlFor="phone" className="text-base font-medium mb-2 block uppercase tracking-wider">
-                        Phone Number
-                      </Label>
-                      <Input
-                        id="phone"
-                        type="tel"
-                        value={formData.phone}
-                        onChange={(e) => handleInputChange("phone", e.target.value)}
-                        className="h-12 vintage-border"
-                        required
-                      />
+                    <div className="space-y-2">
+                      <Label htmlFor="experience">Growing Experience *</Label>
+                      <Select onValueChange={handleSelectChange("experience")} required>
+                        <SelectTrigger className="curved-organic">
+                          <SelectValue placeholder="Select experience level" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="beginner">Complete Beginner</SelectItem>
+                          <SelectItem value="some">Some Experience</SelectItem>
+                          <SelectItem value="experienced">Experienced Grower</SelectItem>
+                          <SelectItem value="expert">Expert/Professional</SelectItem>
+                        </SelectContent>
+                      </Select>
                     </div>
                   </div>
-                  
-                  <div className="mt-6">
-                    <Label htmlFor="message" className="text-base font-medium mb-2 block uppercase tracking-wider">
-                      Tell Us About Your Vision
-                    </Label>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="budget">Budget Range</Label>
+                    <Select onValueChange={handleSelectChange("budget")}>
+                      <SelectTrigger className="curved-organic">
+                        <SelectValue placeholder="Select budget range (optional)" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="under-500">Under $500</SelectItem>
+                        <SelectItem value="500-1000">$500 - $1,000</SelectItem>
+                        <SelectItem value="1000-2500">$1,000 - $2,500</SelectItem>
+                        <SelectItem value="2500-5000">$2,500 - $5,000</SelectItem>
+                        <SelectItem value="over-5000">Over $5,000</SelectItem>
+                        <SelectItem value="flexible">Flexible</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="goals">Growing Goals *</Label>
                     <Textarea
-                      id="message"
-                      value={formData.message}
-                      onChange={(e) => handleInputChange("message", e.target.value)}
-                      placeholder="Describe your photography needs, style preferences, or any special requests..."
-                      className="min-h-[120px] vintage-border"
-                      rows={5}
+                      id="goals"
+                      name="goals"
+                      value={formData.goals}
+                      onChange={handleInputChange}
+                      placeholder="What do you want to grow? What are your main goals? (e.g., fresh herbs for cooking, vegetables for family, commercial production, etc.)"
+                      rows={3}
+                      required
+                      className="curved-organic resize-none"
                     />
                   </div>
-                </CardContent>
-              </Card>
-            </motion.div>
 
-            {/* Submit Button */}
-            <motion.div
-              variants={fadeInUp}
-              initial="initial"
-              whileInView="animate"
-              viewport={{ once: true }}
-              className="text-center"
-            >
-              <Button 
-                type="submit" 
-                size="lg" 
-                className="retro-shadow text-base px-12 py-6 uppercase tracking-wider font-medium"
-                disabled={!selectedService || !selectedDate || !selectedTime || !selectedLocation || !formData.firstName || !formData.lastName || !formData.email || !formData.phone}
+                  <div className="space-y-2">
+                    <Label htmlFor="message">Additional Information</Label>
+                    <Textarea
+                      id="message"
+                      name="message"
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      placeholder="Any specific questions, space constraints, or other details you&apos;d like to discuss?"
+                      rows={3}
+                      className="curved-organic resize-none"
+                    />
+                  </div>
+                </div>
+
+                <Button 
+                  type="submit" 
+                  size="lg" 
+                  className="w-full text-lg py-6 eco-shadow curved-organic bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground border-0"
+                >
+                  <Calendar className="h-5 w-5 mr-2" />
+                  Schedule My Consultation
+                </Button>
+
+                <p className="text-sm text-muted-foreground text-center">
+                  We&apos;ll confirm your appointment within 24 hours and send you a calendar invite with all the details.
+                </p>
+              </form>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+      {/* Benefits Section */}
+      <section className="py-16">
+        <div className="max-w-7xl mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Why Book a <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Consultation?</span>
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Get the most out of your urban farming investment with expert guidance.
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {benefits.map((benefit, index) => (
+              <motion.div
+                key={benefit.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="text-center"
               >
-                <Aperture className="w-5 h-5 mr-3" />
-                Book Photography Session
-                <ArrowRight className="w-5 h-5 ml-3" />
+                <Card className="plant-card h-full">
+                  <CardHeader>
+                    <div className="h-16 w-16 rounded-2xl bg-gradient-to-br from-primary to-accent flex items-center justify-center mx-auto mb-4">
+                      <benefit.icon className="h-8 w-8 text-primary-foreground" />
+                    </div>
+                    <CardTitle className="text-xl">{benefit.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-muted-foreground">{benefit.description}</p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-16 bg-gradient-to-r from-primary/5 via-accent/5 to-primary/5 leaf-pattern">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="space-y-8"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold">
+              Ready to Start
+              <br />
+              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                Your Growing Journey?
+              </span>
+            </h2>
+            
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Join thousands of successful urban farmers who started with a free consultation.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button 
+                asChild 
+                size="lg" 
+                className="text-lg px-8 py-6 eco-shadow curved-organic bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground border-0"
+              >
+                <Link href="#booking-form" className="flex items-center gap-2">
+                  Book Free Consultation
+                  <ArrowRight className="h-5 w-5" />
+                </Link>
               </Button>
-            </motion.div>
-          </form>
+              
+              <Button 
+                asChild 
+                variant="outline" 
+                size="lg" 
+                className="text-lg px-8 py-6 curved-organic border-primary/30 hover:bg-primary/5"
+              >
+                <Link href="/contact">Have Questions?</Link>
+              </Button>
+            </div>
+          </motion.div>
         </div>
       </section>
     </div>
