@@ -1,17 +1,17 @@
 import type { Metadata } from "next"
-import PortfolioPageClient from "@/components/portfolio-page-client"
+import { SystemsPageClient } from "@/components/systems-page-client"
 
 export const metadata: Metadata = {
-  title: "Portfolio | Noir Studio - Vintage Film Photography",
-  description: "Explore our portfolio of vintage film photography including portraits, weddings, commercial work, and fine art. Timeless black and white photography that captures the essence of every moment.",
+  title: "Growing Systems | GreenTech Gardens - Vertical Farming Solutions",
+  description: "Explore our range of hydroponic and vertical farming systems. From compact desktop units to commercial installations, find the perfect growing solution for your urban farm.",
   publisher: "Codestam Technologies",
   openGraph: {
-    title: "Portfolio | Noir Studio - Vintage Film Photography",
-    description: "Explore our portfolio of vintage film photography including portraits, weddings, commercial work, and fine art. Timeless black and white photography that captures the essence of every moment.",
+    title: "Growing Systems | GreenTech Gardens - Vertical Farming Solutions",
+    description: "Explore our range of hydroponic and vertical farming systems. From compact desktop units to commercial installations, find the perfect growing solution for your urban farm.",
     url: "https://codestam.com",
   },
 }
 
-export default function PortfolioPage() {
-  return <PortfolioPageClient />
+export default function SystemsPage() {
+  return <SystemsPageClient />
 }
